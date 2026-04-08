@@ -5,428 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buruh Elite - Ecosystem</title>
     <style>
-        /* --- RUNNING TEXT TICKER --- */
-
-.db-excel { width: 100%; border-collapse: collapse; font-family: 'Consolas', monospace; font-size: 12px; }
-.db-excel th { background: #1a1a1a; color: #ffd700; padding: 10px; border: 1px solid #333; position: sticky; top: 0; }
-.db-excel td { padding: 10px; border: 1px solid #333; background: #0d0d0d; text-align: center; color: #fff; }
-.db-excel td:first-child { border-left: 5px solid #007bff; color: #ffd700; font-weight: bold; }
-
-.bg-serok { background: rgba(57, 255, 20, 0.1) !important; color: #39ff14; font-weight: bold; }
-.price-up { color: #39ff14; font-weight: bold; }
-.arrow-rotate { transform: rotate(180deg); transition: 0.3s; }
-/*------------------------------------------------------------------------*/
-        body { 
-            font-family: 'Segoe UI', sans-serif; 
-            margin: 0; 
-            background: #0a0a0a; 
-            color: #fff; 
-            text-align: center; 
-            padding-bottom: 80px; 
-        }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #0a0a0a; color: #fff; text-align: center; padding-bottom: 80px; }
         
         /* --- HEADER AREA --- */
-        .header-room { 
-            padding-top: 50px; 
-            padding-bottom: 30px; 
-            background: #0a0a0a; 
-            position: relative; 
-        }
+        .header-room { padding-top: 50px; padding-bottom: 20px; background: #0a0a0a; position: relative; }
 
-        /* --- LOGO BULAT RESPONSIVE --- */
         .logo-bulat { 
-            border-radius: 50%; 
-            background: #000; 
-            border: 4px solid #39ff14; 
-            position: relative; 
-            z-index: 100; 
-            overflow: hidden;
-            display: block;
-            box-shadow: 0 0 20px #39ff14, 0 0 45px #b22222, inset 0 0 15px #b22222;
-            transition: all 0.3s ease;
+            border-radius: 50%; background: #000; border: 4px solid #39ff14; position: relative; z-index: 100; 
+            overflow: hidden; display: block; box-shadow: 0 0 20px #39ff14, 0 0 45px #b22222, inset 0 0 15px #b22222; transition: 0.3s;
         }
 
-        /* Tampilan di LAPTOP (Layar Lebar) */
-        @media (min-width: 768px) {
-            .logo-bulat {
-                width: 160px;      /* Lebih besar di Laptop */
-                height: 160px;
-                margin: 0 auto -60px; /* Amblas sedikit */
-            }
-        }
+        @media (min-width: 768px) { .logo-bulat { width: 150px; height: 150px; margin: 0 auto -60px; } }
+        @media (max-width: 767px) { .logo-bulat { width: 100px; height: 100px; margin: 0 auto -40px; } }
 
-        /* Tampilan di HP (Layar Kecil) */
-        @media (max-width: 767px) {
-            .logo-bulat {
-                width: 100px;      /* Mengecil di HP biar proporsional */
-                height: 100px;
-                margin: 0 auto -35px; /* Naik sedikit biar nggak nutupi tulisan banner */
-                border-width: 3px;    /* Garis tipis dikit biar rapi */
-            }
-        }
-
-        /* --- KOTAK BANNER GAHAR --- */
         .brand-box { 
-            background: #0d0d0d;
-            padding: 10px; 
-            border: 3px solid #b22222; /* Merah Lilin */
-            box-shadow: 0 0 30px rgba(178, 34, 34, 0.7); 
-            width: 95%;
-            max-width: 950px; 
-            margin: 0 auto; 
-            border-radius: 20px;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            overflow: hidden;
-            transition: all 0.5s ease;
+            background: #0d0d0d; padding: 10px; border: 3px solid #b22222; box-shadow: 0 0 30px rgba(178, 34, 34, 0.7); 
+            width: 95%; max-width: 950px; margin: 0 auto; border-radius: 20px; overflow: hidden;
         }
+        .brand-box img { width: 100%; height: auto; display: block; border-radius: 10px; filter: brightness(0.9); }
 
-        .brand-box img {
-            width: 100%; 
-            height: auto; 
-            display: block; 
-            border-radius: 10px; 
-            filter: brightness(0.9) contrast(1.1);
-        }
+        /* --- TICKER / RUNNING TEXT --- */
+        .top-ticker { background: rgba(178, 34, 34, 0.2); border-bottom: 2px solid #b22222; overflow: hidden; white-space: nowrap; padding: 10px 0; font-family: 'Consolas', monospace; font-weight: bold; margin-bottom: 20px; }
+        .ticker-content { display: inline-block; animation: ticker-move 30s linear infinite; color: #39ff14; }
+        .ticker-item { margin: 0 30px; display: inline-block; }
+        .ticker-item span { color: #fff; font-size: 0.8em; }
+        @keyframes ticker-move { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        /* --- EFEK HOVER --- */
-        .brand-box:hover {
-            box-shadow: 0 0 50px rgba(178, 34, 34, 0.9);
-        }
+        /* --- CONTAINER & ROOMS --- */
+        .container { max-width: 950px; margin: auto; padding: 20px; }
+        .room { background: #141414; border: 1px solid #2a2a2a; border-radius: 15px; padding: 25px; margin-bottom: 30px; text-align: left; position: relative; transition: 0.3s; }
+        .room:hover { border-color: #ffd700; background: #1a1a1a; }
+        .room-title { color: #ffd700; text-transform: uppercase; margin-top: 0; border-bottom: 2px solid #333; padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .quote-box { font-style: italic; color: #00ff00; background: #001a00; padding: 15px; border-radius: 10px; border-left: 5px solid #00ff00; }
+
+        /* --- RADAR BOX EMAS --- */
+        .radar-box { background: #111; border: 2px solid #ffd700; border-radius: 15px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+        .radar-header { padding: 15px 20px; background: #1a1a1a; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .radar-content { max-height: 400px; overflow-y: auto; transition: max-height 0.5s ease; }
+        .radar-content.expanded { max-height: 1200px; }
         
-        .logo-bulat:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px #39ff14, 0 0 70px #b22222;
-        }
+        /* --- TABEL EXCEL --- */
+        .db-excel { width: 100%; border-collapse: collapse; font-family: 'Consolas', monospace; font-size: 12px; }
+        .db-excel th { background: #222; color: #ffd700; padding: 10px; border: 1px solid #333; position: sticky; top: 0; }
+        .db-excel td { padding: 10px; border: 1px solid #333; background: #0d0d0d; text-align: center; color: #fff; }
+        .db-excel td:first-child { border-left: 5px solid #007bff; color: #ffd700; font-weight: bold; }
+        .bg-serok { background: rgba(57, 255, 20, 0.1) !important; color: #39ff14; font-weight: bold; }
+        .price-up { color: #39ff14; font-weight: bold; }
+        .price-down { color: #ff4444; }
 
-        /* --- CONTAINER KONTEN --- */
-        .container { 
-            max-width: 950px; 
-            margin: auto; 
-            padding: 20px; 
-        }
-        }
-        .brand-text { text-align: left; }
-        .brand-name { font-size: 2.8em; font-weight: bold; color: #ffd700; margin: 0; letter-spacing: 4px; line-height: 1; }
-        .brand-tagline { color: #888; font-style: italic; margin-top: 5px; font-size: 1em; }
-
-        /* --- TRANSLATE GOOGLE --- */
-        #google_translate_element { background: #222; padding: 10px; border-bottom: 1px solid #333; }
-
-        .container { padding: 20px; max-width: 950px; margin: auto; }
-        
-        /* --- ROOM STYLING (BLOCKS) --- */
-        .room { background: #141414; border: 1px solid #2a2a2a; border-radius: 15px; padding: 30px; margin-bottom: 45px; text-align: left; transition: 0.4s; position: relative; }
-        .room:hover { border-color: #ffd700; background: #1a1a1a; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
-        .room-title { color: #ffd700; text-transform: uppercase; margin-top: 0; border-bottom: 2px solid #333; padding-bottom: 15px; letter-spacing: 2px; display: flex; align-items: center; gap: 10px; }
-        
-        .quote-box { font-style: italic; color: #00ff00; background: #001a00; padding: 20px; border-radius: 10px; margin: 15px 0; border-left: 5px solid #00ff00; line-height: 1.6; }
-        
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #000; color: #fff; font-size: 0.85em; }
-        th, td { border: 1px solid #333; padding: 15px; text-align: center; }
-        th { background: #ffd700; color: #000; font-weight: bold; }
-        
-        .btn-wa { background: #25d366; color: white; padding: 18px; text-decoration: none; border-radius: 10px; font-weight: bold; display: block; text-align: center; font-size: 1.2em; transition: 0.3s; border: none; cursor: pointer; }
-        .btn-wa:hover { background: #128c7e; transform: scale(1.02); }
-           
-        .blink-live { animation: live-glow 2s infinite; }
-        @keyframes live-glow { 50% { background: rgba(178, 34, 34, 0.15); } }
-
-        .iframe-placeholder { width: 100%; height: 300px; border: 2px dashed #444; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #666; background: #050505; }
-
-        /* --- FITUR PANAH EKSPANSI (DROPDOWN BAWAH) --- */
-        .btn-toggle-container { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); z-index: 5; }
-        .btn-toggle { background: #ffd700; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        .arrow-icon { border: solid black; border-width: 0 3px 3px 0; display: inline-block; padding: 3px; transform: rotate(45deg); transition: 0.3s; margin-top: -3px; }
-        .rotated { transform: rotate(-135deg); margin-top: 3px; }
-        .extra-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; background: #0d0d0d; border-radius: 0 0 15px 15px; }
-        .extra-body { padding: 30px; border-top: 1px solid #333; color: #aaa; font-size: 0.9em; }
+        .btn-wa { background: #25d366; color: white; padding: 15px; text-decoration: none; border-radius: 10px; font-weight: bold; display: block; text-align: center; margin-top: 10px; }
+        .btn-toggle { background: #ffd700; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; float: right; }
+        .extra-content { max-height: 0; overflow: hidden; transition: 0.5s; background: #0d0d0d; }
     </style>
 </head>
 <body>
 
-<div id="google_translate_element"></div>
-
 <header class="header-room">
     <div class="logo-bulat">
-        <img src="buruh.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        <img src="buruh.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
-
     <div class="brand-box">
-        <img src="headerweb.png" alt="Banner" style="width: 100%; max-width: 950px; height: auto; display: block; border-radius: 10px; margin: 0 auto;">
+        <img src="headerweb.png" alt="Banner">
     </div>
 </header>
- 
-/*------------------------------------------*/    
-<div class="container">
 
+<div class="top-ticker">
+    <div class="ticker-content">
+        <div class="ticker-item">PEPE/USDT <span>$0.000012 (+15.4%)</span></div>
+        <div class="ticker-item">BTC/USDT <span>$67,450 (+1.2%)</span></div>
+        <div class="ticker-item">DOGE/USDT <span>$0.16 (+5.2%)</span></div>
+        <div class="ticker-item">BNB/USDT <span>$602 (+3.1%)</span></div>
+    </div>
+</div>
+
+<div class="container">
     <div class="room">
         <h2 class="room-title">💡 VISI & FILOSOFI</h2>
         <div class="quote-box">
-            "Seorang Buruh tidak harus bekerja keras selama 8-12 jam tanpa henti, jadilah SMART dengan gaya Elite dan membiarkan sistem bekerja 24 jam tanpa henti untuk anda. Moto KALAH ITU SUDAH BIASA jadi kalo BISA MENANG HARUSNYA LUARRR BIASSSSA...!!!."
-        </div>
-        <div class="btn-toggle-container">
-            <button class="btn-toggle" onclick="toggleExtra(this, 'ex1')"><i class="arrow-icon"></i></button>
-        </div>
-        <div id="ex1" class="extra-content">
-            <div class="extra-body">Tulisan tambahan Jenderal tentang Visi & Filosofi bisa ditaruh di sini secara panjang lebar.</div>
+            "Seorang Buruh tidak harus bekerja keras selama 8-12 jam tanpa henti, jadilah SMART dengan gaya Elite dan membiarkan sistem bekerja 24 jam tanpa henti untuk anda."
         </div>
     </div>
 
-    <div class="room">
-        <h2 class="room-title">📡 RADAR SINYAL REAL-TIME</h2>
-        <p>Sinyal market di bawah ini adalah data asli dari Engine Buruh Elite. Gratis digunakan sebagai sarana pembelajaran bagi semua pengunjung.</p>
-        <div class="iframe-placeholder">
-            [ HUBUNGKAN LINK EXCEL / CLOUD JENDERAL DI SINI ]
-        </div>
-        <p style="font-size: 0.85em; color: #ff3333; margin-top: 15px;"><i>*Catatan: Sinyal bergerak cepat. Untuk eksekusi tanpa celah, gunakan Bot Otomatis kami.*</i></p>
-        <div class="btn-toggle-container">
-            <button class="btn-toggle" onclick="toggleExtra(this, 'ex2')"><i class="arrow-icon"></i></button>
-        </div>
-        <div id="ex2" class="extra-content">
-            <div class="extra-body">Panduan cara membaca Radar Sinyal dan penjelasan teknis engine bisa Jenderal tulis di sini.</div>
-        </div>
-    </div>
     <div class="radar-box">
-    <div class="radar-header" onclick="toggleRadar()">
-        <h2>📡 RADAR SINYAL ENGINE (TOP 50)</h2>
-        <span id="radarArrow" class="arrow-icon">▼</span>
+        <div class="radar-header" onclick="toggleRadar()">
+            <h2 style="color:#ffd700; margin:0; font-size:1em;">📡 RADAR ENGINE (TOP 50 PAIR)</h2>
+            <span id="radarArrow">▼</span>
+        </div>
+        <div class="radar-content" id="radarContent">
+            <table class="db-excel">
+                <thead>
+                    <tr><th>NO</th><th>PAIR</th><th>STATUS</th><th>PRICE</th><th>24H%</th><th>RATING</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>PEPE/USDT</td><td class="bg-serok">💎 SEROK</td><td class="price-up">0.000012</td><td class="price-up">+15%</td><td>⭐⭐⭐⭐⭐</td></tr>
+                    <tr><td>2</td><td>DOGE/USDT</td><td class="bg-serok">💎 SEROK</td><td class="price-up">0.165</td><td class="price-up">+5.2%</td><td>⭐⭐⭐⭐⭐</td></tr>
+                    <tr><td>3</td><td>SHIB/USDT</td><td>WAIT</td><td>0.000024</td><td class="price-down">-2.1%</td><td>⭐⭐⭐</td></tr>
+                    </tbody>
+            </table>
+        </div>
     </div>
-    
-    <div class="radar-content" id="radarContent">
-        <table class="db-excel">
-            <thead>
-                <tr>
-                    <th>NO</th><th>PAIR</th><th>STATUS</th><th>PRICE</th><th>24H%</th><th>RATING</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background: rgba(57,255,20,0.05);">
-                    <td>1</td><td>PEPE/USDT</td><td class="bg-serok">💎 SEROK</td><td class="price-up">0.000012</td><td class="price-up">+15.4%</td><td>⭐⭐⭐⭐⭐</td>
-                </tr>
-                <tr><td>2</td><td>DOGE/USDT</td><td class="bg-serok">💎 SEROK</td><td>0.1654</td><td>+5.2%</td><td>⭐⭐⭐⭐⭐</td></tr>
-                <tr><td>3</td><td>SHIB/USDT</td><td>WAIT</td><td>0.000024</td><td>-2.1%</td><td>⭐⭐⭐</td></tr>
-                </tbody>
-        </table>
-    </div>
-</div>
 
     <div class="room">
         <h2 class="room-title">📊 BURUH PROJEK</h2>
-        <p>Kalkulasi estimasi penggunaan modal dan lot tempur di sistem MMP V.1.0.</p>
-        <div style="overflow-x: auto;">
-    <table>
-            <tr>
-                <th>MODAL</th>
-                <th>LOT (x20)</th>
-                <th>PANGKAT</th>
-                <th>ESTIMASI CUAN</th>
-            </tr>
-            <tr>
-                <td>$20</td>
-                <td>$4</td>
-                <td>PRAJURIT</td>
-                <td>Konsisten</td>
-            </tr>
-            <tr>
-                <td>$100</td>
-                <td>$20</td>
-                <td>JENDERAL</td>
-                <td>Agresif</td>
-            </tr>
-            <tr>
-                <td>$500+</td>
-                <td>Custom</td>
-                <td>ELITE BOSS</td>
-                <td>Maksimal</td>
-            </tr>
+        <table style="width:100%; border-collapse:collapse; margin-top:10px;">
+            <tr style="background:#ffd700; color:#000;"><th>MODAL</th><th>LOT</th><th>PANGKAT</th></tr>
+            <tr><td>$20</td><td>$4</td><td>PRAJURIT</td></tr>
+            <tr><td>$100</td><td>$20</td><td>JENDERAL</td></tr>
         </table>
-</div>
-        <div class="btn-toggle-container">
-            <button class="btn-toggle" onclick="toggleExtra(this, 'ex3')"><i class="arrow-icon"></i></button>
-        </div>
-        <div id="ex3" class="extra-content">
-            <div class="extra-body">Detail manajemen risiko dan aturan compounding profit Jenderal bisa dijelaskan di sini.</div>
-        </div>
     </div>
 
-    /* --- RADAR SINYAL EMAS DROPDOWN --- */
-        .radar-box { 
-            background: #111; 
-            border: 2px solid #ffd700; 
-            border-radius: 15px; 
-            margin: 30px auto; 
-            max-width: 950px;
-            width: 95%;
-            text-align: left;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-            transition: all 0.4s ease;
-        }
-
-        .radar-header {
-            padding: 20px;
-            background: #1a1a1a;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333;
-        }
-
-        .radar-header h2 { color: #ffd700; margin: 0; font-size: 1.2em; text-transform: uppercase; }
-
-        /* AREA TABEL DENGAN SCROLL JIKA LEBIH DARI 10 */
-        .radar-content {
-            max-height: 500px; /* Tinggi awal buat nampilin kira-kira 10 pair */
-            overflow-y: auto;
-            transition: max-height 0.6s ease-in-out;
-        }
-
-        /* Kelas saat dropdown terbuka (untuk 50 pair) */
-        .radar-content.expanded {
-            max-height: 1500px; 
-        }
-
-        .db-excel { width: 100%; border-collapse: collapse; font-family: 'Consolas', monospace; font-size: 12px; }
-        .db-excel th { background: #222; color: #ffd700; padding: 12px; border: 1px solid #333; position: sticky; top: 0; z-index: 5; }
-        .db-excel td { padding: 10px; border: 1px solid #333; background: #0d0d0d; text-align: center; color: #fff; }
-        
-        /* Warna ala Excel Jenderal */
-        .db-excel td:first-child { border-left: 5px solid #007bff; color: #ffd700; font-weight: bold; }
-        .bg-serok { background: rgba(57, 255, 20, 0.1) !important; color: #39ff14; font-weight: bold; }
-        .price-up { color: #39ff14; font-weight: bold; }
-        .arrow-icon { transition: transform 0.3s; color: #ffd700; }
-        .rotate { transform: rotate(180deg); }
-
-    <div class="room">
-        <h2 class="room-title">🛡️ JAMINAN KEAMANAN MODAL</h2>
-        <p>Dana Anda tetap di Binance Anda sendiri. Kami hanya membantu eksekusi melalui API Key (Withdraw Disabled). Anda memegang kendali penuh atas saldo Anda.</p>
-        <div class="btn-toggle-container">
-            <button class="btn-toggle" onclick="toggleExtra(this, 'ex5')"><i class="arrow-icon"></i></button>
-        </div>
-        <div id="ex5" class="extra-content">
-            <div class="extra-body">Penjelasan teknis tentang API Key dan proteksi saldo Jenderal bisa ditulis di sini.</div>
-        </div>
-    </div>
-
-    <div class="room">
-        <h2 class="room-title">📜 PRINSIP BURUH ELITE</h2>
-        <div class="quote-box">
-            "Pasar tidak bisa ditebak, tapi risiko bisa dikelola. Buruh Elite tidak mengejar kaya semalam, tapi mengejar profit yang berkelanjutan."
-        </div>
-        <div class="btn-toggle-container">
-            <button class="btn-toggle" onclick="toggleExtra(this, 'ex6')"><i class="arrow-icon"></i></button>
-        </div>
-        <div id="ex6" class="extra-content">
-            <div class="extra-body">Rincian 10 aturan emas Buruh Elite Jenderal bisa ditaruh di sini.</div>
-        </div>
-    </div>
-
-    <div class="room">
-        <h2 class="room-title">📝 CATATAN TEMPUR HARIAN</h2>
-        <p>Ruangan kosong untuk mengisi hasil profit atau testimoni pengguna yang sudah bergabung.</p>
-        <p style="color: #666;">(Siap untuk diisi data/gambar profit Jenderal...)</p>
-        <div class="btn-toggle-container">
-            <button class="btn-toggle" onclick="toggleExtra(this, 'ex7')"><i class="arrow-icon"></i></button>
-        </div>
-        <div id="ex7" class="extra-content">
-            <div class="extra-body">Testimoni member atau screenshot profit Jenderal bisa ditampilkan di sini.</div>
-        </div>
-    </div>
-
-    <div class="room">
-        <h2 class="room-title">🔑 CARA MULAI (API KEY)</h2>
-        <p>Langkah mudah menyambungkan akun Binance ke engine kami. Pastikan izin 'Withdraw' tidak dicentang demi keamanan Anda.</p>
-        <div class="btn-toggle-container">
-            <button class="btn-toggle" onclick="toggleExtra(this, 'ex8')"><i class="arrow-icon"></i></button>
-        </div>
-        <div id="ex8" class="extra-content">
-            <div class="extra-body">Tutorial lengkap step-by-step setup API Binance bisa Jenderal tulis di sini.</div>
-        </div>
-    </div>
-
-    <div class="room">
-        <h2 class="room-title">🌐 EKOSISTEM MASA DEPAN</h2>
-        <p>Ruangan cadangan untuk rencana pengembangan fitur-fitur baru di masa depan.</p>
-        <div class="btn-toggle-container">
-            <button class="btn-toggle" onclick="toggleExtra(this, 'ex9')"><i class="arrow-icon"></i></button>
-        </div>
-        <div id="ex9" class="extra-content">
-            <div class="extra-body">Roadmap proyek Jenderal dan rencana peluncuran koin/token bisa masuk di sini.</div>
-        </div>
-    </div>
-    <div class="room" style="border: 1px dashed #ffd700; background: #0d0d0d;">
-    <h2 class="room-title">☕ DONASI SEWA SERVER</h2>
-    <p>Bantu ekosistem tetap online! Donasi sewa server minimal <b>$2 - $3 USDT</b>.</p>
-    
-    <div style="background: #222; padding: 15px; border-radius: 10px; text-align: center;">
-        <p style="font-size: 0.8em; color: #888; margin-bottom: 5px;">Alamat USDT (Network: BEP20)</p>
-        <code style="color: #ffd700; word-break: break-all;">ISI_ALAMAT_WALLET_BINANCE_KAMU_DISINI</code>
-        <br><br>
-        <p style="font-size: 0.9em;"><i>*Silakan salin alamat di atas atau hubungi Jenderal untuk QRIS.*</i></p>
-    </div>
-</div>
-<div class="room" style="border: 1px dashed #ffd700; background: #0d0d0d;">
-        <h2 class="room-title">🚀 DAFTAR & TEMPUR</h2>
-        <p>Belum punya akun? Daftar melalui link resmi untuk mendapatkan diskon trading fee selamanya:</p>
-        
-        <a href="LINK_REFERRAL_BINANCE_JENDERAL" target="_blank" class="btn-wa" style="background: #f3ba2f; color: #000; margin-bottom: 25px;">DAFTAR AKUN BINANCE</a>
-
-        <h2 class="room-title">☕ SEWA SERVER</h2>
-        <p>Gunakan alamat di bawah ini untuk donasi sewa server minimal <b>$3 USD</b>:</p>
-        
-        <div style="background: #222; padding: 15px; border-radius: 10px; text-align: center;">
-            <p style="font-size: 0.8em; color: #888; margin-bottom: 5px;">Alamat Setoran (Network: BEP20)</p>
-            <code style="color: #ffd700; word-break: break-all;">828951739</code>
-            <p style="font-size: 0.8em; color: #aaa; margin-top: 10px;">ID Referral: <b>https://www.bmwweb.biz/activity/referral-entry/CPA?ref=CPA_0056AAM8CZ&utm_source=electron</b></p>
-        </div>
-    </div>
-    <div class="room" style="border: 2px solid #ffd700; background: #221f10;">
-        <h2 class="room-title">💰 GABUNG SEKARANG</h2>
-        <p>Sewa Server MMP V.1.0 hanya <b>Rp 25.000 / Bulan</b>.</p>
-        <p>Sistem bagi hasil (Success Fee) 20% - 30% dari profit bersih.</p>
-        <br>
-<div class="room" style="border: 2px solid #ffd700; background: #221f10;">
-        <h2 class="room-title">💰 KONFIRMASI PEMBAYARAN</h2>
-        <p>Sudah daftar atau kirim donasi? Klik tombol di bawah untuk konfirmasi ke Jenderal:</p>
-        <br>
+    <div class="room" style="border: 2px dashed #ffd700;">
+        <h2 class="room-title">🚀 DAFTAR & SEWA SERVER</h2>
+        <p>Sewa Server MMP V.1.0: <b>Rp 25.000 / Bulan</b></p>
+        <p>Kirim Donasi (BEP20): <code style="color:#ffd700;">828951739</code></p>
         <a href="https://wa.me/6285372969999" class="btn-wa">HUBUNGI JENDERAL SEKARANG</a>
     </div>
+
+    <footer>
+        <p style="color:#555; font-size:0.8em;">&copy; 2026 Buruh Elite Ecosystem | Master Strategy by Jenderal Sekdes</p>
+    </footer>
 </div>
 
-<footer>
-    <p style="color:#555;">&copy; 2026 Buruh Elite Ecosystem | Master Strategy by Jenderal Sekdes</p>
-</footer>
-
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'id'}, 'google_translate_element');
-}
-
-function toggleExtra(btn, id) {
-    var content = document.getElementById(id);
-    var icon = btn.querySelector('.arrow-icon');
-    if (content.style.maxHeight && content.style.maxHeight !== "0px") {
-        content.style.maxHeight = "0px";
-        icon.classList.remove('rotated');
-    } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-        icon.classList.add('rotated');
-    }
-}
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script>
-    const signalRoom = document.getElementById('signalRoom');
-    const signalContent = document.getElementById('signalContent');
-    const arrow = document.getElementById('arrow');
-
-    signalRoom.addEventListener('click', function() {
-        signalContent.classList.toggle('open');
-        arrow.classList.toggle('arrow-rotate');
-    });
+function toggleRadar() {
+    const content = document.getElementById('radarContent');
+    const arrow = document.getElementById('radarArrow');
+    content.classList.toggle('expanded');
+    arrow.style.transform = content.classList.contains('expanded') ? 'rotate(180deg)' : 'rotate(0deg)';
+}
 </script>
+
 </body>
 </html>
