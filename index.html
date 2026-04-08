@@ -19,17 +19,24 @@
     /* EFEK DARK BORDER: Pendaran Merah Lilin yang kuat di sekeliling kotak */
     box-shadow: 0 0 30px rgba(178, 34, 34, 0.7); /* Glow Merah Lilin menyebar */
 
-    width: 95%;
-    max-width: 950px; /* Kunci biar nggak segede gaban */
-    margin: 0 auto; 
-    border-radius: 20px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
+.logo-bulat { 
+    width: 140px;       /* INI KUNCI UKURANNYA */
+    height: 140px;      /* HARUS ADA INI BIAR GAK RAKSASA */
+    border-radius: 50%; 
+    background: #000; 
+    border: 5px solid #39ff14; 
+    position: relative; 
+    z-index: 100; 
     overflow: hidden;
-    transition: all 0.5s ease;
+    display: block;
+    margin: 0 auto -70px; /* BIAR AMBLAS */
+    
+    /* WARNA MERAH CANDLE GAHAR */
+    box-shadow: 0 0 20px #39ff14, 
+                0 0 45px #b22222, 
+                inset 0 0 15px #b22222;
+    transition: all 0.3s ease;
 }
-
 /* EFEK HOVER BANNER: Glow makin kuat saat kursor lewat kotak */
 .brand-box:hover {
     box-shadow: 0 0 50px rgba(178, 34, 34, 0.9);
