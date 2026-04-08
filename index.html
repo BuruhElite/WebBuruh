@@ -38,7 +38,7 @@
         
         .quote-box { font-style: italic; color: #00ff00; background: #001a00; padding: 20px; border-radius: 10px; margin: 15px 0; border-left: 5px solid #00ff00; line-height: 1.6; }
         
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #000; color: #fff; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #000; color: #fff; font-size: 0.85em; }
         th, td { border: 1px solid #333; padding: 15px; text-align: center; }
         th { background: #ffd700; color: #000; font-weight: bold; }
         
@@ -105,7 +105,8 @@
     <div class="room">
         <h2 class="room-title">📊 MANAJEMEN LOT & PANGKAT</h2>
         <p>Kalkulasi estimasi penggunaan modal dan lot tempur di sistem MMP V.1.0.</p>
-        <table>
+        <div style="overflow-x: auto;">
+    <table>
             <tr>
                 <th>MODAL</th>
                 <th>LOT (x20)</th>
@@ -131,6 +132,7 @@
                 <td>Maksimal</td>
             </tr>
         </table>
+</div>
         <div class="btn-toggle-container">
             <button class="btn-toggle" onclick="toggleExtra(this, 'ex3')"><i class="arrow-icon"></i></button>
         </div>
