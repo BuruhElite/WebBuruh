@@ -12,11 +12,17 @@
             padding-top: 60px; padding-bottom: 30px; background: #0a0a0a; position: relative; 
         }
         .logo-bulat { 
-            width: 110px; height: 110px; background: #ffd700; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            margin: 0 auto -55px auto; position: relative; z-index: 10; border: 6px solid #0a0a0a;
-            box-shadow: 0 0 20px rgba(255,215,0,0.4); overflow: hidden;
-        }
+    width: 150px;       /* Dari 100px kita naikkan ke 150px */
+    height: 150px;      /* Samakan biar tetep bulat */
+    border-radius: 50%; 
+    background: #000; 
+    border: 5px solid #ffd700; /* Tebalkan garis emasnya sedikit */
+    margin: -75px auto 10px;   /* Angka -75px ini setengah dari tinggi logo agar tetap "melayang" pas di tengah garis */
+    position: relative; 
+    z-index: 10; 
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); /* Tambah efek cahaya emas di pinggiran logo */
+}
         .brand-box { 
     background: #1a1a1a; 
     padding: 15px; 
