@@ -11,39 +11,13 @@
         .header-room { 
             padding-top: 60px; padding-bottom: 30px; background: #0a0a0a; position: relative; 
         }
-        .logo-bulat { 
-    width: 130px; 
-    height: 130px; 
-    border-radius: 50%; 
-    background: #000; 
-    border: 5px solid #39ff14; /* Ganti garis emas jadi Hijau Neon */
-    position: relative; 
-    z-index: 10; 
-    overflow: hidden;
-
-    /* EFEK CYBER GLOW LOGO: Gabungan Hijau Neon dan Ungu Terong */
-    box-shadow: 0 0 15px #39ff14, /* Pendaran Hijau Neon ketat */
-                0 0 30px #9400d3, /* Pendaran Ungu Terong menyebar */
-                inset 0 0 10px #39ff14; /* Pendaran dalam Hijau Neon */
-
-    margin: 0 auto -55px; /* Tetap amblas */
-    display: block;
-    transition: all 0.3s ease-in-out; /* Biar ada efek pas kursor lewat */
-}
-
-/* EFEK HOVER: Saat kursor lewat, pendaran makin kuat */
-.logo-bulat:hover {
-    box-shadow: 0 0 25px #39ff14, 
-                0 0 50px #9400d3;
-    transform: scale(1.05); /* Sedikit membesar */
-}
         .brand-box { 
     background: #0d0d0d; /* Hitam pekat */
     padding: 15px; 
-    border: 2px solid #9400d3; /* Bingkai Ungu Terong */
+    border: 3px solid #ff1493; /* Bingkai Merah Muda Menyala tebal */
     
-    /* EFEK PLASMA BORDER: Pendaran Ungu Terong di sekeliling kotak */
-    box-shadow: 0 0 20px rgba(148, 0, 211, 0.7); /* Glow Ungu Terong */
+    /* EFEK CYBER BORDER: Pendaran Merah Muda Menyala yang kuat di sekeliling kotak */
+    box-shadow: 0 0 25px rgba(255, 20, 147, 0.7); /* Glow Merah Muda menyebar */
 
     width: 95%;
     max-width: 970px;
@@ -53,6 +27,26 @@
     display: flex;
     justify-content: center;
     overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+/* EFEK HOVER BANNER: Glow makin kuat saat kursor lewat kotak */
+.brand-box:hover {
+    box-shadow: 0 0 40px rgba(255, 20, 147, 0.9);
+}
+        .brand-box img {
+    width: 100%; 
+    max-width: 950px; 
+    height: auto; 
+    display: block; 
+    border-radius: 10px; 
+    margin: 0 auto;
+    filter: brightness(0.9) contrast(1.1) saturate(1.2); /* Sedikit naikkan kontras & saturasi */
+    transition: all 0.5s ease;
+}
+
+.brand-box:hover img {
+    filter: brightness(1.1) contrast(1.2) saturate(1.4);
 }
     
     /* MELEBARKAN KOTAK HEADER */
