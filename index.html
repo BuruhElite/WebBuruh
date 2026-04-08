@@ -5,6 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buruh Elite - Ecosystem</title>
     <style>
+        /* --- RUNNING TEXT TICKER --- */
+.top-ticker {
+    background: rgba(178, 34, 34, 0.2);
+    border-bottom: 2px solid #b22222;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    font-family: 'Consolas', monospace;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.ticker-content {
+    display: inline-block;
+    animation: ticker-move 30s linear infinite;
+    color: #39ff14;
+}
+.ticker-item { margin: 0 30px; display: inline-block; }
+.ticker-item span { color: #fff; font-size: 0.8em; margin-left: 5px; }
+
+@keyframes ticker-move {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* --- KOTAK EMAS DROPDOWN --- */
+.signal-room { 
+    background: #141414; 
+    border: 2px solid #ffd700; 
+    border-radius: 15px; 
+    padding: 20px; 
+    margin-top: 30px;
+    margin-bottom: 45px; 
+    text-align: left; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+}
+.signal-title { 
+    color: #ffd700; 
+    margin: 0; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+/* --- AREA TABEL SCROLLABLE (BISA 50 KOIN) --- */
+.signal-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+.signal-content.open {
+    max-height: 600px; /* Biar lega muat banyak koin */
+}
+.db-scroll-area { 
+    width: 100%; 
+    max-height: 450px; 
+    overflow-y: auto; 
+    border: 1px solid #333; 
+    margin-top: 15px;
+}
+.db-excel { width: 100%; border-collapse: collapse; font-family: 'Consolas', monospace; font-size: 12px; }
+.db-excel th { background: #1a1a1a; color: #ffd700; padding: 10px; border: 1px solid #333; position: sticky; top: 0; }
+.db-excel td { padding: 10px; border: 1px solid #333; background: #0d0d0d; text-align: center; color: #fff; }
+.db-excel td:first-child { border-left: 5px solid #007bff; color: #ffd700; font-weight: bold; }
+
+.bg-serok { background: rgba(57, 255, 20, 0.1) !important; color: #39ff14; font-weight: bold; }
+.price-up { color: #39ff14; font-weight: bold; }
+.arrow-rotate { transform: rotate(180deg); transition: 0.3s; }
+/*------------------------------------------------------------------------*/
         body { 
             font-family: 'Segoe UI', sans-serif; 
             margin: 0; 
@@ -118,19 +188,7 @@
         
         .btn-wa { background: #25d366; color: white; padding: 18px; text-decoration: none; border-radius: 10px; font-weight: bold; display: block; text-align: center; font-size: 1.2em; transition: 0.3s; border: none; cursor: pointer; }
         .btn-wa:hover { background: #128c7e; transform: scale(1.02); }
-        /* --- STYLE DATABASE EXCEL GAHAR --- */
-        .db-container { width: 100%; overflow-x: auto; border: 1px solid #333; border-radius: 5px; }
-        .db-excel { width: 100%; border-collapse: collapse; font-family: 'Consolas', monospace; font-size: 12px; }
-        .db-excel th { background: #1a1a1a; color: #ffd700; padding: 10px; border: 1px solid #333; }
-        .db-excel td { padding: 10px; border: 1px solid #333; background: #0d0d0d; }
-        
-        .bg-serok { background: rgba(57, 255, 20, 0.1) !important; color: #39ff14; font-weight: bold; }
-        .bg-wait { background: rgba(255, 255, 255, 0.05) !important; color: #888; }
-        .price-up { color: #39ff14; }
-        .price-down { color: #ff4444; }
-        .star-icon { color: #ffd700; }
-        .crystal-icon { color: #00ffff; }
-        
+           
         .blink-live { animation: live-glow 2s infinite; }
         @keyframes live-glow { 50% { background: rgba(178, 34, 34, 0.15); } }
 
@@ -158,61 +216,44 @@
         <img src="headerweb.png" alt="Banner" style="width: 100%; max-width: 950px; height: auto; display: block; border-radius: 10px; margin: 0 auto;">
     </div>
 </header>
-    <div class="container">
-    <div class="room" style="border: 2px solid #b22222; background: #0a0a0a;">
-        <h2 class="room-title">📑 LIVE DATABASE ENGINE (SCALPING V1.0)</h2>
-        <p style="font-size: 0.85em; color: #aaa; margin-bottom: 15px;">Data asli dari Engine Buruh Elite. Bandingkan dengan market real-time!</p>
-        
-        <div class="db-container">
-            <table class="db-excel">
-                <thead>
-                    <tr>
-                        <th>NO</th>
-                        <th>PAIR</th>
-                        <th>SIGNAL STATUS</th>
-                        <th>HARGA</th>
-                        <th>24J%</th>
-                        <th>RATING</th>
-                        <th>CONFIRM</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="blink-live">
-                        <td>1</td>
-                        <td>PEPE/USDT</td>
-                        <td class="bg-serok">💎 SEROK (LONG)</td>
-                        <td class="price-up">0.00001245</td>
-                        <td class="price-up">+12.4%</td>
-                        <td class="star-icon">⭐⭐⭐⭐⭐</td>
-                        <td class="crystal-icon">💎💎💎</td>
-                    </tr>
-                    <tr class="blink-live">
-                        <td>2</td>
-                        <td>DOGE/USDT</td>
-                        <td class="bg-serok">💎 SEROK (LONG)</td>
-                        <td class="price-up">0.16542</td>
-                        <td class="price-up">+5.2%</td>
-                        <td class="star-icon">⭐⭐⭐⭐⭐</td>
-                        <td class="crystal-icon">💎💎💎</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>SHIB/USDT</td>
-                        <td class="bg-wait">⏳ WAIT (SCAN)</td>
-                        <td class="price-down">0.00002410</td>
-                        <td class="price-down">-2.1%</td>
-                        <td class="star-icon">⭐⭐⭐</td>
-                        <td class="crystal-icon">--</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <p style="text-align: right; font-size: 0.7em; color: #b22222; margin-top: 10px; font-weight: bold;">
-            🔴 LIVE DATA STREAMING FROM ENGINE...
-        </p>
+  <div class="top-ticker">
+    <div class="ticker-content">
+        <div class="ticker-item">PEPE/USDT <span>$0.000012 (+15.4%)</span></div>
+        <div class="ticker-item">BTC/USDT <span>$67,450 (+1.2%)</span></div>
+        <div class="ticker-item">DOGE/USDT <span>$0.16 (+5.2%)</span></div>
+        <div class="ticker-item">LTC/USDT <span>$82.64 (+4.8%)</span></div>
+        <div class="ticker-item">BNB/USDT <span>$602 (+3.1%)</span></div>
     </div>
 </div>
 
+<div class="container">
+    <div class="signal-room" id="signalRoom">
+        <h2 class="signal-title">
+            <span>📡 RADAR SINYAL (TOP 50 MICIN)</span>
+            <span id="arrow">▼</span>
+        </h2>
+        <div class="signal-content" id="signalContent">
+            <div class="db-scroll-area">
+                <table class="db-excel">
+                    <thead>
+                        <tr>
+                            <th>NO</th><th>PAIR</th><th>STATUS</th><th>PRICE</th><th>24H%</th><th>RATING</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="animation: pulse 2s infinite;">
+                            <td>1</td><td>PEPE/USDT</td><td class="bg-serok">💎 SEROK</td><td class="price-up">0.000012</td><td class="price-up">+15.4%</td><td>⭐⭐⭐⭐⭐</td>
+                        </tr>
+                        <tr>
+                            <td>2</td><td>DOGE/USDT</td><td class="bg-serok">💎 SEROK</td><td class="price-up">0.1654</td><td class="price-up">+5.2%</td><td>⭐⭐⭐⭐⭐</td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>  
+/*------------------------------------------*/    
 <div class="container">
 
     <div class="room">
@@ -412,6 +453,15 @@ function toggleExtra(btn, id) {
 }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+    const signalRoom = document.getElementById('signalRoom');
+    const signalContent = document.getElementById('signalContent');
+    const arrow = document.getElementById('arrow');
 
+    signalRoom.addEventListener('click', function() {
+        signalContent.classList.toggle('open');
+        arrow.classList.toggle('arrow-rotate');
+    });
+</script>
 </body>
 </html>
