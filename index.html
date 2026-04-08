@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buruh Elite - Ecosystem</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #0a0a0a; color: #fff; text-align: center; padding-bottom: 80px; }
+        
+        /* --- HEADER LOGO BULAT MELAYANG (Sesuai Versi Terakhir) --- */
+        .header-room { 
+            padding-top: 60px; padding-bottom: 30px; background: #0a0a0a; position: relative; 
+        }
+        .logo-bulat { 
+            width: 110px; height: 110px; background: #ffd700; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            margin: 0 auto -55px auto; position: relative; z-index: 10; border: 6px solid #0a0a0a;
+            box-shadow: 0 0 20px rgba(255,215,0,0.4); overflow: hidden;
+        }
+        .brand-box { 
+            background: #1a1a1a; padding: 70px 25px 25px 25px; 
+            border-bottom: 3px solid #ffd700; max-width: 800px; margin: 0 auto; border-radius: 20px;
+            display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
+        }
+        .brand-text { text-align: left; }
+        .brand-name { font-size: 2.8em; font-weight: bold; color: #ffd700; margin: 0; letter-spacing: 4px; line-height: 1; }
+        .brand-tagline { color: #888; font-style: italic; margin-top: 5px; font-size: 1em; }
+
+        /* --- TRANSLATE GOOGLE --- */
+        #google_translate_element { background: #222; padding: 10px; border-bottom: 1px solid #333; }
+
+        .container { padding: 20px; max-width: 950px; margin: auto; }
+        
+        /* --- ROOM STYLING (BLOCKS) --- */
+        .room { background: #141414; border: 1px solid #2a2a2a; border-radius: 15px; padding: 30px; margin-bottom: 45px; text-align: left; transition: 0.4s; position: relative; }
+        .room:hover { border-color: #ffd700; background: #1a1a1a; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
+        .room-title { color: #ffd700; text-transform: uppercase; margin-top: 0; border-bottom: 2px solid #333; padding-bottom: 15px; letter-spacing: 2px; display: flex; align-items: center; gap: 10px; }
+        
+        .quote-box { font-style: italic; color: #00ff00; background: #001a00; padding: 20px; border-radius: 10px; margin: 15px 0; border-left: 5px solid #00ff00; line-height: 1.6; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #000; color: #fff; }
+        th, td { border: 1px solid #333; padding: 15px; text-align: center; }
+        th { background: #ffd700; color: #000; font-weight: bold; }
+        
+        .btn-wa { background: #25d366; color: white; padding: 18px; text-decoration: none; border-radius: 10px; font-weight: bold; display: block; text-align: center; font-size: 1.2em; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-wa:hover { background: #128c7e; transform: scale(1.02); }
+
+        .iframe-placeholder { width: 100%; height: 300px; border: 2px dashed #444; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #666; background: #050505; }
+
+        /* --- FITUR PANAH EKSPANSI (DROPDOWN BAWAH) --- */
+        .btn-toggle-container { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); z-index: 5; }
+        .btn-toggle { background: #ffd700; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .arrow-icon { border: solid black; border-width: 0 3px 3px 0; display: inline-block; padding: 3px; transform: rotate(45deg); transition: 0.3s; margin-top: -3px; }
+        .rotated { transform: rotate(-135deg); margin-top: 3px; }
+        .extra-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; background: #0d0d0d; border-radius: 0 0 15px 15px; }
+        .extra-body { padding: 30px; border-top: 1px solid #333; color: #aaa; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+<div id="google_translate_element"></div>
+
+<header class="header-room">
+    <div class="logo-bulat">
+        <span style="color:#000; font-size: 3em; font-weight: bold;">BE</span>
+    </div>
+    <div class="brand-box">
+        <div class="brand-text">
+            <h1 class="brand-name">BURUH ELITE</h1>
+            <p class="brand-tagline">"Kuli Cerdas, Hasil Berkelas"</p>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="room">
+        <h2 class="room-title">💡 VISI & FILOSOFI</h2>
+        <div class="quote-box">
+            "Menjadi Buruh Elite bukan tentang bekerja 24 jam, tapi membiarkan sistem bekerja 24 jam untuk Anda. Kita adalah arsitek masa depan, bukan kuli beban."
+        </div>
+        <div class="btn-toggle-container">
+            <button class="btn-toggle" onclick="toggleExtra(this, 'ex1')"><i class="arrow-icon"></i></button>
+        </div>
+        <div id="ex1" class="extra-content">
+            <div class="extra-body">Tulisan tambahan Jenderal tentang Visi & Filosofi bisa ditaruh di sini secara panjang lebar.</div>
+        </div>
+    </div>
+
+    <div class="room">
+        <h2 class="room-title">📡 RADAR SINYAL REAL-TIME</h2>
+        <p>Sinyal market di bawah ini adalah data asli dari Engine Buruh Elite. Gratis digunakan sebagai sarana pembelajaran bagi semua pengunjung.</p>
+        <div class="iframe-placeholder">
+            [ HUBUNGKAN LINK EXCEL / CLOUD JENDERAL DI SINI ]
+        </div>
+        <p style="font-size: 0.85em; color: #ff3333; margin-top: 15px;"><i>*Catatan: Sinyal bergerak cepat. Untuk eksekusi tanpa celah, gunakan Bot Otomatis kami.*</i></p>
+        <div class="btn-toggle-container">
+            <button class="btn-toggle" onclick="toggleExtra(this, 'ex2')"><i class="arrow-icon"></i></button>
+        </div>
+        <div id="ex2" class="extra-content">
+            <div class="extra-body">Panduan cara membaca Radar Sinyal dan penjelasan teknis engine bisa Jenderal tulis di sini.</div>
+        </div>
+    </div>
+
+    <div class="room">
+        <h2 class="room-title">📊 MANAJEMEN LOT & PANGKAT</h2>
+        <p>Kalkulasi estimasi penggunaan modal dan lot tempur di sistem MMP V.1.0.</p>
+        <table>
+            <tr>
+                <th>MODAL</th>
+                <th>LOT (x20)</th>
+                <th>PANGKAT</th>
+                <th>ESTIMASI CUAN</th>
+            </tr>
+            <tr>
+                <td>$20</td>
+                <td>$4</td>
+                <td>PRAJURIT</td>
+                <td>Konsisten</td>
+            </tr>
+            <tr>
+                <td>$100</td>
+                <td>$20</td>
+                <td>JENDERAL</td>
+                <td>Agresif</td>
+            </tr>
+            <tr>
+                <td>$500+</td>
+                <td>Custom</td>
+                <td>ELITE BOSS</td>
+                <td>Maksimal</td>
+            </tr>
+        </table>
+        <div class="btn-toggle-container">
+            <button class="btn-toggle" onclick="toggleExtra(this, 'ex3')"><i class="arrow-icon"></i></button>
+        </div>
+        <div id="ex3" class="extra-content">
+            <div class="extra-body">Detail manajemen risiko dan aturan compounding profit Jenderal bisa dijelaskan di sini.</div>
+        </div>
+    </div>
+
+    <div class="room">
+        <h2 class="room-title">📗 EXCEL ENGINE SCALPING</h2>
+        <p>Dashboard kontrol penuh melalui spreadsheet. Pantau semua posisi, atur strategi, dan lihat profit harian secara langsung.</p>
+        <div class="quote-box">"Satu layar Excel untuk menguasai pasar koin micin."</div>
+        <div class="btn-toggle-container">
+            <button class="btn-toggle" onclick="toggleExtra(this, 'ex4')"><i class="arrow-icon"></i></button>
+        </div>
+        <div id="ex4" class="extra-content">
+            <div class="extra-body">Instruksi penggunaan Excel dan fitur-fitur dashboard Jenderal bisa masuk di sini.</div>
+        </div>
+    </div>
+
+    <div class="room">
+        <h2 class="room-title">🛡️ JAMINAN KEAMANAN MODAL</h2>
+        <p>Dana Anda tetap di Binance Anda sendiri. Kami hanya membantu eksekusi melalui API Key (Withdraw Disabled). Anda memegang kendali penuh atas saldo Anda.</p>
+        <div class="btn-toggle-container">
+            <button class="btn-toggle" onclick="toggleExtra(this, 'ex5')"><i class="arrow-icon"></i></button>
+        </div>
+        <div id="ex5" class="extra-content">
+            <div class="extra-body">Penjelasan teknis tentang API Key dan proteksi saldo Jenderal bisa ditulis di sini.</div>
+        </div>
+    </div>
+
+    <div class="room">
+        <h2 class="room-title">📜 PRINSIP BURUH ELITE</h2>
+        <div class="quote-box">
+            "Pasar tidak bisa ditebak, tapi risiko bisa dikelola. Buruh Elite tidak mengejar kaya semalam, tapi mengejar profit yang berkelanjutan."
+        </div>
+        <div class="btn-toggle-container">
+            <button class="btn-toggle" onclick="toggleExtra(this, 'ex6')"><i class="arrow-icon"></i></button>
+        </div>
+        <div id="ex6" class="extra-content">
+            <div class="extra-body">Rincian 10 aturan emas Buruh Elite Jenderal bisa ditaruh di sini.</div>
+        </div>
+    </div>
+
+    <div class="room">
+        <h2 class="room-title">📝 CATATAN TEMPUR HARIAN</h2>
+        <p>Ruangan kosong untuk mengisi hasil profit atau testimoni pengguna yang sudah bergabung.</p>
+        <p style="color: #666;">(Siap untuk diisi data/gambar profit Jenderal...)</p>
+        <div class="btn-toggle-container">
+            <button class="btn-toggle" onclick="toggleExtra(this, 'ex7')"><i class="arrow-icon"></i></button>
+        </div>
+        <div id="ex7" class="extra-content">
+            <div class="extra-body">Testimoni member atau screenshot profit Jenderal bisa ditampilkan di sini.</div>
+        </div>
+    </div>
+
+    <div class="room">
+        <h2 class="room-title">🔑 CARA MULAI (API KEY)</h2>
+        <p>Langkah mudah menyambungkan akun Binance ke engine kami. Pastikan izin 'Withdraw' tidak dicentang demi keamanan Anda.</p>
+        <div class="btn-toggle-container">
+            <button class="btn-toggle" onclick="toggleExtra(this, 'ex8')"><i class="arrow-icon"></i></button>
+        </div>
+        <div id="ex8" class="extra-content">
+            <div class="extra-body">Tutorial lengkap step-by-step setup API Binance bisa Jenderal tulis di sini.</div>
+        </div>
+    </div>
+
+    <div class="room">
+        <h2 class="room-title">🌐 EKOSISTEM MASA DEPAN</h2>
+        <p>Ruangan cadangan untuk rencana pengembangan fitur-fitur baru di masa depan.</p>
+        <div class="btn-toggle-container">
+            <button class="btn-toggle" onclick="toggleExtra(this, 'ex9')"><i class="arrow-icon"></i></button>
+        </div>
+        <div id="ex9" class="extra-content">
+            <div class="extra-body">Roadmap proyek Jenderal dan rencana peluncuran koin/token bisa masuk di sini.</div>
+        </div>
+    </div>
+
+    <div class="room" style="border: 2px solid #ffd700; background: #221f10;">
+        <h2 class="room-title">💰 GABUNG SEKARANG</h2>
+        <p>Sewa Server MMP V.1.0 hanya <b>Rp 25.000 / Bulan</b>.</p>
+        <p>Sistem bagi hasil (Success Fee) 20% - 30% dari profit bersih.</p>
+        <br>
+        <a href="https://wa.me/NOMOR_WA_JENDERAL" class="btn-wa">+6285372969999</a>
+    </div>
+
+</div>
+
+<footer>
+    <p style="color:#555;">&copy; 2026 Buruh Elite Ecosystem | Master Strategy by Jenderal Sekdes</p>
+</footer>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'id'}, 'google_translate_element');
+}
+
+function toggleExtra(btn, id) {
+    var content = document.getElementById(id);
+    var icon = btn.querySelector('.arrow-icon');
+    if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+        content.style.maxHeight = "0px";
+        icon.classList.remove('rotated');
+    } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.classList.add('rotated');
+    }
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
