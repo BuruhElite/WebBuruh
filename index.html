@@ -22,20 +22,36 @@
             position: relative; 
         }
 
-        /* --- LOGO BULAT AMBLAS --- */
+        /* --- LOGO BULAT RESPONSIVE --- */
         .logo-bulat { 
-            width: 140px; 
-            height: 140px; 
             border-radius: 50%; 
             background: #000; 
-            border: 5px solid #39ff14; /* Hijau Neon */
+            border: 4px solid #39ff14; 
             position: relative; 
             z-index: 100; 
             overflow: hidden;
             display: block;
-            margin: 0 auto -50px; /* Rahasia Amblas 50% */
             box-shadow: 0 0 20px #39ff14, 0 0 45px #b22222, inset 0 0 15px #b22222;
             transition: all 0.3s ease;
+        }
+
+        /* Tampilan di LAPTOP (Layar Lebar) */
+        @media (min-width: 768px) {
+            .logo-bulat {
+                width: 160px;      /* Lebih besar di Laptop */
+                height: 160px;
+                margin: 0 auto -60px; /* Amblas sedikit */
+            }
+        }
+
+        /* Tampilan di HP (Layar Kecil) */
+        @media (max-width: 767px) {
+            .logo-bulat {
+                width: 100px;      /* Mengecil di HP biar proporsional */
+                height: 100px;
+                margin: 0 auto -35px; /* Naik sedikit biar nggak nutupi tulisan banner */
+                border-width: 3px;    /* Garis tipis dikit biar rapi */
+            }
         }
 
         /* --- KOTAK BANNER GAHAR --- */
