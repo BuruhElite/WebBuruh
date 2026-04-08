@@ -12,26 +12,47 @@
             padding-top: 60px; padding-bottom: 30px; background: #0a0a0a; position: relative; 
         }
         .logo-bulat { 
-    width: 150px;       /* Dari 100px kita naikkan ke 150px */
-    height: 150px;      /* Samakan biar tetep bulat */
+    width: 130px; 
+    height: 130px; 
     border-radius: 50%; 
     background: #000; 
-    border: 5px solid #ffd700; /* Tebalkan garis emasnya sedikit */
-    margin: -75px auto 10px;   /* Angka -75px ini setengah dari tinggi logo agar tetap "melayang" pas di tengah garis */
+    border: 5px solid #39ff14; /* Ganti garis emas jadi Hijau Neon */
     position: relative; 
     z-index: 10; 
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); /* Tambah efek cahaya emas di pinggiran logo */
+
+    /* EFEK CYBER GLOW LOGO: Gabungan Hijau Neon dan Ungu Terong */
+    box-shadow: 0 0 15px #39ff14, /* Pendaran Hijau Neon ketat */
+                0 0 30px #9400d3, /* Pendaran Ungu Terong menyebar */
+                inset 0 0 10px #39ff14; /* Pendaran dalam Hijau Neon */
+
+    margin: 0 auto -55px; /* Tetap amblas */
+    display: block;
+    transition: all 0.3s ease-in-out; /* Biar ada efek pas kursor lewat */
+}
+
+/* EFEK HOVER: Saat kursor lewat, pendaran makin kuat */
+.logo-bulat:hover {
+    box-shadow: 0 0 25px #39ff14, 
+                0 0 50px #9400d3;
+    transform: scale(1.05); /* Sedikit membesar */
 }
         .brand-box { 
-    background: #1a1a1a; 
+    background: #0d0d0d; /* Hitam pekat */
     padding: 15px; 
-    border-bottom: 3px solid #ffd700; 
-    width: 95%; /* Biar ada jarak sedikit di kanan-kiri pas buka di HP */
-    max-width: 970px; /* Sedikit lebih lebar dari gambar buat bingkai */
+    border: 2px solid #9400d3; /* Bingkai Ungu Terong */
+    
+    /* EFEK PLASMA BORDER: Pendaran Ungu Terong di sekeliling kotak */
+    box-shadow: 0 0 20px rgba(148, 0, 211, 0.7); /* Glow Ungu Terong */
+
+    width: 95%;
+    max-width: 970px;
     margin: 0 auto; 
     border-radius: 15px;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
 }
     
     /* MELEBARKAN KOTAK HEADER */
@@ -86,9 +107,11 @@
 
 <header class="header-room">
     <div class="logo-bulat">
-        <img src="buruh.png" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        <img src="buruh.png" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; display: block;">
     </div>
-    <img src="headerweb.png" alt="Banner" style="width: 100%; max-width: 950px; height: auto; display: block; border-radius: 10px; margin: 0 auto;">
+
+    <div class="brand-box">
+        <img src="headerweb.png" alt="Banner" style="width: 100%; max-width: 950px; height: auto; display: block; border-radius: 10px; margin: 0 auto;">
     </div>
 </header>
 
