@@ -18,9 +18,21 @@
             box-shadow: 0 0 20px rgba(255,215,0,0.4); overflow: hidden;
         }
         .brand-box { 
-            background: #1a1a1a; padding: 70px 25px 25px 25px; 
-            border-bottom: 3px solid #ffd700; max-width: 800px; margin: 0 auto; border-radius: 20px;
-            display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
+    background: #1a1a1a; 
+    padding: 60px 20px 20px 20px; /* Padding disesuaikan */
+    border-bottom: 3px solid #ffd700; 
+    
+    /* MELEBARKAN KOTAK HEADER */
+    width: 100%; /* Gunakan lebar penuh */
+    max-width: 1000px; /* Lebih lebar dari .container yang 950px */
+    
+    margin: 0 auto; 
+    border-radius: 20px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    box-sizing: border-box; /* Agar padding tidak melebarkan kotak keluar layar */
+}
         }
         .brand-text { text-align: left; }
         .brand-name { font-size: 2.8em; font-weight: bold; color: #ffd700; margin: 0; letter-spacing: 4px; line-height: 1; }
@@ -64,11 +76,7 @@
     <div class="logo-bulat">
         <img src="buruh.png" style="width: 100%; height: 100%; object-fit: cover; display: block;">
     </div>
-    <div class="brand-box">
-        <div class="brand-text">
-            <h1 class="brand-name">BURUHELITE</h1>
-            <p class="brand-tagline">"kuli cerdas hasil berkelas"</p>
-        </div>
+    <img src="headerweb.png" alt="Buruh Elite Banner" style="width: 100%; height: auto; display: block; border-radius: 10px;">
     </div>
 </header>
 
