@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buruh Elite - Ecosystem</title>
     <style>
-        /* --- RUNNING TEXT TICKER --- */
+       /* --- RUNNING TEXT TICKER --- */
 
 .db-excel { width: 100%; border-collapse: collapse; font-family: 'Consolas', monospace; font-size: 12px; }
 .db-excel th { background: #1a1a1a; color: #ffd700; padding: 10px; border: 1px solid #333; position: sticky; top: 0; }
@@ -187,21 +187,7 @@
             <div class="extra-body">Tulisan tambahan Jenderal tentang Visi & Filosofi bisa ditaruh di sini secara panjang lebar.</div>
         </div>
     </div>
-
-    <div class="room">
-        <h2 class="room-title">📡 RADAR SINYAL REAL-TIME</h2>
-        <p>Sinyal market di bawah ini adalah data asli dari Engine Buruh Elite. Gratis digunakan sebagai sarana pembelajaran bagi semua pengunjung.</p>
-        <div class="iframe-placeholder">
-            [ HUBUNGKAN LINK EXCEL / CLOUD JENDERAL DI SINI ]
-        </div>
-        <p style="font-size: 0.85em; color: #ff3333; margin-top: 15px;"><i>*Catatan: Sinyal bergerak cepat. Untuk eksekusi tanpa celah, gunakan Bot Otomatis kami.*</i></p>
-        <div class="btn-toggle-container">
-            <button class="btn-toggle" onclick="toggleExtra(this, 'ex2')"><i class="arrow-icon"></i></button>
-        </div>
-        <div id="ex2" class="extra-content">
-            <div class="extra-body">Panduan cara membaca Radar Sinyal dan penjelasan teknis engine bisa Jenderal tulis di sini.</div>
-        </div>
-    </div>
+ 
     <div class="radar-box">
     <div class="radar-header" onclick="toggleRadar()">
         <h2>📡 RADAR SINYAL ENGINE (TOP 50)</h2>
@@ -264,42 +250,7 @@
             <div class="extra-body">Detail manajemen risiko dan aturan compounding profit Jenderal bisa dijelaskan di sini.</div>
         </div>
     </div>
-
-          .radar-header {
-            padding: 20px;
-            background: #1a1a1a;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333;
-        }
-
-        .radar-header h2 { color: #ffd700; margin: 0; font-size: 1.2em; text-transform: uppercase; }
-
-        /* AREA TABEL DENGAN SCROLL JIKA LEBIH DARI 10 */
-        .radar-content {
-            max-height: 500px; /* Tinggi awal buat nampilin kira-kira 10 pair */
-            overflow-y: auto;
-            transition: max-height 0.6s ease-in-out;
-        }
-
-        /* Kelas saat dropdown terbuka (untuk 50 pair) */
-        .radar-content.expanded {
-            max-height: 1500px; 
-        }
-
-        .db-excel { width: 100%; border-collapse: collapse; font-family: 'Consolas', monospace; font-size: 12px; }
-        .db-excel th { background: #222; color: #ffd700; padding: 12px; border: 1px solid #333; position: sticky; top: 0; z-index: 5; }
-        .db-excel td { padding: 10px; border: 1px solid #333; background: #0d0d0d; text-align: center; color: #fff; }
-        
-        /* Warna ala Excel Jenderal */
-        .db-excel td:first-child { border-left: 5px solid #007bff; color: #ffd700; font-weight: bold; }
-        .bg-serok { background: rgba(57, 255, 20, 0.1) !important; color: #39ff14; font-weight: bold; }
-        .price-up { color: #39ff14; font-weight: bold; }
-        .arrow-icon { transition: transform 0.3s; color: #ffd700; }
-        .rotate { transform: rotate(180deg); }
-
+          
     <div class="room">
         <h2 class="room-title">🛡️ JAMINAN KEAMANAN MODAL</h2>
         <p>Dana Anda tetap di Binance Anda sendiri. Kami hanya membantu eksekusi melalui API Key (Withdraw Disabled). Anda memegang kendali penuh atas saldo Anda.</p>
