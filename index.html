@@ -118,6 +118,21 @@
         
         .btn-wa { background: #25d366; color: white; padding: 18px; text-decoration: none; border-radius: 10px; font-weight: bold; display: block; text-align: center; font-size: 1.2em; transition: 0.3s; border: none; cursor: pointer; }
         .btn-wa:hover { background: #128c7e; transform: scale(1.02); }
+        /* --- STYLE DATABASE EXCEL GAHAR --- */
+        .db-container { width: 100%; overflow-x: auto; border: 1px solid #333; border-radius: 5px; }
+        .db-excel { width: 100%; border-collapse: collapse; font-family: 'Consolas', monospace; font-size: 12px; }
+        .db-excel th { background: #1a1a1a; color: #ffd700; padding: 10px; border: 1px solid #333; }
+        .db-excel td { padding: 10px; border: 1px solid #333; background: #0d0d0d; }
+        
+        .bg-serok { background: rgba(57, 255, 20, 0.1) !important; color: #39ff14; font-weight: bold; }
+        .bg-wait { background: rgba(255, 255, 255, 0.05) !important; color: #888; }
+        .price-up { color: #39ff14; }
+        .price-down { color: #ff4444; }
+        .star-icon { color: #ffd700; }
+        .crystal-icon { color: #00ffff; }
+        
+        .blink-live { animation: live-glow 2s infinite; }
+        @keyframes live-glow { 50% { background: rgba(178, 34, 34, 0.15); } }
 
         .iframe-placeholder { width: 100%; height: 300px; border: 2px dashed #444; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #666; background: #050505; }
 
@@ -143,6 +158,60 @@
         <img src="headerweb.png" alt="Banner" style="width: 100%; max-width: 950px; height: auto; display: block; border-radius: 10px; margin: 0 auto;">
     </div>
 </header>
+    <div class="container">
+    <div class="room" style="border: 2px solid #b22222; background: #0a0a0a;">
+        <h2 class="room-title">📑 LIVE DATABASE ENGINE (SCALPING V1.0)</h2>
+        <p style="font-size: 0.85em; color: #aaa; margin-bottom: 15px;">Data asli dari Engine Buruh Elite. Bandingkan dengan market real-time!</p>
+        
+        <div class="db-container">
+            <table class="db-excel">
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>PAIR</th>
+                        <th>SIGNAL STATUS</th>
+                        <th>HARGA</th>
+                        <th>24J%</th>
+                        <th>RATING</th>
+                        <th>CONFIRM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="blink-live">
+                        <td>1</td>
+                        <td>PEPE/USDT</td>
+                        <td class="bg-serok">💎 SEROK (LONG)</td>
+                        <td class="price-up">0.00001245</td>
+                        <td class="price-up">+12.4%</td>
+                        <td class="star-icon">⭐⭐⭐⭐⭐</td>
+                        <td class="crystal-icon">💎💎💎</td>
+                    </tr>
+                    <tr class="blink-live">
+                        <td>2</td>
+                        <td>DOGE/USDT</td>
+                        <td class="bg-serok">💎 SEROK (LONG)</td>
+                        <td class="price-up">0.16542</td>
+                        <td class="price-up">+5.2%</td>
+                        <td class="star-icon">⭐⭐⭐⭐⭐</td>
+                        <td class="crystal-icon">💎💎💎</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>SHIB/USDT</td>
+                        <td class="bg-wait">⏳ WAIT (SCAN)</td>
+                        <td class="price-down">0.00002410</td>
+                        <td class="price-down">-2.1%</td>
+                        <td class="star-icon">⭐⭐⭐</td>
+                        <td class="crystal-icon">--</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="text-align: right; font-size: 0.7em; color: #b22222; margin-top: 10px; font-weight: bold;">
+            🔴 LIVE DATA STREAMING FROM ENGINE...
+        </p>
+    </div>
+</div>
 
 <div class="container">
 
