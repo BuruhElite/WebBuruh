@@ -7,55 +7,54 @@
     <style>
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #0a0a0a; color: #fff; text-align: center; padding-bottom: 80px; }
         
-        /* --- HEADER AREA --- */
+        /* --- HEADER & LOGO AMBLAS --- */
         .header-room { padding-top: 50px; padding-bottom: 20px; background: #0a0a0a; position: relative; }
-
         .logo-bulat { 
             border-radius: 50%; background: #000; border: 4px solid #39ff14; position: relative; z-index: 100; 
             overflow: hidden; display: block; box-shadow: 0 0 20px #39ff14, 0 0 45px #b22222, inset 0 0 15px #b22222; transition: 0.3s;
         }
-
-        @media (min-width: 768px) { .logo-bulat { width: 150px; height: 150px; margin: 0 auto -60px; } }
-        @media (max-width: 767px) { .logo-bulat { width: 100px; height: 100px; margin: 0 auto -40px; } }
+        @media (min-width: 768px) { .logo-bulat { width: 150px; height: 150px; margin: 0 auto -65px; } }
+        @media (max-width: 767px) { .logo-bulat { width: 110px; height: 110px; margin: 0 auto -45px; } }
 
         .brand-box { 
             background: #0d0d0d; padding: 10px; border: 3px solid #b22222; box-shadow: 0 0 30px rgba(178, 34, 34, 0.7); 
             width: 95%; max-width: 950px; margin: 0 auto; border-radius: 20px; overflow: hidden;
         }
-        .brand-box img { width: 100%; height: auto; display: block; border-radius: 10px; filter: brightness(0.9); }
+        .brand-box img { width: 100%; height: auto; display: block; border-radius: 10px; }
 
-        /* --- TICKER / RUNNING TEXT --- */
-        .top-ticker { background: rgba(178, 34, 34, 0.2); border-bottom: 2px solid #b22222; overflow: hidden; white-space: nowrap; padding: 10px 0; font-family: 'Consolas', monospace; font-weight: bold; margin-bottom: 20px; }
-        .ticker-content { display: inline-block; animation: ticker-move 30s linear infinite; color: #39ff14; }
+        /* --- TICKER DINAMIS --- */
+        .top-ticker { background: rgba(178, 34, 34, 0.2); border-bottom: 2px solid #b22222; overflow: hidden; white-space: nowrap; padding: 12px 0; font-family: 'Consolas', monospace; margin-bottom: 20px; }
+        .ticker-content { display: inline-block; animation: ticker-move 30s linear infinite; color: #39ff14; font-weight: bold; }
         .ticker-item { margin: 0 30px; display: inline-block; }
-        .ticker-item span { color: #fff; font-size: 0.8em; }
+        .ticker-item span { color: #fff; font-size: 0.85em; margin-left: 5px; }
         @keyframes ticker-move { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        /* --- CONTAINER & ROOMS --- */
+        /* --- KOTAK ROOMS --- */
         .container { max-width: 950px; margin: auto; padding: 20px; }
-        .room { background: #141414; border: 1px solid #2a2a2a; border-radius: 15px; padding: 25px; margin-bottom: 30px; text-align: left; position: relative; transition: 0.3s; }
+        .room { background: #141414; border: 1px solid #2a2a2a; border-radius: 15px; padding: 25px; margin-bottom: 30px; text-align: left; transition: 0.3s; }
         .room:hover { border-color: #ffd700; background: #1a1a1a; }
-        .room-title { color: #ffd700; text-transform: uppercase; margin-top: 0; border-bottom: 2px solid #333; padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .quote-box { font-style: italic; color: #00ff00; background: #001a00; padding: 15px; border-radius: 10px; border-left: 5px solid #00ff00; }
+        .room-title { color: #ffd700; text-transform: uppercase; margin: 0 0 15px 0; border-bottom: 2px solid #333; padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .quote-box { font-style: italic; color: #00ff00; background: #001a00; padding: 20px; border-radius: 10px; border-left: 5px solid #00ff00; line-height: 1.6; }
 
-        /* --- RADAR BOX EMAS --- */
-        .radar-box { background: #111; border: 2px solid #ffd700; border-radius: 15px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
-        .radar-header { padding: 15px 20px; background: #1a1a1a; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .radar-content { max-height: 400px; overflow-y: auto; transition: max-height 0.5s ease; }
-        .radar-content.expanded { max-height: 1200px; }
-        
+        /* --- RADAR DROPDOWN EMAS (MODE RAME) --- */
+        .radar-box { background: #111; border: 2px solid #ffd700; border-radius: 15px; margin-bottom: 30px; overflow: hidden; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+        .radar-header { padding: 20px; background: #1a1a1a; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; }
+        .radar-content { max-height: 480px; overflow-y: auto; transition: max-height 0.6s ease-in-out; }
+        .radar-content.expanded { max-height: 2000px; }
+
         /* --- TABEL EXCEL --- */
         .db-excel { width: 100%; border-collapse: collapse; font-family: 'Consolas', monospace; font-size: 12px; }
-        .db-excel th { background: #222; color: #ffd700; padding: 10px; border: 1px solid #333; position: sticky; top: 0; }
-        .db-excel td { padding: 10px; border: 1px solid #333; background: #0d0d0d; text-align: center; color: #fff; }
+        .db-excel th { background: #222; color: #ffd700; padding: 12px; border: 1px solid #333; position: sticky; top: 0; z-index: 10; }
+        .db-excel td { padding: 12px 8px; border: 1px solid #333; background: #0d0d0d; text-align: center; color: #fff; }
         .db-excel td:first-child { border-left: 5px solid #007bff; color: #ffd700; font-weight: bold; }
         .bg-serok { background: rgba(57, 255, 20, 0.1) !important; color: #39ff14; font-weight: bold; }
         .price-up { color: #39ff14; font-weight: bold; }
         .price-down { color: #ff4444; }
 
-        .btn-wa { background: #25d366; color: white; padding: 15px; text-decoration: none; border-radius: 10px; font-weight: bold; display: block; text-align: center; margin-top: 10px; }
-        .btn-toggle { background: #ffd700; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; float: right; }
-        .extra-content { max-height: 0; overflow: hidden; transition: 0.5s; background: #0d0d0d; }
+        /* --- BUTTONS & FOOTER --- */
+        .btn-wa { background: #25d366; color: white; padding: 18px; text-decoration: none; border-radius: 10px; font-weight: bold; display: block; text-align: center; font-size: 1.1em; transition: 0.3s; margin-top: 20px; }
+        .btn-wa:hover { background: #128c7e; transform: scale(1.02); }
+        footer { padding: 40px 0; color: #555; font-size: 0.85em; }
     </style>
 </head>
 <body>
@@ -71,10 +70,11 @@
 
 <div class="top-ticker">
     <div class="ticker-content">
-        <div class="ticker-item">PEPE/USDT <span>$0.000012 (+15.4%)</span></div>
-        <div class="ticker-item">BTC/USDT <span>$67,450 (+1.2%)</span></div>
-        <div class="ticker-item">DOGE/USDT <span>$0.16 (+5.2%)</span></div>
-        <div class="ticker-item">BNB/USDT <span>$602 (+3.1%)</span></div>
+        <div class="ticker-item">PEPE/USDT <span>$0.00001245 (+15.4%)</span></div>
+        <div class="ticker-item">BTC/USDT <span>$67,450.20 (+1.2%)</span></div>
+        <div class="ticker-item">DOGE/USDT <span>$0.16542 (+5.2%)</span></div>
+        <div class="ticker-item">BNB/USDT <span>$602.15 (+3.1%)</span></div>
+        <div class="ticker-item">LTC/USDT <span>$82.64 (+4.8%)</span></div>
     </div>
 </div>
 
@@ -82,47 +82,93 @@
     <div class="room">
         <h2 class="room-title">💡 VISI & FILOSOFI</h2>
         <div class="quote-box">
-            "Seorang Buruh tidak harus bekerja keras selama 8-12 jam tanpa henti, jadilah SMART dengan gaya Elite dan membiarkan sistem bekerja 24 jam tanpa henti untuk anda."
+            "Seorang Buruh tidak harus bekerja keras selama 8-12 jam tanpa henti, jadilah SMART dengan gaya Elite dan membiarkan sistem bekerja 24 jam tanpa henti untuk anda. Moto KALAH ITU SUDAH BIASA jadi kalo BISA MENANG HARUSNYA LUARRR BIASSSSA...!!!."
         </div>
     </div>
 
     <div class="radar-box">
         <div class="radar-header" onclick="toggleRadar()">
-            <h2 style="color:#ffd700; margin:0; font-size:1em;">📡 RADAR ENGINE (TOP 50 PAIR)</h2>
-            <span id="radarArrow">▼</span>
+            <h2 style="color:#ffd700; margin:0; font-size:1.1em;">📡 DATABASE ENGINE (TOP 50 PAIR)</h2>
+            <span id="radarArrow" style="transition:0.3s; color:#ffd700;">▼</span>
         </div>
         <div class="radar-content" id="radarContent">
             <table class="db-excel">
                 <thead>
-                    <tr><th>NO</th><th>PAIR</th><th>STATUS</th><th>PRICE</th><th>24H%</th><th>RATING</th></tr>
+                    <tr>
+                        <th>NO</th>
+                        <th>PAIR</th>
+                        <th>SIGNAL STATUS</th>
+                        <th>PRICE</th>
+                        <th>24H%</th>
+                        <th>CONFIRM</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr><td>1</td><td>PEPE/USDT</td><td class="bg-serok">💎 SEROK</td><td class="price-up">0.000012</td><td class="price-up">+15%</td><td>⭐⭐⭐⭐⭐</td></tr>
-                    <tr><td>2</td><td>DOGE/USDT</td><td class="bg-serok">💎 SEROK</td><td class="price-up">0.165</td><td class="price-up">+5.2%</td><td>⭐⭐⭐⭐⭐</td></tr>
-                    <tr><td>3</td><td>SHIB/USDT</td><td>WAIT</td><td>0.000024</td><td class="price-down">-2.1%</td><td>⭐⭐⭐</td></tr>
+                    <tr style="background: rgba(57,255,20,0.05);">
+                        <td>1</td>
+                        <td style="font-weight:bold;">PEPE/USDT</td>
+                        <td class="bg-serok">💎 SEROK (LONG)</td>
+                        <td class="price-up">0.00001245</td>
+                        <td class="price-up">+15.4%</td>
+                        <td style="color:#00ffff;">💎💎💎</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td style="font-weight:bold;">DOGE/USDT</td>
+                        <td class="bg-serok">💎 SEROK (LONG)</td>
+                        <td class="price-up">0.16542</td>
+                        <td class="price-up">+5.2%</td>
+                        <td style="color:#00ffff;">💎💎💎</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td style="font-weight:bold;">SHIB/USDT</td>
+                        <td style="color:#888;">⏳ WAIT (SCAN)</td>
+                        <td class="price-down">0.00002410</td>
+                        <td class="price-down">-2.1%</td>
+                        <td>--</td>
+                    </tr>
                     </tbody>
             </table>
         </div>
     </div>
 
     <div class="room">
-        <h2 class="room-title">📊 BURUH PROJEK</h2>
-        <table style="width:100%; border-collapse:collapse; margin-top:10px;">
-            <tr style="background:#ffd700; color:#000;"><th>MODAL</th><th>LOT</th><th>PANGKAT</th></tr>
-            <tr><td>$20</td><td>$4</td><td>PRAJURIT</td></tr>
-            <tr><td>$100</td><td>$20</td><td>JENDERAL</td></tr>
+        <h2 class="room-title">📊 BURUH PROJEK (MMP V.1.0)</h2>
+        <p style="font-size:0.9em; color:#aaa; margin-bottom:15px;">Estimasi penggunaan modal & pangkat tempur:</p>
+        <table style="width:100%; border-collapse:collapse; background:#000;">
+            <tr style="background:#ffd700; color:#000;">
+                <th style="padding:12px; border:1px solid #333;">MODAL</th>
+                <th style="padding:12px; border:1px solid #333;">LOT (x20)</th>
+                <th style="padding:12px; border:1px solid #333;">PANGKAT</th>
+            </tr>
+            <tr>
+                <td style="padding:12px; border:1px solid #333;">$20</td>
+                <td style="padding:12px; border:1px solid #333;">$4</td>
+                <td style="padding:12px; border:1px solid #333; color:#ffd700;">PRAJURIT</td>
+            </tr>
+            <tr>
+                <td style="padding:12px; border:1px solid #333;">$100</td>
+                <td style="padding:12px; border:1px solid #333;">$20</td>
+                <td style="padding:12px; border:1px solid #333; color:#ffd700;">JENDERAL</td>
+            </tr>
+            <tr>
+                <td style="padding:12px; border:1px solid #333;">$500+</td>
+                <td style="padding:12px; border:1px solid #333;">Custom</td>
+                <td style="padding:12px; border:1px solid #333; color:#ffd700; font-weight:bold;">ELITE BOSS</td>
+            </tr>
         </table>
     </div>
 
-    <div class="room" style="border: 2px dashed #ffd700;">
-        <h2 class="room-title">🚀 DAFTAR & SEWA SERVER</h2>
-        <p>Sewa Server MMP V.1.0: <b>Rp 25.000 / Bulan</b></p>
-        <p>Kirim Donasi (BEP20): <code style="color:#ffd700;">828951739</code></p>
+    <div class="room" style="border: 2px dashed #ffd700; background: #0d0d0d;">
+        <h2 class="room-title">💰 SEWA SERVER & GABUNG</h2>
+        <p>Sewa Server MMP V.1.0 hanya <b>Rp 25.000 / Bulan</b>.</p>
+        <p>Kirim Donasi / Sewa (BEP20): <code style="color: #ffd700; background:#222; padding:5px; border-radius:5px;">828951739</code></p>
         <a href="https://wa.me/6285372969999" class="btn-wa">HUBUNGI JENDERAL SEKARANG</a>
     </div>
 
     <footer>
-        <p style="color:#555; font-size:0.8em;">&copy; 2026 Buruh Elite Ecosystem | Master Strategy by Jenderal Sekdes</p>
+        <p>&copy; 2026 Buruh Elite Ecosystem | Master Strategy by Jenderal Sekdes</p>
     </footer>
 </div>
 
@@ -131,7 +177,11 @@ function toggleRadar() {
     const content = document.getElementById('radarContent');
     const arrow = document.getElementById('radarArrow');
     content.classList.toggle('expanded');
-    arrow.style.transform = content.classList.contains('expanded') ? 'rotate(180deg)' : 'rotate(0deg)';
+    if (content.classList.contains('expanded')) {
+        arrow.style.transform = 'rotate(180deg)';
+    } else {
+        arrow.style.transform = 'rotate(0deg)';
+    }
 }
 </script>
 
