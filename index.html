@@ -13,16 +13,16 @@
         }
         .brand-box { 
     background: #0d0d0d; /* Hitam pekat */
-    padding: 15px; 
-    border: 3px solid #ff1493; /* Bingkai Merah Muda Menyala tebal */
+    padding: 10px; 
+    border: 3px solid #b22222; /* Bingkai Merah Lilin Gahar tebal */
     
-    /* EFEK CYBER BORDER: Pendaran Merah Muda Menyala yang kuat di sekeliling kotak */
-    box-shadow: 0 0 25px rgba(255, 20, 147, 0.7); /* Glow Merah Muda menyebar */
+    /* EFEK DARK BORDER: Pendaran Merah Lilin yang kuat di sekeliling kotak */
+    box-shadow: 0 0 30px rgba(178, 34, 34, 0.7); /* Glow Merah Lilin menyebar */
 
     width: 95%;
-    max-width: 970px;
+    max-width: 950px; /* Kunci biar nggak segede gaban */
     margin: 0 auto; 
-    border-radius: 15px;
+    border-radius: 20px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -32,9 +32,13 @@
 
 /* EFEK HOVER BANNER: Glow makin kuat saat kursor lewat kotak */
 .brand-box:hover {
+    box-shadow: 0 0 50px rgba(178, 34, 34, 0.9);
+}
+/* EFEK HOVER BANNER: Glow makin kuat saat kursor lewat kotak */
+.brand-box:hover {
     box-shadow: 0 0 40px rgba(255, 20, 147, 0.9);
 }
-        .brand-box img {
+       .brand-box img {
     width: 100%; 
     max-width: 950px; 
     height: auto; 
