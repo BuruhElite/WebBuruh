@@ -364,143 +364,112 @@
             <div class="extra-body">Detail manajemen risiko dan aturan compounding profit Jenderal bisa dijelaskan di sini.</div>
         </div>
     </div>
-    <div id="unit-pnp-v28" style="margin: 25px 0px; width: 100%; box-sizing: border-box;">
+    <div id="unit-pnp-v33" style="margin: 25px 0px; width: 100%; box-sizing: border-box;">
     
     <style>
-        .pnp-v28-card { 
-            background: #111; 
-            border-radius: 12px; 
-            padding: 30px 25px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid #333; 
-            position: relative;
-            overflow: hidden;
-            width: 100%; 
-            box-sizing: border-box;
-            /* Font disamakan dengan standar Jenderal */
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto+Condensed:wght@400;700&display=swap');
+
+        .pnp-v33-card { 
+            background: #111; border-radius: 12px; padding: 30px 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333; 
+            position: relative; overflow: hidden; width: 100%; box-sizing: border-box;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         
-        .pnp-v28-header { 
+        .pnp-v33-header { 
             display: flex; justify-content: space-between; align-items: center; 
             margin-bottom: 35px; border-bottom: 1px solid #222; padding-bottom: 15px;
         }
 
-        /* JUDUL: TIDAK BOLD (WEIGHT 400/300) AGAR RAMPING & PROFESIONAL */
-        .pnp-v28-title {
-            color: #ffd700; 
-            font-weight: 300; /* GAYA RAMPING, BUKAN BOLD */
-            font-size: 26px; 
-            text-transform: uppercase;
-            letter-spacing: 2px; /* Memberi kesan elegan */
+        .pnp-v33-title {
+            color: #ffd700; font-family: 'Oswald', sans-serif !important;
+            font-weight: 700 !important; font-size: 20px !important; 
+            text-transform: uppercase; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 10px;
         }
 
-        /* WRAPPER INPUT */
-        .input-section-v28 {
-            position: relative;
-            padding-left: 20px; /* Jarak teks dari garis */
-            text-align: left;
+        .input-section-v33 { position: relative; padding-left: 20px; text-align: left; }
+
+        /* GARIS KUNING: VERSI PENDEK (SEJAJAR INPUT) */
+        .input-section-v33::before {
+            content: ""; position: absolute; left: 0;
+            top: 35px;      /* MULAI DI BAWAH TULISAN IDENTITAS */
+            bottom: 80px;   /* BERHENTI SEBELUM TOMBOL */
+            width: 3px; background: #ffd700; border-radius: 10px;
         }
 
-        /* GARIS KUNING: DI-PERTIPIS (3PX) AGAR SINKRON DENGAN GARIS BIRU */
-        .input-section-v28::before {
-            content: "";
-            position: absolute;
-            left: 0;        
-            top: 0;
-            bottom: 0;
-            width: 3px;     /* KETEBALAN SUPER TIPIS (SINKRON DENGAN GARIS BIRU) */
-            background: #ffd700;
-            border-radius: 10px;
-        }
-
-        .pnp-v28-label {
+        .pnp-v33-label {
             display: block; color: #ffd700; font-size: 11px; margin-bottom: 8px; 
             font-weight: bold; text-transform: uppercase;
         }
 
-        .v28-input { 
+        .v33-input { 
             background: #000; border: 1px solid #333; color: #fff; border-radius: 8px; 
-            margin-bottom: 20px; box-sizing: border-box; outline: none;
-            padding: 15px; font-size: 15px; width: 100%; font-family: inherit;
+            margin-bottom: 20px; padding: 15px; font-size: 15px; width: 100%; box-sizing: border-box;
         }
-        .v28-input:focus { border-color: #ffd700; }
 
-        .v28-input-id { width: 45% !important; display: block; }
-
-        .pnp-v28-btn { 
+        .pnp-v33-btn { 
             width: 100%; padding: 20px; background: #ffd700; color: #000; 
             font-weight: 900; border: none; border-radius: 8px; cursor: pointer; 
-            text-transform: uppercase; font-size: 16px; margin-top: 10px;
+            text-transform: uppercase; font-size: 16px; font-family: 'Oswald', sans-serif;
         }
-        
-        .pnp-v28-card:hover { border: 1px solid #ffd700; }
-        
-        /* GAYA MENU DROPDOWN PETUNJUK */
-        .pnp-v28-dropdown {
-            display: none; /* Awal tersembunyi */
-            margin-top: 15px;
-            padding: 15px;
-            background: #1a1a1a;
-            border-radius: 10px;
-            border: 1px dashed #ffd700; /* Bingkai putus-putus kuning */
-            color: #ccc;
-            font-size: 13px;
-            line-height: 1.6;
-            text-align: left;
+
+        /* STYLE DROPDOWN INFO BARU */
+        .info-toggle-btn {
+            width: 100%; background: #1a1a1a; border: 1px dashed #444; color: #888;
+            padding: 10px; margin-top: 15px; cursor: pointer; border-radius: 8px;
+            font-size: 12px; display: flex; justify-content: center; align-items: center; gap: 10px;
+        }
+        .info-content {
+            display: none; background: #0a0a0a; border: 1px solid #222; 
+            padding: 20px; border-radius: 8px; margin-top: 5px; color: #ccc; font-size: 13px; line-height: 1.6;
         }
     </style>
 
-<div class="pnp-v28-card">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-    <div class="pnp-v28-header">
-        <span class="pnp-v28-title" style="font-family: 'Oswald', sans-serif !important; font-weight: 700 !important; font-size: 20px !important; color: #ffd700; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px;">
-            <i class="fa-solid fa-key" style="color: #ffd700;"></i> KONEKSI ENGINE BINANCE
-        </span>
-        
-        <button onclick="pnpV28ToggleDropdown()" style="background:#ffd700; border:none; color:#000; padding:6px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer; text-transform:uppercase; font-family: 'Oswald', sans-serif;">
-            PETUNJUK <i id="v28-icon" class="fa-solid fa-chevron-down"></i>
-        </button>
-    </div>
-        
-        <div id="pnp-v28-hint" class="pnp-v28-dropdown">
-            <strong style="color: #ffd700;">SOP AKTIVASI:</strong><br>
-            1. Isi ID Number bebas untuk pendataan sistem.<br>
-            2. Tempelkan API & Secret Key dari Binance (Pastikan Withdraw Disabled).<br>
-            3. Klik tombol Aktifkan untuk sinkronisasi ke VPS Singapura.
+    <div class="pnp-v33-card">
+        <div class="pnp-v33-header">
+            <span class="pnp-v33-title"><i class="fas fa-key"></i> KONEKSI ENGINE BINANCE</span>
+            <button onclick="pnpV33Toggle('hint')" style="background:#ffd700; border:none; color:#000; padding:6px 12px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">PETUNJUK</button>
         </div>
 
-        <div class="input-section-v28" style="margin-top: 20px;">
-            
-            <label class="pnp-v28-label">IDENTITAS USER (ID NUMBER)</label>
-            <input type="text" class="v28-input v28-input-id" placeholder="ID: 0001">
+        <div id="hint" style="display:none; background:#222; padding:10px; border-radius:5px; margin-bottom:15px; font-size:12px; color:#ffd700;">
+            * Masukkan API Key dengan izin "Enable Reading" & "Enable Spot & Futures Trading" saja.
+        </div>
 
-            <label class="pnp-v28-label">BINANCE API KEY</label>
-            <input type="text" class="v28-input" placeholder="Masukkan API Key Binance Jenderal...">
+        <div class="input-section-v33">
+            <label class="pnp-v33-label">IDENTITAS USER (ID NUMBER)</label>
+            <input type="text" class="v33-input" style="width:40%" placeholder="0001">
 
-            <label class="pnp-v28-label">BINANCE SECRET KEY</label>
-            <input type="password" class="v28-input" placeholder="Masukkan Secret Key Binance Jenderal...">
+            <label class="pnp-v33-label">BINANCE API KEY</label>
+            <input type="text" class="v33-input" placeholder="Paste API Key di sini...">
 
-            <button class="pnp-v28-btn">AKTIFKAN SCALPING 24H</button>
-            
+            <label class="pnp-v33-label">BINANCE SECRET KEY</label>
+            <input type="password" class="v33-input" placeholder="Paste Secret Key di sini...">
+
+            <button class="pnp-v33-btn">AKTIFKAN SCALPING 24H</button>
+        </div>
+
+        <div class="info-toggle-btn" onclick="pnpV33Toggle('info-box')">
+            PANDUAN KEAMANAN & SETUP FUTURES <i class="fas fa-chevron-down"></i>
+        </div>
+        
+        <div id="info-box" class="info-content">
+            <strong style="color:#ffd700;"><i class="fas fa-shield-alt"></i> JAMINAN KEAMANAN MODAL:</strong><br>
+            Sistem hanya menggunakan koneksi API untuk eksekusi trade. Dana Anda tetap berada di wallet Binance. **Dilarang keras** mengaktifkan izin "Enable Withdrawals" pada pengaturan API Key Anda.
+            <br><br>
+            <strong style="color:#ffd700;"><i class="fas fa-check-square"></i> CARA CENTANG FUTURES DI BINANCE:</strong><br>
+            1. Buka akun Binance > API Management.<br>
+            2. Klik 'Edit Restrictions' pada Key yang dibuat.<br>
+            3. Centang kotak **'Enable Futures'**.<br>
+            4. Jika tidak bisa dicentang, pastikan Anda sudah membuka akun Futures di menu Wallet Binance terlebih dahulu.
         </div>
     </div>
 </div>
 
 <script>
-    // FUNGSI UNTUK MENAMPILKAN/SEMBUNYIKAN DROPDOWN PETUNJUK
-    function pnpV28ToggleDropdown() {
-        const dropdown = document.getElementById('pnp-v28-hint');
-        const icon = document.getElementById('v28-icon');
-        
-        if (dropdown.style.display === "none" || dropdown.style.display === "") {
-            dropdown.style.display = "block"; // Tampilkan
-            icon.className = "fas fa-chevron-up"; // Ubah ikon panah ke atas
-        } else {
-            dropdown.style.display = "none"; // Sembunyikan
-            icon.className = "fas fa-chevron-down"; // Ubah ikon panah ke bawah
-        }
+    function pnpV33Toggle(id) {
+        var x = document.getElementById(id);
+        x.style.display = (x.style.display === "none" || x.style.display === "") ? "block" : "none";
     }
 </script>
           
