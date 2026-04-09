@@ -354,28 +354,28 @@
             <div class="extra-body">Detail manajemen risiko dan aturan compounding profit Jenderal bisa dijelaskan di sini.</div>
         </div>
     </div>
-    <div id="unit-pnp-v8" style="margin: 25px 10px; font-family: sans-serif;">
+    <div id="unit-pnp-v10" style="margin: 25px 10px; font-family: sans-serif;">
     
     <style>
-        /* KOTAK UTAMA */
-        .pnp-v8-card { 
-            border-left: 5px solid #ffd700; /* GARIS KUNING SAMPING TETAP (STATIS) */
+        /* KOTAK UTAMA DENGAN GARIS KIRI TEBAL STATIS */
+        .pnp-v10-card { 
+            border-left: 6px solid #ffd700; 
             background: #111; 
             border-radius: 4px; 
             padding: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid transparent; /* Cadangan untuk border saat disentuh */
+            border: 1px solid transparent;
             transition: 0.3s;
             cursor: pointer;
         }
         
-        /* EFEK SAAT DISENTUH: MUNCUL GARIS KUNING KELILING KOTAK */
-        .pnp-v8-card:hover, .pnp-v8-card:active {
-            border: 1px solid #ffd700; /* Garis kuning keliling muncul */
+        /* EFEK KUNING KELILING SAAT DISENTUH */
+        .pnp-v10-card:hover, .pnp-v10-card:active {
+            border: 1px solid #ffd700;
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
         }
 
-        .pnp-v8-header { 
+        .pnp-v10-header { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
@@ -384,71 +384,84 @@
             padding-bottom: 10px;
         }
 
-        .pnp-v8-label {
-            display: block; color: #ffd700; font-size: 11px; margin-bottom: 8px; font-weight: bold; text-transform: uppercase;
+        /* LABEL: SEMUA SAMA (ID, KEY, SECRET) */
+        .pnp-v10-label {
+            display: block; 
+            color: #ffd700; 
+            font-size: 11px; 
+            margin-bottom: 8px; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
         }
 
-        /* INPUT ID NUMBER (UKURAN LEBIH BESAR) */
-        .input-id-large {
-            width: 100%; padding: 15px; background: #000; border: 1px solid #333; color: #fff; border-radius: 4px; margin-bottom: 15px; font-size: 16px; font-weight: bold; box-sizing: border-box; outline: none; border-bottom: 2px solid #ffd700;
+        /* INPUT UNIVERSAL (FONT MONOSPACE ELITE) */
+        .v10-input { 
+            background: #000; 
+            border: 1px solid #333; 
+            color: #fff; 
+            border-radius: 4px; 
+            margin-bottom: 15px; 
+            box-sizing: border-box; 
+            outline: none;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 12px;
+            font-size: 13px;
+        }
+        .v10-input:focus { border-color: #ffd700; }
+
+        /* KHUSUS KOTAK ID: LEBAR SETENGAH (50%) */
+        .v10-input-id {
+            width: 50% !important; 
+            display: block;
         }
 
-        /* INPUT BIASA */
-        .pnp-v8-input { 
-            width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; border-radius: 4px; margin-bottom: 15px; box-sizing: border-box; outline: none;
+        /* KHUSUS KOTAK KEY & SECRET: FULL (100%) */
+        .v10-input-full {
+            width: 100%;
         }
 
-        .pnp-v8-btn { 
-            width: 100%; padding: 15px; background: #ffd700; color: #000; font-weight: 900; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase;
+        .pnp-v10-btn { 
+            width: 100%; padding: 15px; background: #ffd700; color: #000; font-weight: 900; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; font-size: 13px;
         }
 
-        /* MENU DROPDOWN DI LUAR KOTAK (DI BAWAH) */
-        .pnp-v8-dropdown-box {
-            margin-top: 10px;
-            background: #1a1a1a;
-            border-radius: 4px;
-            display: none; /* Tersembunyi awal */
-            padding: 15px;
-            border: 1px dashed #333;
-            color: #888;
-            font-size: 12px;
-            line-height: 1.6;
+        /* DROPDOWN DI LUAR KOTAK */
+        .pnp-v10-dropdown {
+            margin-top: 10px; background: #1a1a1a; border-radius: 4px; display: none; padding: 15px; border: 1px dashed #333; color: #888; font-size: 12px; line-height: 1.6;
         }
     </style>
 
-    <div class="pnp-v8-card">
-        <div class="pnp-v8-header">
+    <div class="pnp-v10-card">
+        <div class="pnp-v10-header">
             <span style="color: #ffd700; font-weight: bold; font-size: 14px;">
                 <i class="fas fa-satellite-dish"></i> KONEKSI ENGINE BINANCE
             </span>
-            <button onclick="pnpV8Toggle()" style="background: #ffd700; border: none; color: #000; cursor: pointer; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: bold;">
-                PETUNJUK <i id="pnp-v8-icon" class="fas fa-chevron-down"></i>
+            <button onclick="pnpV10Toggle()" style="background: #ffd700; border: none; color: #000; cursor: pointer; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: bold;">
+                PETUNJUK <i id="pnp-v10-icon" class="fas fa-chevron-down"></i>
             </button>
         </div>
 
-        <label class="pnp-v8-label">IDENTITAS USER (ID NUMBER / NAMA)</label>
-        <input type="text" id="v8-id" class="input-id-large" placeholder="0001 / NAMA AKUN">
+        <label class="pnp-v10-label">IDENTITAS USER (ID NUMBER)</label>
+        <input type="text" id="v10-id" class="v10-input v10-input-id" placeholder="0001">
 
-        <label class="pnp-v8-label">BINANCE API KEY</label>
-        <input type="text" id="v8-key" class="pnp-v8-input" placeholder="Masukkan API Key...">
+        <label class="pnp-v10-label">BINANCE API KEY</label>
+        <input type="text" id="v10-key" class="v10-input v10-input-full" placeholder="Masukkan API Key...">
 
-        <label class="pnp-v8-label">BINANCE SECRET KEY</label>
-        <input type="password" id="v8-secret" class="pnp-v8-input" placeholder="Masukkan Secret Key...">
+        <label class="pnp-v10-label">BINANCE SECRET KEY</label>
+        <input type="password" id="v10-secret" class="v10-input v10-input-full" placeholder="Masukkan Secret Key...">
 
-        <button onclick="pnpV8Action()" class="pnp-v8-btn">AKTIFKAN SCALPING 24H</button>
+        <button onclick="pnpV10Action()" class="pnp-v10-btn">AKTIFKAN SCALPING 24H</button>
     </div>
 
-    <div id="v8-dropdown" class="pnp-v8-dropdown-box">
-        <strong style="color: #ffd700;">CARA AKTIVASI:</strong><br>
-        1. Isi ID Number untuk pendataan di database.<br>
-        2. Tempelkan API & Secret Key dari Binance.<br>
-        3. Klik tombol Aktifkan untuk sinkronisasi ke VPS Singapura.
+    <div id="v10-dropdown" class="pnp-v10-dropdown">
+        <strong style="color: #ffd700;">INSTRUKSI:</strong><br>
+        Isi ID Number, API Key, dan Secret Key untuk menghubungkan engine scalping Jenderal ke Server Singapura.
     </div>
 
     <script>
-        function pnpV8Toggle() {
-            const d = document.getElementById('v8-dropdown');
-            const i = document.getElementById('pnp-v8-icon');
+        function pnpV10Toggle() {
+            const d = document.getElementById('v10-dropdown');
+            const i = document.getElementById('pnp-v10-icon');
             if (d.style.display === "none" || d.style.display === "") {
                 d.style.display = "block";
                 i.className = "fas fa-chevron-up";
@@ -457,10 +470,10 @@
                 i.className = "fas fa-chevron-down";
             }
         }
-        function pnpV8Action() {
-            const id = document.getElementById('v8-id').value;
-            if(!id) { alert('Lapor! ID Number wajib diisi, Jenderal!'); return; }
-            alert('Mencoba menghubungkan ID ['+id+'] ke Database...');
+        function pnpV10Action() {
+            const id = document.getElementById('v10-id').value;
+            if(!id) { alert('Lapor! ID Number wajib diisi!'); return; }
+            alert('Menghubungkan ID ['+id+'] ke Database...');
         }
     </script>
 </div>
