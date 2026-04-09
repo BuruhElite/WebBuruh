@@ -354,31 +354,41 @@
             <div class="extra-body">Detail manajemen risiko dan aturan compounding profit Jenderal bisa dijelaskan di sini.</div>
         </div>
     </div>
-    <div id="unit-pnp-v11" style="margin: 25px 10px; font-family: sans-serif;">
+    <<div id="unit-pnp-v13" style="margin: 25px 10px; font-family: sans-serif;">
     
     <style>
-        /* KOTAK UTAMA: GARIS KUNING TEBAL DI KIRI (MENIRU GAYA PRINSIP BURUH) */
-        .pnp-v11-card { 
-            border-left: 6px solid #ffd700; /* Garis vertikal tebal seperti kotak hijau */
+        /* KOTAK UTAMA */
+        .pnp-v13-card { 
             background: #111; 
-            border-radius: 4px; 
-            padding: 20px;
+            border-radius: 12px; 
+            padding: 20px 20px 20px 30px; /* Padding kiri ditambah (30px) untuk ruang garis dalam */
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border-top: 1px solid transparent;
-            border-right: 1px solid transparent;
-            border-bottom: 1px solid transparent;
+            border: 1px solid #333; 
+            transition: 0.3s;
+            overflow: hidden;
+            position: relative; /* Wajib untuk posisi garis dalam */
+        }
+        
+        /* GARIS KUNING VERTIKAL DI DALAM KOTAK */
+        .pnp-v13-card::before {
+            content: "";
+            position: absolute;
+            left: 10px; /* POSISI AGAK KE DALAM: Tidak mepet dinding luar */
+            top: 15px;
+            bottom: 15px;
+            width: 6px; /* Ketebalan garis */
+            background: #ffd700;
+            border-radius: 10px;
             transition: 0.3s;
         }
         
-        /* EFEK KUNING KELILING SAAT DISENTUH (TETAP ADA) */
-        .pnp-v11-card:hover, .pnp-v11-card:active {
-            border-top: 1px solid #ffd700;
-            border-right: 1px solid #ffd700;
-            border-bottom: 1px solid #ffd700;
+        /* EFEK KUNING KELILING SAAT DISENTUH */
+        .pnp-v13-card:hover, .pnp-v13-card:active {
+            border: 1px solid #ffd700; 
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
         }
 
-        .pnp-v11-header { 
+        .pnp-v13-header { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
@@ -387,95 +397,68 @@
             padding-bottom: 10px;
         }
 
-        /* LABEL: DIATUR AGAR ALIGN LEFT (MEPET KIRI) */
-        .pnp-v11-label {
-            display: block; 
-            color: #ffd700; 
-            font-size: 11px; 
-            margin-bottom: 8px; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            text-align: left; /* Mepet kiri sejajar kotak */
-            width: 100%;
+        .pnp-v13-label {
+            display: block; color: #ffd700; font-size: 11px; margin-bottom: 8px; font-weight: bold; text-transform: uppercase; text-align: left;
         }
 
-        /* INPUT UNIVERSAL (MONOSPACE) */
-        .v11-input { 
-            background: #000; 
-            border: 1px solid #333; 
-            color: #fff; 
-            border-radius: 4px; 
-            margin-bottom: 15px; 
-            box-sizing: border-box; 
-            outline: none;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 12px;
-            font-size: 13px;
-            display: block; /* Agar label di atasnya mepet sejajar */
+        .v13-input { 
+            background: #000; border: 1px solid #333; color: #fff; border-radius: 8px; margin-bottom: 15px; box-sizing: border-box; outline: none;
+            font-family: 'Courier New', Courier, monospace; padding: 12px; font-size: 13px;
         }
-        .v11-input:focus { border-color: #ffd700; }
+        .v13-input:focus { border-color: #ffd700; }
 
-        /* KOTAK ID: LEBAR SETENGAH (50%) & MEPET KIRI */
-        .v11-input-id {
-            width: 50% !important;
+        .v13-input-id { width: 50% !important; display: block; }
+        .v13-input-full { width: 100%; }
+
+        .pnp-v13-btn { 
+            width: 100%; padding: 15px; background: #ffd700; color: #000; font-weight: 900; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase;
         }
 
-        /* KOTAK KEY & SECRET: FULL (100%) */
-        .v11-input-full {
-            width: 100%;
-        }
-
-        .pnp-v11-btn { 
-            width: 100%; padding: 15px; background: #ffd700; color: #000; font-weight: 900; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase;
-        }
-
-        /* DROPDOWN DI LUAR KOTAK */
-        .pnp-v11-dropdown {
-            margin-top: 10px; background: #1a1a1a; border-radius: 4px; display: none; padding: 15px; border: 1px dashed #333; color: #888; font-size: 12px; line-height: 1.6;
+        .pnp-v13-dropdown {
+            margin-top: 12px; background: #1a1a1a; border-radius: 10px; display: none; padding: 15px; border: 1px dashed #444; color: #888; font-size: 12px;
         }
     </style>
 
-    <div class="pnp-v11-card">
-        <div class="pnp-v11-header">
+    <div class="pnp-v13-card">
+        <div class="pnp-v13-header">
             <span style="color: #ffd700; font-weight: bold; font-size: 14px;">
                 <i class="fas fa-satellite-dish"></i> KONEKSI ENGINE BINANCE
             </span>
-            <button onclick="pnpV11Toggle()" style="background: #ffd700; border: none; color: #000; cursor: pointer; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: bold;">
-                PETUNJUK <i id="pnp-v11-icon" class="fas fa-chevron-down"></i>
+            <button onclick="pnpV13Toggle()" style="background: #ffd700; border: none; color: #000; cursor: pointer; padding: 4px 12px; border-radius: 6px; font-size: 10px; font-weight: bold;">
+                PETUNJUK <i id="pnp-v13-icon" class="fas fa-chevron-down"></i>
             </button>
         </div>
 
         <div style="text-align: left;">
-            <label class="pnp-v11-label">IDENTITAS USER (ID NUMBER)</label>
-            <input type="text" id="v11-id" class="v11-input v11-input-id" placeholder="0001">
+            <label class="pnp-v13-label">IDENTITAS USER (ID NUMBER)</label>
+            <input type="text" id="v13-id" class="v13-input v13-input-id" placeholder="0001">
         </div>
 
-        <label class="pnp-v11-label">BINANCE API KEY</label>
-        <input type="text" id="v11-key" class="v11-input v11-input-full" placeholder="Masukkan API Key...">
+        <label class="pnp-v13-label">BINANCE API KEY</label>
+        <input type="text" id="v13-key" class="v13-input v13-input-full" placeholder="Masukkan API Key...">
 
-        <label class="pnp-v11-label">BINANCE SECRET KEY</label>
-        <input type="password" id="v11-secret" class="v11-input v11-input-full" placeholder="Masukkan Secret Key...">
+        <label class="pnp-v13-label">BINANCE SECRET KEY</label>
+        <input type="password" id="v13-secret" class="v13-input v13-input-full" placeholder="Masukkan Secret Key...">
 
-        <button onclick="pnpV11Action()" class="pnp-v11-btn">AKTIFKAN SCALPING 24H</button>
+        <button onclick="pnpV13Action()" class="pnp-v13-btn">AKTIFKAN SCALPING 24H</button>
     </div>
 
-    <div id="v11-dropdown" class="pnp-v11-dropdown">
-        <strong style="color: #ffd700;">INSTRUKSI:</strong><br>
-        Pastikan fitur 'Enable Spot & Margin Trading' di Binance aktif, dan 'Withdraw' dimatikan demi keamanan.
+    <div id="v13-dropdown" class="pnp-v13-dropdown">
+        <strong style="color: #ffd700;">INFO:</strong> Data akan dikirim ke server scalping nonstop.
     </div>
 
     <script>
-        function pnpV11Toggle() {
-            const d = document.getElementById('v11-dropdown');
-            const i = document.getElementById('pnp-v11-icon');
-            const isHidden = d.style.display === "none" || d.style.display === "";
-            d.style.display = isHidden ? "block" : "none";
-            i.className = isHidden ? "fas fa-chevron-up" : "fas fa-chevron-down";
+        function pnpV13Toggle() {
+            const d = document.getElementById('v13-dropdown');
+            const i = document.getElementById('pnp-v13-icon');
+            const isH = d.style.display === "none" || d.style.display === "";
+            d.style.display = isH ? "block" : "none";
+            i.className = isH ? "fas fa-chevron-up" : "fas fa-chevron-down";
         }
-        function pnpV11Action() {
-            const id = document.getElementById('v11-id').value;
-            if(!id) { alert('Lapor! ID Number wajib diisi, Jenderal!'); return; }
-            alert('Mencoba sinkronisasi ID ['+id+'] ke Database...');
+        function pnpV13Action() {
+            const id = document.getElementById('v13-id').value;
+            if(!id) { alert('Isi ID dulu Jenderal!'); return; }
+            alert('Menghubungkan Akun ['+id+']...');
         }
     </script>
 </div>
