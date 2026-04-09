@@ -354,122 +354,98 @@
             <div class="extra-body">Detail manajemen risiko dan aturan compounding profit Jenderal bisa dijelaskan di sini.</div>
         </div>
     </div>
-    <div id="unit-pnp-v24" style="margin: 25px 0px; width: 100%; display: block; box-sizing: border-box;">
+    <div id="unit-pnp-v27" style="margin: 25px 0px; width: 100%; box-sizing: border-box;">
     
     <style>
-        .pnp-v24-card { 
+        .pnp-v27-card { 
             background: #111; 
             border-radius: 12px; 
-            /* PADDING KIRI DITAMBAH AGAR TEKS TIDAK KOMPETISI DENGAN GARIS YANG GESER KE KANAN */
-            padding: 25px 20px 25px 45px; 
+            padding: 30px 25px; /* Padding standar */
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             border: 1px solid #333; 
-            transition: 0.3s;
             position: relative;
             overflow: hidden;
-            width: 100% !important; 
+            width: 100%; 
             box-sizing: border-box;
             font-family: 'Segoe UI', Roboto, sans-serif;
         }
         
-        /* GARIS KUNING: GESER KE KANAN (12px) AGAR SEJAJAR DENGAN GARIS BIRU DI ATAS */
-        .pnp-v24-card::before {
-            content: "";
-            position: absolute;
-            left: 12px;     /* GESER KE KANAN: DISINKRONKAN DENGAN GARIS BIRU */
-            top: 15px;      /* JEDA ATAS */
-            bottom: 15px;   /* JEDA BAWAH */
-            width: 6px;     /* KETEBALAN SAMA */
-            background: #ffd700;
-            border-radius: 10px;
-            z-index: 10;
-        }
-        
-        .pnp-v24-card:hover {
-            border: 1px solid #ffd700;
+        .pnp-v27-header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            margin-bottom: 35px; border-bottom: 1px solid #222; padding-bottom: 15px;
         }
 
-        .pnp-v24-header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            margin-bottom: 30px; 
-            border-bottom: 1px solid #222; 
-            padding-bottom: 15px;
-        }
-
-        /* JUDUL: DIBESARKAN SEDIKIT LAGI AGAR MAKIN PRO */
-        .pnp-v24-title {
+        /* JUDUL: BESAR & GAGAH SESUAI INSTRUKSI */
+        .pnp-v27-title {
             color: #ffd700; 
             font-weight: 900;
-            font-size: 22px; /* UKURAN LEBIH BESAR SESUAI INSTRUKSI */
+            font-size: 26px; /* Tambah besar sesuai permintaan Jenderal */
             text-transform: uppercase;
-            letter-spacing: 1.5px;
         }
 
-        .pnp-v24-label {
+        /* WRAPPER UNTUK MENEMPELKAN GARIS KUNING DEKAT DENGAN KOTAK INPUT */
+        .input-section-v27 {
+            position: relative;
+            padding-left: 25px; /* Memberi ruang untuk garis kuning di sebelah kiri input */
+            text-align: left;
+        }
+
+        /* GARIS KUNING: SEKARANG MENEMPEL DI DEKAT KOTAK INPUT */
+        .input-section-v27::before {
+            content: "";
+            position: absolute;
+            left: 0;        /* Menempel di kiri section input, bukan di kiri kotak utama */
+            top: 0;
+            bottom: 0;
+            width: 6px;     
+            background: #ffd700;
+            border-radius: 10px;
+        }
+
+        .pnp-v27-label {
             display: block; color: #ffd700; font-size: 11px; margin-bottom: 8px; 
-            font-weight: bold; text-transform: uppercase; text-align: left;
+            font-weight: bold; text-transform: uppercase;
         }
 
-        .v24-input { 
+        .v27-input { 
             background: #000; border: 1px solid #333; color: #fff; border-radius: 8px; 
             margin-bottom: 20px; box-sizing: border-box; outline: none;
-            padding: 14px; font-size: 14px; width: 100%; font-family: inherit;
+            padding: 15px; font-size: 15px; width: 100%; font-family: inherit;
         }
-        .v24-input:focus { border-color: #ffd700; }
 
-        /* INPUT ID: TETAP 50% LEBAR */
-        .v24-input-id { width: 50% !important; display: block; }
+        .v27-input-id { width: 45% !important; display: block; }
 
-        .pnp-v24-btn { 
-            width: 100%; padding: 18px; background: #ffd700; color: #000; 
+        .pnp-v27-btn { 
+            width: 100%; padding: 20px; background: #ffd700; color: #000; 
             font-weight: 900; border: none; border-radius: 8px; cursor: pointer; 
-            text-transform: uppercase; font-family: inherit; font-size: 15px;
-            letter-spacing: 1px;
+            text-transform: uppercase; font-size: 16px; margin-top: 10px;
         }
+        
+        .pnp-v27-card:hover { border: 1px solid #ffd700; }
     </style>
 
-    <div class="pnp-v24-card">
-        <div class="pnp-v24-header">
-            <span class="pnp-v24-title">
-                <i class="fas fa-satellite-dish"></i> KONEKSI ENGINE BINANCE
-            </span>
-            <button onclick="pnpV24Toggle()" style="background: #ffd700; border: none; color: #000; cursor: pointer; padding: 6px 15px; border-radius: 6px; font-size: 10px; font-weight: 900; text-transform: uppercase;">
-                PETUNJUK
-            </button>
+    <div class="pnp-v27-card">
+        <div class="pnp-v27-header">
+            <span class="pnp-v27-title">KONEKSI ENGINE BINANCE</span>
+            <button onclick="alert('Sinkronisasi API Key')" style="background:#ffd700; border:none; color:#000; padding:6px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">PETUNJUK</button>
         </div>
 
-        <div style="text-align: left;">
-            <label class="pnp-v24-label">IDENTITAS USER (ID NUMBER)</label>
-            <input type="text" id="v24-id" class="v24-input v24-input-id" placeholder="ID: 0001">
+        <div class="input-section-v27">
+            
+            <label class="pnp-v27-label">IDENTITAS USER (ID NUMBER)</label>
+            <input type="text" class="v27-input v27-input-id" placeholder="0001">
+
+            <label class="pnp-v27-label">BINANCE API KEY</label>
+            <input type="text" class="v27-input" placeholder="Masukkan API Key...">
+
+            <label class="pnp-v27-label">BINANCE SECRET KEY</label>
+            <input type="password" class="v27-input" placeholder="Masukkan Secret Key...">
+
+            <button class="pnp-v27-btn">AKTIFKAN SCALPING 24H</button>
+            
         </div>
-
-        <label class="pnp-v24-label">BINANCE API KEY</label>
-        <input type="text" id="v24-key" class="v24-input" placeholder="Masukkan API Key Binance Anda...">
-
-        <label class="pnp-v24-label">BINANCE SECRET KEY</label>
-        <input type="password" id="v24-secret" class="v24-input" placeholder="Masukkan Secret Key Binance Anda...">
-
-        <button onclick="pnpV24Action()" class="pnp-v24-btn">AKTIFKAN SCALPING 24H</button>
-    </div>
-
-    <div id="v24-drop" style="display:none; margin-top:10px; padding:15px; background:#1a1a1a; border-radius:10px; border:1px dashed #444; color:#888; font-size:12px;">
-        <i class="fas fa-info-circle"></i> Sinkronisasi ke Server Singapura Aktif.
     </div>
 </div>
-
-<script>
-    function pnpV24Toggle() {
-        const d = document.getElementById('v24-drop');
-        d.style.display = (d.style.display === "none") ? "block" : "none";
-    }
-    function pnpV24Action() {
-        const id = document.getElementById('v24-id').value;
-        if(!id) { alert('Lapor! ID Number wajib diisi!'); return; }
-        alert('Data ['+id+'] Sinkron!');
-    }
-</script>
           
     <div class="room">
         <h2 class="room-title">🛡️ JAMINAN KEAMANAN MODAL</h2>
