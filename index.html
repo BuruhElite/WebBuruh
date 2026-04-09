@@ -381,16 +381,17 @@
             margin-bottom: 35px; border-bottom: 1px solid #222; padding-bottom: 15px;
         }
 
+        /* JUDUL SINKRON TOTAL: OSWALD BOLD + UKURAN 24PX + IKON KUNCI */
         .pnp-v33-title {
             color: #ffd700; font-family: 'Oswald', sans-serif !important;
-            font-weight: 700 !important; font-size: 20px !important; 
-            text-transform: uppercase; letter-spacing: 1px;
-            display: flex; align-items: center; gap: 10px;
+            font-weight: 700 !important; font-size: 24px !important; 
+            text-transform: uppercase; letter-spacing: 1.5px;
+            display: flex; align-items: center; gap: 12px;
         }
 
         .input-section-v33 { position: relative; padding-left: 20px; text-align: left; }
 
-        /* GARIS KUNING: VERSI PENDEK (SEJAJAR INPUT) */
+        /* GARIS KUNING: VERSI PENDEK SEJAJAR INPUT */
         .input-section-v33::before {
             content: ""; position: absolute; left: 0;
             top: 35px;      /* MULAI DI BAWAH TULISAN IDENTITAS */
@@ -406,6 +407,7 @@
         .v33-input { 
             background: #000; border: 1px solid #333; color: #fff; border-radius: 8px; 
             margin-bottom: 20px; padding: 15px; font-size: 15px; width: 100%; box-sizing: border-box;
+            font-family: 'Roboto Condensed', sans-serif;
         }
 
         .pnp-v33-btn { 
@@ -414,7 +416,6 @@
             text-transform: uppercase; font-size: 16px; font-family: 'Oswald', sans-serif;
         }
 
-        /* STYLE DROPDOWN INFO BARU */
         .info-toggle-btn {
             width: 100%; background: #1a1a1a; border: 1px dashed #444; color: #888;
             padding: 10px; margin-top: 15px; cursor: pointer; border-radius: 8px;
@@ -426,25 +427,31 @@
         }
     </style>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <div class="pnp-v33-card">
         <div class="pnp-v33-header">
-            <span class="pnp-v33-title"><i class="fas fa-key"></i> KONEKSI ENGINE BINANCE</span>
-            <button onclick="pnpV33Toggle('hint')" style="background:#ffd700; border:none; color:#000; padding:6px 12px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">PETUNJUK</button>
+            <span class="pnp-v33-title">
+                <i class="fa-solid fa-key" style="color: #ffd700; font-size: 22px;"></i> KONEKSI ENGINE BINANCE
+            </span>
+            <button onclick="pnpV33Toggle('hint')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer; font-family:'Oswald',sans-serif; text-transform:uppercase;">
+                PETUNJUK <i id="v33-icon" class="fas fa-chevron-down"></i>
+            </button>
         </div>
 
-        <div id="hint" style="display:none; background:#222; padding:10px; border-radius:5px; margin-bottom:15px; font-size:12px; color:#ffd700;">
-            * Masukkan API Key dengan izin "Enable Reading" & "Enable Spot & Futures Trading" saja.
+        <div id="hint" style="display:none; background:#222; padding:10px; border-radius:5px; margin-bottom:15px; font-size:12px; color:#ffd700; border: 1px solid #444;">
+            <i class="fas fa-info-circle"></i> SINKRONISASI: Masukkan API & Secret Key dengan izin Trade aktif.
         </div>
 
         <div class="input-section-v33">
             <label class="pnp-v33-label">IDENTITAS USER (ID NUMBER)</label>
-            <input type="text" class="v33-input" style="width:40%" placeholder="0001">
+            <input type="text" class="v33-input" style="width:40%" placeholder="ID: 0001">
 
             <label class="pnp-v33-label">BINANCE API KEY</label>
-            <input type="text" class="v33-input" placeholder="Paste API Key di sini...">
+            <input type="text" class="v33-input" placeholder="Masukkan API Key Binance Jenderal...">
 
             <label class="pnp-v33-label">BINANCE SECRET KEY</label>
-            <input type="password" class="v33-input" placeholder="Paste Secret Key di sini...">
+            <input type="password" class="v33-input" placeholder="Masukkan Secret Key Binance Jenderal...">
 
             <button class="pnp-v33-btn">AKTIFKAN SCALPING 24H</button>
         </div>
