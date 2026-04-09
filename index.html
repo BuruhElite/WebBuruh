@@ -381,20 +381,20 @@
             margin-bottom: 35px; border-bottom: 1px solid #222; padding-bottom: 15px;
         }
 
-        /* JUDUL SINKRON TOTAL: OSWALD BOLD + UKURAN 24PX + IKON KUNCI */
+        /* JUDUL: DIKECILKAN KE 21PX AGAR LEBIH RAPI & PROPORSIONAL */
         .pnp-v33-title {
             color: #ffd700; font-family: 'Oswald', sans-serif !important;
-            font-weight: 700 !important; font-size: 24px !important; 
-            text-transform: uppercase; letter-spacing: 1.5px;
+            font-weight: 700 !important; font-size: 21px !important; 
+            text-transform: uppercase; letter-spacing: 1px;
             display: flex; align-items: center; gap: 12px;
         }
 
         .input-section-v33 { position: relative; padding-left: 20px; text-align: left; }
 
-        /* GARIS KUNING: VERSI PENDEK SEJAJAR INPUT */
+        /* GARIS KUNING: DIPERPANJANG & DISEJAJARKAN DENGAN TEKS IDENTITAS */
         .input-section-v33::before {
             content: ""; position: absolute; left: 0;
-            top: 35px;      /* MULAI DI BAWAH TULISAN IDENTITAS */
+            top: 5px;       /* NAIK SEDIKIT AGAR SEJAJAR TULISAN IDENTITAS */
             bottom: 80px;   /* BERHENTI SEBELUM TOMBOL */
             width: 3px; background: #ffd700; border-radius: 10px;
         }
@@ -432,7 +432,7 @@
     <div class="pnp-v33-card">
         <div class="pnp-v33-header">
             <span class="pnp-v33-title">
-                <i class="fa-solid fa-key" style="color: #ffd700; font-size: 22px;"></i> KONEKSI ENGINE BINANCE
+                <i class="fa-solid fa-key" style="color: #ffd700; font-size: 19px;"></i> KONEKSI ENGINE BINANCE
             </span>
             <button onclick="pnpV33Toggle('hint')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer; font-family:'Oswald',sans-serif; text-transform:uppercase;">
                 PETUNJUK <i id="v33-icon" class="fas fa-chevron-down"></i>
