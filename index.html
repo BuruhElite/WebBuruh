@@ -202,6 +202,34 @@
         flex-basis: 40%; /* Menahan label tetap di kiri */
     }
 }
+      /* --- MODE STANDAR (HP BERDIRI / PORTRAIT) --- */
+@media screen and (max-width: 600px) and (orientation: portrait) {
+    .db-excel {
+        min-width: 500px; /* Tetap beri ruang agar bisa digeser dikit */
+    }
+}
+
+/* --- MODE LANDSCAPE (HP DIMIRINGKAN / NONTON FILM) --- */
+@media screen and (max-width: 950px) and (orientation: landscape) {
+    /* Paksa container Radar jadi lebar penuh */
+    .room {
+        padding: 10px !important;
+        margin: 5px !important;
+    }
+    
+    .db-excel {
+        width: 100% !important;
+        min-width: 100% !important; /* Hilangkan kewajiban scroll samping */
+        font-size: 11px; /* Kecilkan font sedikit agar Full View masuk semua */
+    }
+
+    .db-excel th, .db-excel td {
+        padding: 8px 4px !important; /* Padatkan kolom */
+    }
+
+    /* Sembunyikan elemen yang tidak penting saat miring agar fokus ke tabel */
+    .room-title { font-size: 1.1rem; margin-bottom: 5px; }
+}  
     </style>
 </head>
 <body>
@@ -235,6 +263,26 @@
     </div>  
 <div class="room">
     <h2 class="room-title">📡 TOP 7 LIVE SIGNALS</h2>
+    <div class="rotate-hint">
+    🔄 Miringkan layar untuk tampilan Full View
+</div>
+
+<style>
+.rotate-hint {
+    display: none;
+    background: rgba(255, 215, 0, 0.1);
+    color: #ffd700;
+    text-align: center;
+    padding: 5px;
+    font-size: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+/* Hanya muncul di HP posisi berdiri */
+@media screen and (max-width: 600px) and (orientation: portrait) {
+    .rotate-hint { display: block; }
+}
+</style>
     
     <div style="overflow-x: auto;">
         <table class="db-excel">
