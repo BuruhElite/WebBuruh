@@ -10,8 +10,13 @@
 .db-excel { width: 100%; border-collapse: collapse; font-family: 'Consolas', monospace; font-size: 12px; }
 .db-excel th { background: #1a1a1a; color: #ffd700; padding: 10px; border: 1px solid #333; position: sticky; top: 0; }
 .db-excel td { padding: 10px; border: 1px solid #333; background: #0d0d0d; text-align: center; color: #fff; }
-.db-excel td:first-child { border-left: 5px solid #007bff; color: #ffd700; font-weight: bold; }
-
+.db-excel td:first-child { 
+    border-left: 5px solid #007bff; 
+    color: #ffd700; 
+    font-weight: bold; 
+    padding-top: 0 !important;    /* MEMAKSA GARIS NAIK MENTOK */
+    padding-bottom: 0 !important; /* MEMAKSA GARIS TURUN MENTOK */
+}
 .bg-serok { background: rgba(57, 255, 20, 0.1) !important; color: #39ff14; font-weight: bold; }
 .price-up { color: #39ff14; font-weight: bold; }
 .arrow-rotate { transform: rotate(180deg); transition: 0.3s; }
