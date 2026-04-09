@@ -354,40 +354,121 @@
             <div class="extra-body">Detail manajemen risiko dan aturan compounding profit Jenderal bisa dijelaskan di sini.</div>
         </div>
     </div>
-    <div id="pnp-api-container" style="margin: 20px 10px;">
+    <div id="unit-pnp-binance-v7" style="margin: 25px 10px;">
     
     <style>
-        .pnp-card { border-left: 5px solid #ffd700; background: #111; border-radius: 4px; overflow: hidden; }
-        .pnp-header { background: #1a1a1a; padding: 15px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
-        .pnp-input-field { width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; border-radius: 4px; margin-bottom: 15px; box-sizing: border-box; }
-        .pnp-btn-submit { width: 100%; padding: 15px; background: #ffd700; color: #000; font-weight: 900; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
+        /* Efek Hover: Garis Kuning Menyala Saat Disentuh */
+        .pnp-v7-card { 
+            border-left: 5px solid #333; /* Warna standar abu-abu gelap */
+            background: #111; 
+            border-radius: 4px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .pnp-v7-card:hover, .pnp-v7-card:active {
+            border-left: 5px solid #ffd700; /* Berubah KUNING saat disentuh */
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+        }
+
+        .pnp-v7-header { 
+            background: #1a1a1a; 
+            padding: 15px; 
+            border-bottom: 1px solid #333; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .pnp-v7-body { padding: 20px; }
+
+        .pnp-v7-label {
+            display: block; 
+            color: #ffd700; 
+            font-size: 11px; 
+            margin-bottom: 5px; 
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .pnp-v7-input { 
+            width: 100%; 
+            padding: 12px; 
+            background: #000; 
+            border: 1px solid #333; 
+            color: #fff; 
+            border-radius: 4px; 
+            margin-bottom: 15px; 
+            box-sizing: border-box; 
+            outline: none; 
+        }
+
+        .pnp-v7-btn { 
+            width: 100%; 
+            padding: 15px; 
+            background: #ffd700; 
+            color: #000; 
+            font-weight: 900; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+        }
+
+        /* Dropdown di bawah tombol */
+        .pnp-v7-dropdown {
+            display: none;
+            padding: 15px;
+            background: #151515;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 12px;
+            line-height: 1.6;
+        }
     </style>
 
-    <div class="pnp-card">
-        <div class="pnp-header">
-            <span style="color: #ffd700; font-weight: bold;"><i class="fas fa-satellite-dish"></i> KONEKSI ENGINE SCALPING 24H</span>
-            <button onclick="pnpToggleGuide()" style="background: #333; border: none; color: #ffd700; cursor: pointer; padding: 5px 12px; border-radius: 4px; font-size: 10px;">PETUNJUK</button>
+    <div class="pnp-v7-card">
+        <div class="pnp-v7-header">
+            <span style="color: #ffd700; font-weight: bold; font-size: 13px;">
+                <i class="fas fa-satellite-dish"></i> KONEKSI ENGINE SCALPING 24H
+            </span>
+            <button onclick="pnpV7Toggle()" style="background: #333; border: none; color: #ffd700; cursor: pointer; padding: 5px 12px; border-radius: 4px; font-size: 10px; font-weight: bold;">
+                PETUNJUK <i id="pnp-v7-icon" class="fas fa-chevron-down"></i>
+            </button>
         </div>
-        <div id="pnp-guide" style="display: none; padding: 15px; background: #151515; border-bottom: 1px solid #333; color: #999; font-size: 12px;">Data otomatis kirim ke Server.</div>
-        <div style="padding: 20px;">
-            <label style="color: #ffd700; font-size: 11px; display: block; margin-bottom: 5px;">ID DATABASE</label>
-            <input type="text" id="pnp-user-id" class="pnp-input-field" placeholder="ID Akun">
-            <label style="color: #ffd700; font-size: 11px; display: block; margin-bottom: 5px;">API KEY</label>
-            <input type="text" id="pnp-user-key" class="pnp-input-field" placeholder="API Key">
-            <label style="color: #ffd700; font-size: 11px; display: block; margin-bottom: 5px;">SECRET KEY</label>
-            <input type="password" id="pnp-user-secret" class="pnp-input-field" placeholder="Secret Key">
-            <button onclick="pnpExecuteSync()" class="pnp-btn-submit">HUBUNGKAN SEKARANG</button>
+
+        <div class="pnp-v7-body">
+            <label class="pnp-v7-label">IDENTITAS USER (ID DATABASE)</label>
+            <input type="text" id="pnp-v7-id" class="pnp-v7-input" placeholder="ID Akun">
+
+            <label class="pnp-v7-label">BINANCE API KEY</label>
+            <input type="text" id="pnp-v7-key" class="pnp-input-v7 pnp-v7-input" style="font-family: monospace;" placeholder="API Key">
+
+            <label class="pnp-v7-label">BINANCE SECRET KEY</label>
+            <input type="password" id="pnp-v7-secret" class="pnp-v7-input" style="font-family: monospace;" placeholder="Secret Key">
+
+            <button onclick="pnpV7Sync()" class="pnp-v7-btn">HUBUNGKAN KE SERVER</button>
+        </div>
+
+        <div id="pnp-v7-panel" class="pnp-v7-dropdown">
+            <i class="fas fa-info-circle" style="color: #ffd700;"></i> <b>CATATAN SERVER:</b><br>
+            Data akan disinkronkan otomatis ke database VPS Singapura untuk eksekusi script Python scalping 24 jam nonstop.
         </div>
     </div>
 
     <script>
-        function pnpToggleGuide() {
-            const g = document.getElementById('pnp-guide');
-            g.style.display = (g.style.display === "none") ? "block" : "none";
+        function pnpV7Toggle() {
+            const p = document.getElementById('pnp-v7-panel');
+            const i = document.getElementById('pnp-v7-icon');
+            const hidden = p.style.display === "none" || p.style.display === "";
+            p.style.display = hidden ? "block" : "none";
+            i.className = hidden ? "fas fa-chevron-up" : "fas fa-chevron-down";
         }
-        function pnpExecuteSync() {
-            const id = document.getElementById('pnp-user-id').value;
-            alert('Lapor Jenderal! Akun ['+id+'] sedang disinkronisasi ke Markas Singapura.');
+        function pnpV7Sync() {
+            const id = document.getElementById('pnp-v7-id').value;
+            if(!id) { alert('Isi ID dulu Jenderal!'); return; }
+            alert('Lapor! Akun ['+id+'] sedang dihubungkan ke database server.');
         }
     </script>
 </div>
