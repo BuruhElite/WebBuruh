@@ -163,73 +163,38 @@
     .db-excel, .db-excel tbody, .db-excel tr, .db-excel td {
         display: block;
         width: 100%;
-    }
-
-    /* 2. Header tabel asli dibuang */
-    .db-excel thead { display: none; }
-
-    /* 3. Tiap baris koin jadi satu Kartu Rapi */
-    .db-excel tr {
-        margin-bottom: 12px;
-        border: 1px solid #444;
-        border-radius: 8px;
-        background: #111;
-        padding: 5px 10px;
-        overflow: hidden;
-    }
-
-    /* 4. Isi data di dalam kartu dibuat berjejer (Label kiri - Data kanan) */
-    .db-excel td {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: right;
-        padding: 6px 0;
-        border-bottom: 1px solid #222 !important;
-        font-size: 13px;
-    }
-
-    /* Baris terakhir jangan pakai garis bawah */
-    .db-excel td:last-child { border-bottom: none !important; }
-
-    /* 5. Munculkan Nama Kolom di sebelah kiri */
-    .db-excel td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        color: #ffd700;
-        text-align: left;
-        font-size: 11px;
-        flex-basis: 40%; /* Menahan label tetap di kiri */
-    }
+    }   
 }
-      /* --- MODE STANDAR (HP BERDIRI / PORTRAIT) --- */
+      /* 1. SAAT HP BERDIRI (PORTRAIT) */
 @media screen and (max-width: 600px) and (orientation: portrait) {
-    .db-excel {
-        min-width: 500px; /* Tetap beri ruang agar bisa digeser dikit */
+    .radar-scroll {
+        overflow-x: auto !important; /* Biar bisa digeser samping */
     }
+    .db-excel {
+        min-width: 600px !important; /* Paksa tabel tetap lebar/melintang */
+        display: table !important;   /* Kembalikan ke bentuk tabel murni */
+    }
+    .db-excel tr { display: table-row !important; }
+    .db-excel td, .db-excel th { display: table-cell !important; }
 }
 
-/* --- MODE LANDSCAPE (HP DIMIRINGKAN / NONTON FILM) --- */
-@media screen and (max-width: 950px) and (orientation: landscape) {
-    /* Paksa container Radar jadi lebar penuh */
-    .room {
-        padding: 10px !important;
-        margin: 5px !important;
+/* 2. SAAT HP DIMIRINGKAN (LANDSCAPE) - AUTO ROTATE FULL VIEW */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .radar-scroll {
+        overflow-x: hidden !important; /* Hilangkan scroll karena layar sudah lebar */
     }
-    
     .db-excel {
         width: 100% !important;
-        min-width: 100% !important; /* Hilangkan kewajiban scroll samping */
-        font-size: 11px; /* Kecilkan font sedikit agar Full View masuk semua */
+        min-width: 100% !important;
+        display: table !important;
+        table-layout: fixed; /* Bagi rata kolom agar pas di layar */
     }
-
     .db-excel th, .db-excel td {
-        padding: 8px 4px !important; /* Padatkan kolom */
+        font-size: 11px !important; 
+        padding: 5px 2px !important;
+        display: table-cell !important;
     }
-
-    /* Sembunyikan elemen yang tidak penting saat miring agar fokus ke tabel */
-    .room-title { font-size: 1.1rem; margin-bottom: 5px; }
-}  
+}
     </style>
 </head>
 <body>
