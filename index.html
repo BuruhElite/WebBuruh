@@ -354,6 +354,43 @@
             <div class="extra-body">Detail manajemen risiko dan aturan compounding profit Jenderal bisa dijelaskan di sini.</div>
         </div>
     </div>
+    <div id="pnp-api-container" style="margin: 20px 10px;">
+    
+    <style>
+        .pnp-card { border-left: 5px solid #ffd700; background: #111; border-radius: 4px; overflow: hidden; }
+        .pnp-header { background: #1a1a1a; padding: 15px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
+        .pnp-input-field { width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; border-radius: 4px; margin-bottom: 15px; box-sizing: border-box; }
+        .pnp-btn-submit { width: 100%; padding: 15px; background: #ffd700; color: #000; font-weight: 900; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
+    </style>
+
+    <div class="pnp-card">
+        <div class="pnp-header">
+            <span style="color: #ffd700; font-weight: bold;"><i class="fas fa-satellite-dish"></i> KONEKSI ENGINE SCALPING 24H</span>
+            <button onclick="pnpToggleGuide()" style="background: #333; border: none; color: #ffd700; cursor: pointer; padding: 5px 12px; border-radius: 4px; font-size: 10px;">PETUNJUK</button>
+        </div>
+        <div id="pnp-guide" style="display: none; padding: 15px; background: #151515; border-bottom: 1px solid #333; color: #999; font-size: 12px;">Data otomatis kirim ke Server.</div>
+        <div style="padding: 20px;">
+            <label style="color: #ffd700; font-size: 11px; display: block; margin-bottom: 5px;">ID DATABASE</label>
+            <input type="text" id="pnp-user-id" class="pnp-input-field" placeholder="ID Akun">
+            <label style="color: #ffd700; font-size: 11px; display: block; margin-bottom: 5px;">API KEY</label>
+            <input type="text" id="pnp-user-key" class="pnp-input-field" placeholder="API Key">
+            <label style="color: #ffd700; font-size: 11px; display: block; margin-bottom: 5px;">SECRET KEY</label>
+            <input type="password" id="pnp-user-secret" class="pnp-input-field" placeholder="Secret Key">
+            <button onclick="pnpExecuteSync()" class="pnp-btn-submit">HUBUNGKAN SEKARANG</button>
+        </div>
+    </div>
+
+    <script>
+        function pnpToggleGuide() {
+            const g = document.getElementById('pnp-guide');
+            g.style.display = (g.style.display === "none") ? "block" : "none";
+        }
+        function pnpExecuteSync() {
+            const id = document.getElementById('pnp-user-id').value;
+            alert('Lapor Jenderal! Akun ['+id+'] sedang disinkronisasi ke Markas Singapura.');
+        }
+    </script>
+</div>
           
     <div class="room">
         <h2 class="room-title">🛡️ JAMINAN KEAMANAN MODAL</h2>
