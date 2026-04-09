@@ -10,7 +10,10 @@
 .db-excel { width: 100%; border-collapse: collapse; font-family: 'Consolas', monospace; font-size: 12px; }
 .db-excel th { background: #1a1a1a; color: #ffd700; padding: 10px; border: 1px solid #333; position: sticky; top: 0; }
 .db-excel td { padding: 10px; border: 1px solid #333; background: #0d0d0d; text-align: center; color: #fff; }
-.db-excel td:last-child { border-right: 5px solid #ff0000; }       
+/* GARIS MERAH KHUSUS TABEL BURUH PROJEK SAJA */
+.tabel-compounding td:last-child { 
+    border-right: 5px solid #ff0000; 
+}      
 /* KALIBRASI ULANG POSISI & BENTUK GARIS BIRU */
 .pnp-signal-line::before {
     content: "";
@@ -331,7 +334,7 @@
     <h2 class="room-title">🛠️ BURUH PROJEK</h2>
         <p>Kalkulasi estimasi penggunaan modal dan lot tempur di sistem MMP V.1.0.</p>
         <div style="overflow-x: auto;">
-    <table>
+    <table class="db-excel tabel-compounding">
             <tr>
                 <th>MODAL</th>
                 <th>LOT (x20)</th>
