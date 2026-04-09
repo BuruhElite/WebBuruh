@@ -11,11 +11,22 @@
 .db-excel th { background: #1a1a1a; color: #ffd700; padding: 10px; border: 1px solid #333; position: sticky; top: 0; }
 .db-excel td { padding: 10px; border: 1px solid #333; background: #0d0d0d; text-align: center; color: #fff; }
 .db-excel td:first-child { 
-    border-left: 5px solid #007bff; 
+    position: relative; /* Kunci posisi agar garis bisa menempel */
     color: #ffd700; 
     font-weight: bold; 
-    padding-top: 0 !important;    /* MEMAKSA GARIS NAIK MENTOK */
-    padding-bottom: 0 !important; /* MEMAKSA GARIS TURUN MENTOK */
+    padding-left: 15px; /* Beri jarak teks dari garis biru */
+}
+
+/* GARIS BIRU BARU: DIPAKSA NAIK & SEJAJAR KOTAK */
+.db-excel td:first-child::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -1px;    /* NAIK MENTOK KE GARIS ATAS */
+    bottom: -1px; /* TURUN MENTOK KE GARIS BAWAH */
+    width: 5px;   /* Tebal tetap 5px sesuai aslinya */
+    background: #007bff;
+    z-index: 5;
 }
 .bg-serok { background: rgba(57, 255, 20, 0.1) !important; color: #39ff14; font-weight: bold; }
 .price-up { color: #39ff14; font-weight: bold; }
