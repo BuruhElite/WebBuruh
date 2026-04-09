@@ -224,36 +224,60 @@
         </div>
     </div>  
 <div class="room">
-   <tbody id="dynamicRadarBody">
-    <tr>
-        <td data-label="NO">1</td>
-        <td data-label="PAIR" style="color:#ffd700; font-weight:bold;">PEPE/USDT</td>
-        <td data-label="STATUS" class="bg-serok">💎 SEROK</td>
-        <td data-label="PRICE" class="price-up">0.000012</td>
-        <td data-label="24H%" class="price-up">+15.4%</td>
-        <td data-label="RATING">⭐⭐⭐⭐⭐</td>
-    </tr>
-    <tr>
-        <td data-label="NO">2</td>
-        <td data-label="PAIR" style="color:#ffd700; font-weight:bold;">DOGE/USDT</td>
-        <td data-label="STATUS" class="bg-serok">💎 SEROK</td>
-        <td data-label="PRICE">0.1654</td>
-        <td data-label="24H%">+5.2%</td>
-        <td data-label="RATING">⭐⭐⭐⭐⭐</td>
-    </tr>
-    </tr> </tbody>
-</table>
-</div> <div id="ex_radar_desc" class="extra-content">
-    <div class="extra-body" style="padding:15px; font-size:0.9em; color:#ccc;">
-        <p>Sinyal diperbarui otomatis setiap 5 detik khusus 7 pair dengan volume tertinggi.</p>
+    <h2 class="room-title">📡 TOP 7 LIVE SIGNALS</h2>
+    
+    <div style="overflow-x: auto;">
+        <table class="db-excel">
+            <thead>
+                <tr>
+                    <th>NO</th><th>PAIR</th><th>STATUS</th><th>PRICE</th><th>24H%</th><th>RATING</th>
+                </tr>
+            </thead>
+            <tbody id="dynamicRadarBody">
+                <tr>
+                    <td data-label="NO">1</td>
+                    <td data-label="PAIR" style="color:#ffd700; font-weight:bold;">PEPE/USDT</td>
+                    <td data-label="STATUS" class="bg-serok">💎 SEROK</td>
+                    <td data-label="PRICE" class="price-up">0.000012</td>
+                    <td data-label="24H%" class="price-up">+15.4%</td>
+                    <td data-label="RATING">⭐⭐⭐⭐⭐</td>
+                </tr>
+                <tr>
+                    <td data-label="NO">2</td>
+                    <td data-label="PAIR" style="color:#ffd700; font-weight:bold;">DOGE/USDT</td>
+                    <td data-label="STATUS" class="bg-serok">💎 SEROK</td>
+                    <td data-label="PRICE">0.1654</td>
+                    <td data-label="24H%">+5.2%</td>
+                    <td data-label="RATING">⭐⭐⭐⭐⭐</td>
+                </tr>
+                </tbody>
+        </table>
     </div>
-</div>
 
-<div class="btn-toggle-container">
-    <button class="btn-toggle" onclick="toggleExtra(this, 'ex_radar_desc')">
-        <i class="arrow-icon"></i>
-    </button>
-</div>
+    <div id="ex_radar_desc" class="extra-content">
+        <div class="extra-body" style="padding:15px; font-size:0.9em; color:#ccc;">
+            <p>Sinyal diperbarui otomatis setiap 5 detik khusus 7 pair dengan volume tertinggi.</p>
+        </div>
+    </div>
+
+    <div class="btn-toggle-container">
+        <button class="btn-toggle" onclick="toggleExtra(this, 'ex_radar_desc')">
+            <i class="arrow-icon"></i>
+        </button>
+    </div>
+
+</div> ```
+
+---
+
+### 🕵️ Kenapa Ini Pasti Berhasil?
+1.  **Struktur Utuh:** Ada pembuka `<div class="room">` dan ada penutup `</div>` yang jelas di akhir.
+2.  **Pemisahan Wilayah:** Dengan adanya penutup di akhir kode di atas, maka Baris 245 (**Buruh Projek**) akan berdiri sendiri di luar kotak Sinyal. 
+3.  **Visual:** Garis kuning pembungkus yang tadi Jenderal keluhkan akan hilang, dan setiap kotak akan punya garis kuningnya masing-masing secara rapi.
+
+**Saran Taktis:** Pastikan setelah Jenderal tempel kode ini, di bawahnya langsung menyambung ke `<div class="room">` milik **Buruh Projek** (Baris 245 di gambar Jenderal). 
+
+Eksekusi Jenderal! Markas harus rapi sebelum kita lanjut ke real-time data! 🫡☕🔥
 
 </div> <div class="room"> 
     <h2 class="room-title">🛠️ BURUH PROJEK</h2>
