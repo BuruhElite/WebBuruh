@@ -159,37 +159,47 @@
 
         /* --- MODE VERTIKAL ANDROID (RESPONSIVE) --- */
 @media screen and (max-width: 600px) {
-    /* 1. Sembunyikan Header Tabel agar tidak sempit */
-    .db-excel thead { display: none; }
-
-    /* 2. Ubah baris (tr) jadi kotak kartu */
-    .db-excel tr {
+    /* 1. Paksa tabel jadi blok */
+    .db-excel, .db-excel tbody, .db-excel tr, .db-excel td {
         display: block;
-        margin-bottom: 15px;
-        border: 1px solid #333;
-        border-radius: 12px;
-        background: linear-gradient(145deg, #111, #1a1a1a);
-        padding: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        width: 100%;
     }
 
-    /* 3. Buat isi data berjejer ke bawah (Stacked) */
+    /* 2. Header tabel asli dibuang */
+    .db-excel thead { display: none; }
+
+    /* 3. Tiap baris koin jadi satu Kartu Rapi */
+    .db-excel tr {
+        margin-bottom: 12px;
+        border: 1px solid #444;
+        border-radius: 8px;
+        background: #111;
+        padding: 5px 10px;
+        overflow: hidden;
+    }
+
+    /* 4. Isi data di dalam kartu dibuat berjejer (Label kiri - Data kanan) */
     .db-excel td {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 8px 5px;
-        border: none !important;
+        text-align: right;
+        padding: 6px 0;
         border-bottom: 1px solid #222 !important;
+        font-size: 13px;
     }
 
-    /* 4. Munculkan Label Nama Kolom di sebelah kiri */
+    /* Baris terakhir jangan pakai garis bawah */
+    .db-excel td:last-child { border-bottom: none !important; }
+
+    /* 5. Munculkan Nama Kolom di sebelah kiri */
     .db-excel td::before {
         content: attr(data-label);
         font-weight: bold;
         color: #ffd700;
+        text-align: left;
         font-size: 11px;
-        text-transform: uppercase;
+        flex-basis: 40%; /* Menahan label tetap di kiri */
     }
 }
     </style>
