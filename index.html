@@ -156,6 +156,42 @@
         .price-up { color: #39ff14; font-weight: bold; }
         .arrow-icon { transition: transform 0.3s; color: #ffd700; }
         .rotate { transform: rotate(180deg); }
+
+        /* --- MODE VERTIKAL ANDROID (RESPONSIVE) --- */
+@media screen and (max-width: 600px) {
+    /* 1. Sembunyikan Header Tabel agar tidak sempit */
+    .db-excel thead { display: none; }
+
+    /* 2. Ubah baris (tr) jadi kotak kartu */
+    .db-excel tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #333;
+        border-radius: 12px;
+        background: linear-gradient(145deg, #111, #1a1a1a);
+        padding: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    /* 3. Buat isi data berjejer ke bawah (Stacked) */
+    .db-excel td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 5px;
+        border: none !important;
+        border-bottom: 1px solid #222 !important;
+    }
+
+    /* 4. Munculkan Label Nama Kolom di sebelah kiri */
+    .db-excel td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #ffd700;
+        font-size: 11px;
+        text-transform: uppercase;
+    }
+}
     </style>
 </head>
 <body>
@@ -188,38 +224,24 @@
         </div>
     </div>  
 <div class="room">
-    <h2 class="room-title">📡 LIVE RADAR ENGINE (TOP 10 BEST SIGNALS)</h2>
-    
-    <div style="overflow-x: auto;">
-        <table class="db-excel">
-            <thead>
-                <tr>
-                    <th>NO</th><th>PAIR</th><th>STATUS</th><th>PRICE</th><th>24H%</th><th>RATING</th>
-                </tr>
-            </thead>
-            <tbody id="dynamicRadarBody">
-                <tr><td>1</td><td style="color:#ffd700; font-weight:bold;">PEPE/USDT</td><td class="bg-serok">💎 SEROK</td><td class="price-up">0.000012</td><td class="price-up">+15.4%</td><td>⭐⭐⭐⭐⭐</td></tr>
-                <tr><td>2</td><td style="color:#ffd700; font-weight:bold;">DOGE/USDT</td><td class="bg-serok">💎 SEROK</td><td>0.1654</td><td class="price-up">+5.2%</td><td>⭐⭐⭐⭐⭐</td></tr>
-                <tr><td>3</td><td style="color:#ffd700; font-weight:bold;">SHIB/USDT</td><td style="color:#ff3333;">WAIT</td><td>0.000024</td><td style="color:#ff3333;">-2.1%</td><td>⭐⭐⭐</td></tr>
-                </tbody>
-        </table>
-    </div>
-
-    <div id="ex_penjelasan_radar" class="extra-content">
-        <div class="extra-body" style="background: rgba(255, 215, 0, 0.05); border-top: 1px solid #333; padding: 15px; border-radius: 0 0 15px 15px;">
-            <h4 style="color:#ffd700; margin-top:0;">📖 CARA KERJA RADAR ENGINE:</h4>
-            <p style="font-size: 0.9em; color:#ccc; line-height: 1.6;">
-                Radar ini memindai lebih dari 100 pair di Binance setiap 5 detik. Sinyal <b style="color:#39ff14;">💎 SEROK</b> muncul jika indikator RSI berada di bawah 30 dan Volume mengalami lonjakan signifikan. Fokus hanya pada koin dengan Rating ⭐⭐⭐⭐⭐ untuk profit maksimal.
-            </p>
-        </div>
-    </div>
-
-    <div class="btn-toggle-container">
-        <button class="btn-toggle" onclick="toggleExtra(this, 'ex_penjelasan_radar')">
-            <i class="arrow-icon"></i>
-        </button>
-    </div>
- </div>
+   <tbody id="dynamicRadarBody">
+    <tr>
+        <td data-label="NO">1</td>
+        <td data-label="PAIR" style="color:#ffd700; font-weight:bold;">PEPE/USDT</td>
+        <td data-label="STATUS" class="bg-serok">💎 SEROK</td>
+        <td data-label="PRICE" class="price-up">0.000012</td>
+        <td data-label="24H%" class="price-up">+15.4%</td>
+        <td data-label="RATING">⭐⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td data-label="NO">2</td>
+        <td data-label="PAIR" style="color:#ffd700; font-weight:bold;">DOGE/USDT</td>
+        <td data-label="STATUS" class="bg-serok">💎 SEROK</td>
+        <td data-label="PRICE">0.1654</td>
+        <td data-label="24H%">+5.2%</td>
+        <td data-label="RATING">⭐⭐⭐⭐⭐</td>
+    </tr>
+    </tbody>
     <div class="room">
         <h2 class="room-title">📊 BURUH PROJEK</h2>
         <p>Kalkulasi estimasi penggunaan modal dan lot tempur di sistem MMP V.1.0.</p>
