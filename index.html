@@ -221,31 +221,38 @@
     
 <div class="container">
 
-    <div class="room">
-        <h2 class="room-title">💡 VISI & FILOSOFI</h2>
-        <div class="quote-box">
-            "anda BURUH tidak harus bekerja keras selama 8 atau 12 jam tanpa henti, jadilah SMART dan bergaya ELITE dengan membiarkan sistem kami bekerja 24 jam non stop untuk anda. Moto KALAH ITU SUDAH BIASA jadi kalo BISA MENANG HARUSNYA LUARRR BIASSSSA...!!!."
-        </div>
-        <div class="btn-toggle-container">
-            <button class="btn-toggle" onclick="toggleExtra(this, 'ex1')"><i class="arrow-icon"></i></button>
-        </div>
-        <div id="ex1" class="extra-content">
-            <div class="extra-body">Anda Punya akun binance..?
-Sama saya juga punya 828951739 ini id saya, follow jika anda suka.
-Anda capek lihat candel berhari hari tunggu  Momentum...? 
-Anda sudah hapal semua nama" indikator, RSi, MA, Ema BB.dll..?
-Anda sudah bosan dengar teori market trader senior...?
+    <div class="room" style="margin-bottom: 30px; width: 100%; box-sizing: border-box;">
+    
+    <div onclick="toggleFilosofi()" style="background: #1a1a1a; border: 1.5px solid #333; padding: 20px; border-radius: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; box-shadow: inset 0 0 15px rgba(0,0,0,0.5);">
+        <h2 style="margin: 0; color: #ffd700 !important; font-family: 'Oswald', sans-serif; font-size: 18px;">💡 VISI & FILOSOFI</h2>
+        <div id="drop-icon" style="color: #ffd700; transition: 0.3s; font-size: 20px;">▼</div>
+    </div>
 
-Sekarang, saatnya anda berhenti jadi buruh candel... karna waktu anda lebih berharga.
-
-Ijinkan kami membantu anda, perkenalkan " MICIN MAINNING PRO. v.1.0" Engine yang di desain khusus untuk memantau pergerakan Market koin" micin  24 jam non stop.
-Dihalaman berikutnya anda bisa pantau pergerakannya secara realtime, signal yang ditampilan adalah hasil gabungan beberapa Indikator khusus didukung Engine Microsof Exel yang sudah maximal sehingga mampu memberi informasi yang akurat  kapan anda harus Buy or Sell, Long or Shor seperti pada tabel. anda bisa gunakan signal itu untuk kegiatan trading anda free selama website ini masih ada. Lihat panduan pengunaan dibawahnya.
-Kenapa harus exel...? Karna kami lebih percaya data dari pada fakta..😄 fakta bisa berubah tapi data tidak pernah bohong.
-Kanapa harus Koin micin..? karna koin micin bergerak sangat fluktuasi dan high volatility disini ada peluang untuk memperoleh profit dengan singkat,cepat dan tepat (scalping) Engine MMP.v.1.0 kami didesain khusus untuk bisa mendekteksi peluang BUY or SELL, kapan harus Open Posisi or Close dengan akurat dan mengeksekusi pasar dengan cepat. Bukan hanya 1 tapi bisa  puluhan eksekusi pasar sekaligus dan bisa stanby 24 jam layaknya mesin tambang, tentu ini adalah sebuah peluang untuk mengumpulkan receh di dunia crypto.
-Jika anda tertarik anda bisa mengunakan Engine MMP. V.1.0 kami dan bergabung dengan anggota lainnya dihalaman berikutnya.
-.</div>
+    <div id="filosofi-content" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #111; border-radius: 0 0 12px 12px; margin-top: -5px; border: 1.5px solid #333; border-top: none;">
+        <div style="padding: 15px; text-align: center;">
+            <img src="filosofi-mmp-final.jpg" alt="Filosofi BuruhElite" style="width: 100%; max-width: 600px; border-radius: 8px; border: 1px solid #444; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+            
+            <p style="color: #555; font-size: 11px; margin-top: 10px; font-family: 'Consolas', monospace;">
+                *MMP V1.0 - Data Driven Trading Philosophy*
+            </p>
         </div>
-    </div>  
+    </div>
+</div>
+
+<script>
+function toggleFilosofi() {
+    const content = document.getElementById('filosofi-content');
+    const icon = document.getElementById('drop-icon');
+    
+    if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
+        content.style.maxHeight = "1500px"; // Membuka
+        icon.style.transform = "rotate(180deg)"; // Panah balik ke atas
+    } else {
+        content.style.maxHeight = "0px"; // Menutup
+        icon.style.transform = "rotate(0deg)"; // Panah balik ke bawah
+    }
+}
+</script> 
 <div class="room">
     <h2 class="room-title">📡 TOP 7 LIVE SIGNALS</h2>
     <div class="rotate-hint">
