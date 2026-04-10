@@ -506,105 +506,190 @@
     </script>
 </div>
               
-  <div class="room" style="margin-bottom: 30px;">
+  <div id="pnp-master-console" style="margin: 25px 0px; width: 100%; box-sizing: border-box;">
     
-    <div class="live-feed-master-card" style="background: #111; border: 1.5px solid #333; padding: 25px; border-radius: 12px; transition: 0.3s; position: relative; box-sizing: border-box;">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto+Condensed:wght@400;700&display=swap');
+
+        /* --- STYLE UNIT BINANCE (ATAS) --- */
+        .pnp-v33-card { 
+            background: #111; border-radius: 12px; padding: 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            border: 1.5px solid #333; transition: all 0.3s ease;
+            position: relative; overflow: hidden; width: 100%; box-sizing: border-box;
+            font-family: 'Roboto Condensed', sans-serif; margin-bottom: 50px;
+        }
+        .pnp-v33-card:hover, .pnp-v33-card:focus-within {
+            border-color: #ffd700 !important; box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+        .pnp-v33-title {
+            color: #ffd700; font-family: 'Oswald', sans-serif !important;
+            font-weight: 700 !important; font-size: 21px !important; 
+            text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 12px;
+        }
+        .input-section-v33 { position: relative; padding-left: 20px; text-align: left; }
+        .input-section-v33::before {
+            content: ""; position: absolute; left: 5px; top: 5px; bottom: 85px; 
+            width: 3px; background: #ffd700; border-radius: 10px;
+        }
+        .v33-input { 
+            background: #000; border: 1px solid #333; color: #fff; border-radius: 8px; 
+            margin-bottom: 20px; padding: 15px; font-size: 15px; width: 100%; box-sizing: border-box;
+        }
+        .pnp-v33-btn { 
+            width: 100%; padding: 20px; background: #ffd700; color: #000; 
+            font-weight: 900; border: none; border-radius: 8px; cursor: pointer; 
+            text-transform: uppercase; font-size: 16px; font-family: 'Oswald', sans-serif;
+        }
+
+        /* --- STYLE LIVE FEED (BAWAH) --- */
+        .live-feed-master-card {
+            background: #111; border: 1.5px solid #333; padding: 25px; 
+            border-radius: 12px; transition: 0.3s; position: relative; box-sizing: border-box;
+        }
+        .live-feed-master-card:hover { border-color: #ffd700 !important; box-shadow: 0 0 20px rgba(255, 215, 0, 0.15); }
         
-        <h2 class="room-title" style="margin-bottom: 5px; color: #fff; font-family: 'Oswald', sans-serif;">🛰️ LIVE FEED <span class="cmd-status-led"></span></h2>
-        <p style="color: #ffd700; font-family: 'Consolas', monospace; font-weight: bold; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px;">
-            [ EKSEKUSI ENGINE MMP V1.0 REAL TIME ]
-        </p>
+        /* --- FITUR KUNCI: THEATER KOIN RESPONSIVE --- */
+        #coin-theater {
+            background: #050505; padding: 15px; border-radius: 6px; 
+            display: grid; gap: 10px; margin-bottom: 20px; border: 1px solid #1a1a1a;
+            /* Default Desktop: Banyak Kolom */
+            grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+        }
 
-        <div id="coin-theater" style="background: #050505; padding: 15px; border-radius: 6px; display: grid; grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 10px; margin-bottom: 20px; border: 1px solid #1a1a1a;">
-            </div>
+        /* --- MEDIA QUERY KHUSUS ANDROID/HP (< 600px) --- */
+        @media only screen and (max-width: 600px) {
+            #coin-theater {
+                /* HP: Paksa JADI 2 KOTAK PER BARIS */
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            .pnp-v33-title { font-size: 18px !important; }
+            .v33-input { padding: 12px; font-size: 14px; }
+        }
 
-        <div style="background: #050505; padding: 20px; border-radius: 6px; border: 1px solid #1a1a1a; overflow-x: auto; -webkit-overflow-scrolling: touch;">
-            <div style="min-width: 580px; position: relative; padding-right: 15px; border-right: 4px solid #bf00ff !important; box-shadow: 4px 0 15px rgba(191, 0, 255, 0.1);">
-                
-                <div style="color: #39ff14; border-bottom: 1px dashed #222; padding-bottom: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: bold; font-size: 13px; font-family: 'Consolas', monospace;">
-                    <span style="width: 25%;">BINANCE_ID</span>
-                    <span style="width: 15%; text-align: center;">START</span>
-                    <span style="width: 20%; text-align: center;">GROWTH</span>
-                    <span style="width: 20%; text-align: center;">STATUS</span>
-                    <span style="width: 20%; text-align: right;">ENGINE</span>
-                </div>
+        /* --- ANIMASI CMD --- */
+        .cmd-status-led { display: inline-block; width: 10px; height: 10px; background: #39ff14; border-radius: 50%; box-shadow: 0 0 10px #39ff14; animation: cmd_led_pulse 2s infinite; vertical-align: middle; margin-left: 8px;}
+        @keyframes cmd_led_pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .cmd-cursor { display: inline-block; width: 8px; height: 14px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle; }
+        @keyframes cmd_blink { 50% { opacity: 0; } }
+        .info-content { display: none; background: #0a0a0a; border: 1px solid #222; padding: 20px; border-radius: 8px; margin-top: 5px; color: #ccc; font-size: 13px; line-height: 1.6;}
+    </style>
 
-                <div id="cmd-ledger-rows" style="font-family: 'Consolas', monospace; font-size: 13px; font-weight: bold;">
-                    </div>
-            </div>
+    <div class="pnp-v33-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px;">
+            <span class="pnp-v33-title"><i class="fa-solid fa-key"></i> KONEKSI ENGINE BINANCE</span>
+            <button onclick="pnpToggleV33('hint-binance')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">
+                PETUNJUK <i class="fas fa-chevron-down"></i>
+            </button>
         </div>
-        
-        <div style="margin-top: 15px; padding: 0 5px; display: flex; justify-content: space-between; font-size: 12px; font-family: 'Consolas', monospace; color: #555;">
-            <div>root@mmp_v1.0:~# <span id="user-total" style="color:#fff;">0</span> Users Connected</div>
-            <div>Executed: <span id="total-trades" style="color: #ffd700;">64</span> | Status: <span style="color: #39ff14;">OPTIMAL <span class="cmd-cursor"></span></span></div>
+        <div id="hint-binance" class="info-content">
+            <i class="fas fa-info-circle" style="color:#ffd700;"></i> SINKRONISASI: Masukkan API & Secret Key dengan izin Trade aktif.
+        </div>
+        <div class="input-section-v33">
+            <label style="display: block; color: #ffd700; font-size: 11px; margin-bottom: 8px; font-weight: bold;">IDENTITAS USER (ID NUMBER)</label>
+            <input type="text" class="v33-input" style="width:40%" placeholder="ID: 0001">
+            <label style="display: block; color: #ffd700; font-size: 11px; margin-bottom: 8px; font-weight: bold;">BINANCE API KEY</label>
+            <input type="text" class="v33-input" placeholder="Masukkan API Key Binance Jenderal...">
+            <label style="display: block; color: #ffd700; font-size: 11px; margin-bottom: 8px; font-weight: bold;">BINANCE SECRET KEY</label>
+            <input type="password" class="v33-input" placeholder="Masukkan Secret Key Binance Jenderal...">
+            <button class="pnp-v33-btn">AKTIFKAN SCALPING 24H</button>
         </div>
     </div>
+
+    <div class="room" style="margin-bottom: 30px;">
+        <div class="live-feed-master-card">
+            <h2 class="room-title" style="margin-bottom: 5px; color: #fff; font-family: 'Oswald', sans-serif;">🛰️ LIVE FEED <span class="cmd-status-led"></span></h2>
+            <p style="color: #ffd700; font-family: 'Consolas', monospace; font-weight: bold; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px;">
+                [ EKSEKUSI ENGINE MMP V1.0 REAL TIME ]
+            </p>
+
+            <div id="coin-theater">
+                </div>
+
+            <div style="background: #050505; padding: 20px; border-radius: 6px; border: 1px solid #1a1a1a; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                <div style="min-width: 580px; position: relative; padding-right: 15px; border-right: 4px solid #bf00ff !important; box-shadow: 4px 0 15px rgba(191, 0, 255, 0.1);">
+                    <div style="color: #39ff14; border-bottom: 1px dashed #222; padding-bottom: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: bold; font-size: 13px; font-family: 'Consolas', monospace;">
+                        <span style="width: 25%;">BINANCE_ID</span>
+                        <span style="width: 15%; text-align: center;">START</span>
+                        <span style="width: 20%; text-align: center;">GROWTH</span>
+                        <span style="width: 20%; text-align: center;">STATUS</span>
+                        <span style="width: 20%; text-align: right;">ENGINE</span>
+                    </div>
+                    <div id="cmd-ledger-rows" style="font-family: 'Consolas', monospace; font-size: 13px; font-weight: bold;">
+                        </div>
+                </div>
+            </div>
+            <div style="margin-top: 15px; padding: 0 5px; display: flex; justify-content: space-between; font-size: 12px; font-family: 'Consolas', monospace; color: #555;">
+                <div>root@mmp_v1.0:~# <span id="user-total" style="color:#fff;">0</span> Users Connected</div>
+                <div>Executed: <span id="total-trades" style="color: #ffd700;">64</span> | Status: <span style="color: #39ff14;">OPTIMAL <span class="cmd-cursor"></span></span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi Dropdown (All-in-One)
+        function pnpToggleV33(id) {
+            var e = document.getElementById(id);
+            e.style.display = (e.style.display === "block") ? "none" : "block";
+        }
+
+        // Data & Logic Master (Theater & CMD)
+        const dailyPairs = [
+            { coin: "PEPE/USDT", pnl: +1.35 }, { coin: "SHIB/USDT", pnl: -0.20 },
+            { coin: "DOGE/USDT", pnl: +2.20 }, { coin: "BONK/USDT", pnl: +0.87 },
+            { coin: "FLOKI/USDT", pnl: +0.43 }, { coin: "WIF/USDT", pnl: -0.24 },
+            { coin: "LUNC/USDT", pnl: +1.75 }, { coin: "BOME/USDT", pnl: +0.87 },
+            { coin: "MEME/USDT", pnl: +1.16 }, { coin: "RATS/USDT", pnl: +2.38 }
+        ];
+        const ledgerUsers = [
+            { id: "828951739 [★]", start: 10.00, growth: 16.39, stat: "RUNNING" },
+            { id: "104738291", start: 100.00, growth: 112.49, stat: "WAIT" },
+            { id: "572910384 [★]", start: 20.00, growth: 29.35, stat: "RUNNING" },
+            { id: "938271045 [★]", start: 500.00, growth: 508.93, stat: "RUNNING" },
+            { id: "112233445", start: 10.00, growth: 10.00, stat: "PENDING" }
+        ];
+
+        function runMasterConsole() {
+            // Theater Market (Sesuai Pesanan: Kotak Lebih Menonjol)
+            const theaterGrid = document.getElementById('coin-theater');
+            if(theaterGrid) {
+                theaterGrid.innerHTML = "";
+                dailyPairs.forEach(p => {
+                    let pnl = (parseFloat(p.pnl) + (Math.random() * 0.04 - 0.02)).toFixed(2);
+                    let col = pnl >= 0 ? "#39ff14" : "#ff0033";
+                    const box = document.createElement('div');
+                    // KOTAK LEBIH MENONJOL (Background Lebih Muda, Font Lebih Besar)
+                    box.style.cssText = "background:#111; padding: 15px; border:1px solid #333; text-align:center; border-radius:6px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);";
+                    box.innerHTML = `<div style="font-size:12px; color:#fff; font-weight:bold; margin-bottom:5px;">${p.coin}</div><div style="color:${col}; font-weight:bold; font-size:16px;">${pnl >= 0 ? '+' : ''}${pnl}%</div>`;
+                    theaterGrid.appendChild(box);
+                });
+            }
+            // Tabel CMD (Matrix Style)
+            const tableBody = document.getElementById('cmd-ledger-rows');
+            if(tableBody) {
+                tableBody.innerHTML = "";
+                document.getElementById('user-total').innerText = ledgerUsers.length;
+                ledgerUsers.forEach(u => {
+                    let active = u.stat === "RUNNING";
+                    let rowColor = active ? "#39ff14" : "#ffffff";
+                    let engineText = active ? "RUNNING" : "WAIT";
+                    const row = document.createElement('div');
+                    row.style.cssText = `display:flex; justify-content:space-between; color:${rowColor}; padding: 12px 0; border-bottom: 1px solid #0a0a0a;`;
+                    row.innerHTML = `
+                        <span style="width:25%;">${u.id}</span>
+                        <span style="width:15%; text-align:center;">$${u.start.toFixed(0)}</span>
+                        <span style="width:20%; text-align:center;">$${u.growth.toFixed(2)}</span>
+                        <span style="width:20%; text-align:center;">${active ? '● ACTIVE' : '○ WAIT'}</span>
+                        <span style="width:20%; text-align:right;">${engineText}</span>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+        }
+        setInterval(runMasterConsole, 3000);
+        runMasterConsole();
+    </script>
 </div>
-
-<style>
-    /* HOVER BINGKAI LUAR SAJA */
-    .live-feed-master-card:hover { border-color: #ffd700 !important; box-shadow: 0 0 20px rgba(255, 215, 0, 0.15); }
-    .cmd-status-led { display: inline-block; width: 10px; height: 10px; background: #39ff14; border-radius: 50%; box-shadow: 0 0 10px #39ff14; animation: cmd_led_pulse 2s infinite; vertical-align: middle; margin-left: 8px;}
-    @keyframes cmd_led_pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-    .cmd-cursor { display: inline-block; width: 8px; height: 14px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle; }
-    @keyframes cmd_blink { 50% { opacity: 0; } }
-</style>
-
-<script>
-    const dailyPairs = [
-        { coin: "PEPE/USDT", pnl: +1.35 }, { coin: "SHIB/USDT", pnl: -0.20 },
-        { coin: "DOGE/USDT", pnl: +2.20 }, { coin: "BONK/USDT", pnl: +0.87 },
-        { coin: "FLOKI/USDT", pnl: +0.43 }, { coin: "WIF/USDT", pnl: -0.24 },
-        { coin: "LUNC/USDT", pnl: +1.75 }, { coin: "BOME/USDT", pnl: +0.87 },
-        { coin: "MEME/USDT", pnl: +1.16 }, { coin: "RATS/USDT", pnl: +2.38 }
-    ];
-
-    const ledgerUsers = [
-        { id: "828951739 [★]", start: 10.00, growth: 16.39, stat: "RUNNING" },
-        { id: "104738291", start: 100.00, growth: 112.49, stat: "WAIT" },
-        { id: "572910384 [★]", start: 20.00, growth: 29.35, stat: "RUNNING" },
-        { id: "938271045 [★]", start: 500.00, growth: 508.93, stat: "RUNNING" },
-        { id: "112233445", start: 10.00, growth: 10.00, stat: "PENDING" }
-    ];
-
-    function runMasterProcess() {
-        const theaterGrid = document.getElementById('coin-theater');
-        if(theaterGrid) {
-            theaterGrid.innerHTML = "";
-            dailyPairs.forEach(p => {
-                let pnl = (parseFloat(p.pnl) + (Math.random() * 0.04 - 0.02)).toFixed(2);
-                let col = pnl >= 0 ? "#39ff14" : "#ff0033";
-                const box = document.createElement('div');
-                box.style.cssText = "background:#000; padding: 10px; border:1px solid #1a1a1a; text-align:center; border-radius:4px;";
-                box.innerHTML = `<div style="font-size:10px; color:#fff;">${p.coin}</div><div style="color:${col}; font-weight:bold; font-size:12px;">${pnl >= 0 ? '+' : ''}${pnl}%</div>`;
-                theaterGrid.appendChild(box);
-            });
-        }
-        const tableBody = document.getElementById('cmd-ledger-rows');
-        if(tableBody) {
-            tableBody.innerHTML = "";
-            document.getElementById('user-total').innerText = ledgerUsers.length;
-            ledgerUsers.forEach(u => {
-                let active = u.stat === "RUNNING";
-                let rowColor = active ? "#39ff14" : "#ffffff";
-                let engineText = active ? "RUNNING" : "WAIT";
-                const row = document.createElement('div');
-                row.style.cssText = `display:flex; justify-content:space-between; color:${rowColor}; padding: 12px 0; border-bottom: 1px solid #0a0a0a;`;
-                row.innerHTML = `
-                    <span style="width:25%;">${u.id}</span>
-                    <span style="width:15%; text-align:center;">$${u.start.toFixed(0)}</span>
-                    <span style="width:20%; text-align:center;">$${u.growth.toFixed(2)}</span>
-                    <span style="width:20%; text-align:center;">${active ? '● ACTIVE' : '○ WAIT'}</span>
-                    <span style="width:20%; text-align:right;">${engineText}</span>
-                `;
-                tableBody.appendChild(row);
-            });
-        }
-    }
-    setInterval(runMasterProcess, 3000);
-    runMasterProcess();
-</script>
-
     <div class="room">
         <h2 class="room-title">🌐 EKOSISTEM MASA DEPAN</h2>
         <p>Ruangan cadangan untuk rencana pengembangan fitur-fitur baru di masa depan.</p>
