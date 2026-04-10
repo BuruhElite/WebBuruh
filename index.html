@@ -495,78 +495,100 @@
             
    <div class="room">
     <h2 class="room-title">🛡️ JAMINAN KEAMANAN MODAL</h2>
-    <p>Live Scalping Monitor: Melihat Engine MMP V1.0 menghajar market secara real-time.</p>
+    <p>Cari Binance ID Anda untuk memantau status akun dan perkembangan saldo secara real-time.</p>
 
-    <div style="background: #000; border: 1px solid #333; padding: 15px; font-family: 'Consolas', monospace; font-size: 11px; color: #fff; border-radius: 6px; margin-bottom: 15px; line-height: 1.5;">
+    <div style="background: #000; border: 1px solid #333; padding: 15px; font-family: 'Consolas', monospace; font-size: 10px; color: #fff; border-radius: 6px; margin-bottom: 15px; line-height: 1.5;">
         
-        <div style="color: #39ff14; border-bottom: 1px dashed #39ff14; padding-bottom: 5px; margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: bold;">
-            <span style="width: 20%; text-align: left;">BINANCE_ID</span>
-            <span style="width: 15%;">LIVE_BAL</span>
-            <span style="width: 30%; text-align: center;">TRADE_AKTIF (10 PAIR)</span>
-            <span style="width: 15%; text-align: center;">PNL_%</span>
-            <span style="width: 20%; text-align: right;">ENGINE</span>
+        <div style="color: #39ff14; border-bottom: 1px dashed #39ff14; padding-bottom: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: bold;">
+            <span style="width: 18%; text-align: left;">BINANCE_ID</span>
+            <span style="width: 12%; text-align: center;">START</span>
+            <span style="width: 15%; text-align: center;">GROWTH_BAL</span>
+            <span style="width: 15%; text-align: center;">STATUS</span>
+            <span style="width: 25%; text-align: center;">LIVE_TRADE</span>
+            <span style="width: 15%; text-align: right;">PNL_ACT</span>
         </div>
 
-        <div id="cmd-table-rows" style="max-height: 280px; overflow-y: auto;">
+        <div id="cmd-ledger-rows" style="max-height: 300px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #333 #000;">
             </div>
         
-        <div style="margin-top: 15px; border-top: 1px dashed #333; padding-top: 5px; color: #555; font-size: 10px;">
-            <span style="color: #39ff14;">root@mmp_v1.0:~# </span>Status: <span style="color: #39ff14;">SCA_ACTIVE</span> | Latency: 12ms <span style="display: inline-block; width: 8px; height: 13px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle;"></span>
+        <div style="margin-top: 15px; border-top: 1px dashed #333; padding-top: 5px; color: #555; font-size: 10px; display: flex; justify-content: space-between;">
+            <div>
+                <span style="color: #39ff14;">root@mmp_v1.0:~# </span>
+                <span id="user-total">0</span> Users | 
+                Executed: <span id="total-trades" style="color: #ffd700; font-weight: bold;">12,450</span>
+            </div>
+            <div>
+                Engine: <span style="color: #39ff14;">OPTIMAL</span> 
+                <span style="display: inline-block; width: 7px; height: 12px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle;"></span>
+            </div>
         </div>
     </div>
 </div>
 
+<style>
+    @keyframes cmd_blink { 50% { opacity: 0; } }
+    #cmd-ledger-rows::-webkit-scrollbar { width: 5px; }
+    #cmd-ledger-rows::-webkit-scrollbar-thumb { background: #333; }
+</style>
+
 <script>
     const coinPool = ["PEPE", "SHIB", "DOGE", "BONK", "FLOKI", "WIF", "LUNC", "BOME", "MEME", "RATS"];
+    let totalExecuted = 12450; 
     
-    // DATA SIMULASI (Bisa Jenderal tambah sampai 100 ID)
-    const users = [
-        { id: "828951739", bal: 15.64, stat: "RUNNING" },
-        { id: "104738291", bal: 112.49, stat: "WAIT" },
-        { id: "572910384", bal: 28.44, stat: "RUNNING" },
-        { id: "938271045", bal: 508.12, stat: "RUNNING" },
-        { id: "112233445", bal: 10.00, stat: "WAIT" }
+    // DATABASE USER: Tambah [★] untuk bikin ID jadi Kuning Emas
+    const ledgerUsers = [
+        { id: "828951739 [★]", start: 10.00, growth: 16.39, stat: "RUNNING" },
+        { id: "104738291", start: 100.00, growth: 112.49, stat: "WAIT/CONFIRM" },
+        { id: "572910384 [★]", start: 20.00, growth: 29.35, stat: "RUNNING" },
+        { id: "938271045 [★]", start: 500.00, growth: 508.93, stat: "RUNNING" },
+        { id: "112233445", start: 10.00, growth: 10.00, stat: "PENDING_ADMIN" },
+        { id: "667788990 [★]", start: 50.00, growth: 58.12, stat: "RUNNING" }
     ];
 
-    function updateMonitor() {
-        const tableBody = document.getElementById('cmd-table-rows');
+    function updateLedger() {
+        const tableBody = document.getElementById('cmd-ledger-rows');
+        const tradeDisp = document.getElementById('total-trades');
+        const userCount = document.getElementById('user-total');
         if(!tableBody) return;
+        
         tableBody.innerHTML = "";
+        userCount.innerText = ledgerUsers.length;
 
-        users.forEach(u => {
+        // Simulasi Counter Trade Bertambah
+        totalExecuted += Math.floor(Math.random() * 3); 
+        tradeDisp.innerText = totalExecuted.toLocaleString();
+
+        ledgerUsers.forEach(u => {
             let active = u.stat === "RUNNING";
-            let rowColor = active ? "#39ff14" : "#ffffff";
+            let isVIP = u.id.includes("[★]");
+            let mainColor = active ? "#39ff14" : "#ffffff";
             
-            // Logika Sisi Kanan (Trade & PNL)
             let coin = active ? coinPool[Math.floor(Math.random() * coinPool.length)] + "/USDT" : "---";
-            let pnlVal = (Math.random() * 3.2 - 0.8).toFixed(2); // Bisa Minus atau Plus
-            let pnlColor = pnlVal >= 0 ? "#39ff14" : "#ff0033"; // Hijau jika plus, Merah jika minus
-            
-            // Update Saldo simulasi
-            if(active) u.bal = (parseFloat(u.bal) + (Math.random() * 0.03)).toFixed(2);
+            let pnl = (Math.random() * 2.8 - 0.5).toFixed(2); 
+            let pnlColor = pnl >= 0 ? "#39ff14" : "#ff0033";
 
             const row = document.createElement('div');
             row.style.display = "flex";
             row.style.justifyContent = "space-between";
             row.style.marginBottom = "8px";
-            row.style.color = rowColor;
+            row.style.color = mainColor;
 
             row.innerHTML = `
-                <span style="width: 20%; text-align: left;">${u.id}</span>
-                <span style="width: 15%;">$${u.bal}</span>
-                <span style="width: 30%; text-align: center; color: #fff;">[ ${coin} ]</span>
-                <span style="width: 15%; text-align: center; color: ${active ? pnlColor : '#fff'}; font-weight: bold;">
-                    ${active ? (pnlVal >= 0 ? "+" : "") + pnlVal + "%" : "0.00%"}
+                <span style="width: 18%; text-align: left; ${isVIP ? 'color:#ffd700;' : ''}">${u.id}</span>
+                <span style="width: 12%; text-align: center;">$${u.start.toFixed(2)}</span>
+                <span style="width: 15%; text-align: center;">$${u.growth.toFixed(2)}</span>
+                <span style="width: 15%; text-align: center;">${active ? '● ACTIVE' : '○ ' + u.stat}</span>
+                <span style="width: 25%; text-align: center; color: ${active ? '#fff' : mainColor};">[ ${coin} ]</span>
+                <span style="width: 15%; text-align: right; color: ${active ? pnlColor : mainColor}; font-weight: bold;">
+                    ${active ? (pnl >= 0 ? "+" : "") + pnl + "%" : "0.00%"}
                 </span>
-                <span style="width: 20%; text-align: right;">${active ? '● RUNNING' : '○ PENDING'}</span>
             `;
             tableBody.appendChild(row);
         });
     }
 
-    // Refresh cepat biar koin dan PNL ganti-ganti (Visual Real-Time)
-    setInterval(updateMonitor, 2000);
-    updateMonitor();
+    setInterval(updateLedger, 2000);
+    updateLedger();
 </script>
     
     <div class="room">
