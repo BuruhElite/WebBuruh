@@ -221,38 +221,51 @@
     
 <div class="container">
 
-    <div class="room" style="margin-bottom: 30px; width: 100%; box-sizing: border-box;">
+    <div class="room" style="margin-bottom: 30px; width: 100%;">
+    <h2 class="room-title" style="color: #ffd700 !important; font-family: 'Oswald', sans-serif;">💡 VISI & FILOSOFI</h2>
     
-    <div onclick="toggleFilosofi()" style="background: #1a1a1a; border: 1.5px solid #333; padding: 20px; border-radius: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; box-shadow: inset 0 0 15px rgba(0,0,0,0.5);">
-        <h2 style="margin: 0; color: #ffd700 !important; font-family: 'Oswald', sans-serif; font-size: 18px;">💡 VISI & FILOSOFI</h2>
-        <div id="drop-icon" style="color: #ffd700; transition: 0.3s; font-size: 20px;">▼</div>
+    <div class="quote-box" style="background: rgba(0, 255, 0, 0.1); border-left: 5px solid #39ff14; padding: 15px; color: #39ff14; font-family: 'Consolas', monospace; font-style: italic; font-size: 13px; margin-bottom: 15px;">
+        "anda BURUH tidak harus bekerja keras selama 8 atau 12 jam tanpa hentii, jadilah SMART dan bergaya ELITE dengan membiarkan sistem kami bekerja 24 jam non stop untuk anda. Moto KALAH ITU SUDAH BIASA jadi kalo BISA MENANG HARUSNYA LUARRR BIASSSSA...!!!."
     </div>
 
-    <div id="filosofi-content" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #111; border-radius: 0 0 12px 12px; margin-top: -5px; border: 1.5px solid #333; border-top: none;">
-        <div style="padding: 15px; text-align: center;">
-            <img src="filosofi-mmp-final.jpg" alt="Filosofi BuruhElite" style="width: 100%; max-width: 600px; border-radius: 8px; border: 1px solid #444; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+    <div class="btn-toggle-container" style="text-align: center;">
+        <button class="btn-toggle" onclick="toggleExtra(this, 'ex1')" style="background: #ffd700; border: none; border-radius: 50%; width: 35px; height: 35px; cursor: pointer; transition: 0.3s;">
+            <i class="arrow-icon" style="border: solid black; border-width: 0 3px 3px 0; display: inline-block; padding: 3px; transform: rotate(45deg);"></i>
+        </button>
+    </div>
+
+    <div id="ex1" class="extra-content" style="max-height: 0; overflow: hidden; transition: 0.5s ease-out;">
+        <div class="extra-body" style="padding: 20px 0; text-align: center;">
             
-            <p style="color: #555; font-size: 11px; margin-top: 10px; font-family: 'Consolas', monospace;">
-                *MMP V1.0 - Data Driven Trading Philosophy*
+            <img src="filosofi-mmp.jpg" alt="Informasi MMP V1.0" style="width: 100%; max-width: 600px; border-radius: 12px; border: 2px solid #333; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+            
+            <p style="color: #555; font-size: 10px; margin-top: 10px; font-family: 'Consolas', monospace;">
+                *MMP V1.0 ENGINE PHILOSOPHY*
             </p>
         </div>
     </div>
 </div>
 
+<style>
+    /* Animasi putar panah saat diklik */
+    .btn-toggle.active i {
+        transform: rotate(-135deg) !important;
+        margin-top: 5px;
+    }
+</style>
+
 <script>
-function toggleFilosofi() {
-    const content = document.getElementById('filosofi-content');
-    const icon = document.getElementById('drop-icon');
+function toggleExtra(btn, id) {
+    const content = document.getElementById(id);
+    btn.classList.toggle('active');
     
     if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
-        content.style.maxHeight = "1500px"; // Membuka
-        icon.style.transform = "rotate(180deg)"; // Panah balik ke atas
+        content.style.maxHeight = "1500px"; // Membuka (sesuaikan dengan tinggi gambar)
     } else {
         content.style.maxHeight = "0px"; // Menutup
-        icon.style.transform = "rotate(0deg)"; // Panah balik ke bawah
     }
 }
-</script> 
+</script>
 <div class="room">
     <h2 class="room-title">📡 TOP 7 LIVE SIGNALS</h2>
     <div class="rotate-hint">
