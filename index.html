@@ -506,14 +506,17 @@
     </script>
 </div>
               
-  <div class="room" style="margin-bottom: 25px;">
+  <div class="room" style="margin-bottom: 30px;">
     
-    <div class="live-feed-card-v33" style="background: #111; border: 1.5px solid #333; padding: 25px; border-radius: 12px; transition: 0.3s; position: relative;">
+    <div class="live-feed-main-container" style="background: #111; border: 1.5px solid #333; padding: 25px; border-radius: 12px; transition: 0.3s; position: relative;">
         
         <h2 class="room-title" style="margin-bottom: 5px; color: #fff; font-family: 'Oswald', sans-serif;">🛰️ LIVE FEED <span class="cmd-status-led"></span></h2>
         <p style="color: #ffd700; font-family: 'Consolas', monospace; font-weight: bold; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px;">
             [ EKSEKUSI ENGINE MMP V1.0 REAL TIME ]
         </p>
+
+        <div id="coin-theater" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-bottom: 30px;">
+            </div>
 
         <div style="overflow-x: auto;">
             <div style="min-width: 580px; position: relative; padding-right: 15px; border-right: 4px solid #bf00ff !important; box-shadow: 4px 0 10px rgba(191, 0, 255, 0.2);">
@@ -539,11 +542,7 @@
 </div>
 
 <style>
-    /* HOVER: BINGKAI LUAR JADI KUNING */
-    .live-feed-card-v33:hover {
-        border-color: #ffd700 !important;
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-    }
+    .live-feed-main-container:hover { border-color: #ffd700 !important; box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
     .cmd-status-led { display: inline-block; width: 10px; height: 10px; background: #39ff14; border-radius: 50%; box-shadow: 0 0 10px #39ff14; animation: cmd_led_pulse 2s infinite; vertical-align: middle; margin-left: 8px;}
     @keyframes cmd_led_pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     .cmd-cursor { display: inline-block; width: 8px; height: 14px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle; }
@@ -551,6 +550,14 @@
 </style>
 
 <script>
+    const dailyPairs = [
+        { coin: "PEPE/USDT", pnl: +1.39 }, { coin: "SHIB/USDT", pnl: -0.17 },
+        { coin: "DOGE/USDT", pnl: +2.15 }, { coin: "BONK/USDT", pnl: +0.91 },
+        { coin: "FLOKI/USDT", pnl: +0.43 }, { coin: "WIF/USDT", pnl: -0.22 },
+        { coin: "LUNC/USDT", pnl: +1.76 }, { coin: "BOME/USDT", pnl: +0.87 },
+        { coin: "MEME/USDT", pnl: +1.12 }, { coin: "RATS/USDT", pnl: +2.40 }
+    ];
+
     const ledgerUsers = [
         { id: "828951739 [★]", start: 10.00, growth: 16.39, stat: "RUNNING" },
         { id: "104738291", start: 100.00, growth: 112.49, stat: "WAIT" },
@@ -560,6 +567,20 @@
     ];
 
     function runMasterProcess() {
+        // UPDATE THEATER KOIN
+        const theaterGrid = document.getElementById('coin-theater');
+        if(theaterGrid) {
+            theaterGrid.innerHTML = "";
+            dailyPairs.forEach(p => {
+                let pnl = (parseFloat(p.pnl) + (Math.random() * 0.1 - 0.05)).toFixed(2);
+                let col = pnl >= 0 ? "#39ff14" : "#ff0033";
+                const box = document.createElement('div');
+                box.style.cssText = "background:#1a1a1a; padding: 10px; border:1px solid #333; text-align:center; border-radius:4px;";
+                box.innerHTML = `<div style="font-size:11px; color:#fff; font-weight:bold;">${p.coin}</div><div style="color:${col}; font-weight:bold; font-size:13px;">${pnl >= 0 ? '+' : ''}${pnl}%</div>`;
+                theaterGrid.appendChild(box);
+            });
+        }
+        // UPDATE TABEL CMD
         const tableBody = document.getElementById('cmd-ledger-rows');
         if(tableBody) {
             tableBody.innerHTML = "";
@@ -568,7 +589,6 @@
                 let active = u.stat === "RUNNING";
                 let rowColor = active ? "#39ff14" : "#ffffff";
                 let engineText = active ? "RUNNING" : (u.stat === "WAIT" || u.stat === "PENDING" ? "WAIT" : "-");
-
                 const row = document.createElement('div');
                 row.style.cssText = `display:flex; justify-content:space-between; color:${rowColor}; padding: 12px 0; border-bottom: 1px solid #1a1a1a;`;
                 row.innerHTML = `
@@ -582,6 +602,7 @@
             });
         }
     }
+    setInterval(runMasterProcess, 3000);
     runMasterProcess();
 </script>
 
