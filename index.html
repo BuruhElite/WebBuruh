@@ -506,23 +506,20 @@
     </script>
 </div>
               
-  <div class="room">
-    <h2 class="room-title">🛰️ LIVE FEED <span class="signal-icon"></span></h2>
-    <p style="font-size: 11px; margin-bottom: 12px;">Transparansi aktivitas eksekusi Engine MMP V1.0 secara real-time.</p>
+  <div class="room" style="margin-bottom: 25px;">
+    <h2 class="room-title">🛸 LIVE FEED <span class="cmd-status-led"></span></h2>
+    <p style="color: #888; font-size: 13px; margin-bottom: 15px;">Monitoring Engine MMP V1.0 Secara Real-Time.</p>
 
-    <div style="background: #000; border: 1px solid #333 !important; padding: 20px; border-radius: 6px; box-sizing: border-box; line-height: 1.5; margin-bottom: 20px;">
+    <div style="background: #000; border: 1px solid #bf00ff !important; padding: 15px; border-radius: 8px; box-shadow: 0 0 20px rgba(191, 0, 255, 0.2);">
         
-        <div id="container-theater" style="border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 15px; display: none;">
-            <div style="color: #ffd700; margin-bottom: 10px; font-weight: bold; font-size: 12px;">
-                📡 MARKET EXECUTION: <span id="pair-count">0</span> PAIR ACTIVE
-            </div>
-            <div id="coin-theater" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px;">
+        <div id="container-theater" style="border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px;">
+            <div id="coin-theater" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px;">
                 </div>
         </div>
 
         <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
-            <div style="min-width: 520px;">
-                <div style="color: #39ff14; border-bottom: 1px dashed #333; padding-bottom: 8px; margin-bottom: 8px; display: flex; justify-content: space-between; font-weight: bold; font-size: 11px;">
+            <div style="min-width: 580px;">
+                <div style="color: #ffd700; border-bottom: 1px dashed #39ff14; padding-bottom: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: bold; font-size: 13px; letter-spacing: 1px; font-family: 'Consolas', monospace;">
                     <span style="width: 25%;">BINANCE_ID</span>
                     <span style="width: 15%; text-align: center;">START</span>
                     <span style="width: 20%; text-align: center;">GROWTH</span>
@@ -530,113 +527,89 @@
                     <span style="width: 20%; text-align: right;">ENGINE</span>
                 </div>
 
-                <div id="cmd-ledger-rows" style="max-height: 165px; overflow-y: auto; font-size: 11px;">
+                <div id="cmd-ledger-rows" style="font-family: 'Consolas', monospace; font-size: 13px; font-weight: bold;">
                     </div>
             </div>
         </div>
         
-        <div style="margin-top: 12px; border-top: 1px dashed #333; padding-top: 8px; color: #444; font-size: 10px; display: flex; justify-content: space-between;">
-            <div><span style="color: #39ff14;">ID_STAT:</span> <span id="user-total">0</span></div>
-            <div>Trades: <span id="total-trades" style="color: #ffd700;">64</span> | <span style="color: #39ff14;">OPTIMAL</span></div>
+        <div style="margin-top: 15px; border-top: 1px solid #333; padding-top: 10px; display: flex; justify-content: space-between; font-size: 12px; font-family: 'Consolas', monospace; color: #aaa;">
+            <div>root@mmp_v1.0:~# <span id="user-total" style="color:#fff;">0</span> Users Connected</div>
+            <div>Executed: <span id="total-trades" style="color: #ffd700;">64</span> | Status: <span style="color: #39ff14;">OPTIMAL <span class="cmd-cursor"></span></span></div>
         </div>
     </div>
 </div>
 
 <style>
-    /* Ikon Sinyal Berkedip untuk Judul */
-    .signal-icon {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        background-color: #39ff14;
-        border-radius: 50%;
-        margin-left: 8px;
-        box-shadow: 0 0 10px #39ff14;
-        animation: signal_pulse 1.5s infinite;
-        vertical-align: middle;
+    /* LED STATUS DI JUDUL (PULSE BERKEDIP PELAN) */
+    .cmd-status-led { 
+        display: inline-block; width: 10px; height: 10px; background: #39ff14; border-radius: 50%; 
+        box-shadow: 0 0 10px #39ff14; animation: cmd_led_pulse 2s infinite; vertical-align: middle; margin-left: 8px;
     }
+    @keyframes cmd_led_pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-    @keyframes signal_pulse {
-        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.7); }
-        70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(57, 255, 20, 0); }
-        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(57, 255, 20, 0); }
+    /* KURSOR KEDIP CMD (CEPAT ALA TERMINAL) */
+    .cmd-cursor { 
+        display: inline-block; width: 8px; height: 14px; background: #39ff14; 
+        animation: cmd_blink 0.8s infinite; vertical-align: middle; 
     }
-
-    /* Scrollbar Styling */
-    #cmd-ledger-rows::-webkit-scrollbar { width: 4px; }
-    #cmd-ledger-rows::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-
-    /* Kursor CMD Berkedip */
     @keyframes cmd_blink { 50% { opacity: 0; } }
 </style>
 
 <script>
-    // DATA MARKET - (Hapus isi array [] jika ingin menyembunyikan box koin)
     const dailyPairs = [
-        { coin: "PEPE/USDT", pnl: +1.45 }, { coin: "SHIB/USDT", pnl: -0.22 },
-        { coin: "DOGE/USDT", pnl: +2.10 }, { coin: "BONK/USDT", pnl: +0.88 },
-        { coin: "FLOKI/USDT", pnl: +0.45 }, { coin: "WIF/USDT", pnl: -0.15 },
-        { coin: "LUNC/USDT", pnl: +1.77 }, { coin: "BOME/USDT", pnl: +0.92 },
-        { coin: "MEME/USDT", pnl: +1.11 }, { coin: "RATS/USDT", pnl: +2.34 }
+        { coin: "PEPE/USDT", pnl: +1.48 }, { coin: "SHIB/USDT", pnl: -0.24 },
+        { coin: "DOGE/USDT", pnl: +2.06 }, { coin: "BONK/USDT", pnl: +0.84 },
+        { coin: "FLOKI/USDT", pnl: +0.48 }, { coin: "WIF/USDT", pnl: -0.15 },
+        { coin: "LUNC/USDT", pnl: +1.76 }, { coin: "BOME/USDT", pnl: +0.87 },
+        { coin: "MEME/USDT", pnl: +1.08 }, { coin: "RATS/USDT", pnl: +2.37 }
     ];
-
-    // DATABASE USER
+    // PERBAIKAN: MENAMBAHKAN STATUS WAIT DI KOLOM ENGINE
     const ledgerUsers = [
         { id: "828951739 [★]", start: 10.00, growth: 16.39, stat: "RUNNING" },
-        { id: "104738291", start: 100.00, growth: 112.49, stat: "WAIT" },
+        { id: "104738291", start: 100.00, growth: 112.49, stat: "WAIT" }, // Ini akan muncul "WAIT" di Engine
         { id: "572910384 [★]", start: 20.00, growth: 29.35, stat: "RUNNING" },
         { id: "938271045 [★]", start: 500.00, growth: 508.93, stat: "RUNNING" },
-        { id: "112233445", start: 10.00, growth: 10.00, stat: "PENDING" },
-        { id: "667788990 [★]", start: 50.00, growth: 58.12, stat: "RUNNING" }
+        { id: "112233445", start: 10.00, growth: 10.00, stat: "PENDING" }
     ];
 
-    function runLiveFeed() {
-        // [1] UPDATE THEATER KOIN (SMART HIDE)
-        const theaterContainer = document.getElementById('container-theater');
+    function runMasterProcess() {
         const theaterGrid = document.getElementById('coin-theater');
-        const pairCount = document.getElementById('pair-count');
-
         if(dailyPairs.length > 0) {
-            theaterContainer.style.display = "block";
-            pairCount.innerText = dailyPairs.length;
             theaterGrid.innerHTML = "";
             dailyPairs.forEach(p => {
                 let pnl = (parseFloat(p.pnl) + (Math.random() * 0.1 - 0.05)).toFixed(2);
                 let col = pnl >= 0 ? "#39ff14" : "#ff0033";
                 const box = document.createElement('div');
-                box.style.cssText = "background:#111; padding: 6px; border:1px solid #222; text-align:center; border-radius:4px;";
-                box.innerHTML = `<div style="font-size:9px; color:#aaa;">${p.coin}</div><div style="color:${col}; font-weight:bold;">${pnl >= 0 ? '+' : ''}${pnl}%</div>`;
+                box.style.cssText = "background:#1a1a1a; padding: 10px; border:1px solid #333; text-align:center; border-radius:4px;";
+                box.innerHTML = `<div style="font-size:11px; color:#fff; font-weight:bold;">${p.coin}</div><div style="color:${col}; font-weight:bold; font-size:13px;">${pnl >= 0 ? '+' : ''}${pnl}%</div>`;
                 theaterGrid.appendChild(box);
             });
-        } else {
-            theaterContainer.style.display = "none";
         }
-
-        // [2] UPDATE LEDGER USER
         const tableBody = document.getElementById('cmd-ledger-rows');
         if(tableBody) {
             tableBody.innerHTML = "";
             document.getElementById('user-total').innerText = ledgerUsers.length;
             ledgerUsers.forEach(u => {
                 let active = u.stat === "RUNNING";
+                let isWait = u.stat === "WAIT";
                 let isVIP = u.id.includes("[★]");
+                let engineText = active ? 'RUNNING' : (isWait ? 'WAIT' : '-'); // LOGIKA ENGINE DIKOREKSI
+                
                 const row = document.createElement('div');
-                row.style.cssText = `display:flex; justify-content:space-between; color:${active ? '#39ff14' : '#888'}; border-bottom:1px solid #111; padding: 8px 0;`;
+                row.style.cssText = `display:flex; justify-content:space-between; color:${active ? '#39ff14' : (isWait ? '#ffd700' : '#fff')}; padding: 10px 0; border-bottom: 1px solid #111;`;
                 row.innerHTML = `
                     <span style="width:25%; ${isVIP ? 'color:#ffd700;' : ''}">${u.id}</span>
                     <span style="width:15%; text-align:center;">$${u.start.toFixed(0)}</span>
-                    <span style="width:20%; text-align:center;">$${u.growth}</span>
-                    <span style="width:20%; text-align:center;">${active ? '● ACTIVE' : '○ ' + u.stat}</span>
-                    <span style="width:20%; text-align:right;">${active ? 'RUNNING' : '-'}</span>
+                    <span style="width:20%; text-align:center;">$${u.growth.toFixed(2)}</span>
+                    <span style="width:20%; text-align:center;">${active ? '● ACTIVE' : (isWait ? '○ WAIT' : '○ PENDING')}</span>
+                    <span style="width:20%; text-align:right; ${isWait ? 'color:#ffd700;' : ''}">${engineText}</span>
                 `;
                 tableBody.appendChild(row);
             });
         }
     }
-
-    // Refresh setiap 3 detik
-    setInterval(runLiveFeed, 3000);
-    runLiveFeed();
+    setInterval(runMasterProcess, 3000);
+    runMasterProcess();
 </script>
     
     <div class="room">
