@@ -497,13 +497,29 @@
     <h2 class="room-title">🛡️ JAMINAN KEAMANAN MODAL</h2>
     <p>Dana tetap di Binance Anda. Engine MMP mengeksekusi via API Key (Withdraw Disabled).</p>
 
-    <div style="background: #000; border: 1px solid #333; padding: 15px; font-family: 'Consolas', monospace; font-size: 12px; color: #39ff14; height: 160px; overflow: hidden; position: relative; border-radius: 6px; margin-bottom: 15px; line-height: 1.5;">
-        <div id="cmd-monitor">
-            <div>[SYSTEM]: Engine MMP V1.0 Connected...</div>
-            <div>[SECURITY]: API Firewall Active...</div>
-            <div>[MONITOR]: Scanning for 10 active Pioneers...</div>
+    <div style="background: #000; border: 1px solid #333; padding: 15px; font-family: 'Consolas', monospace; font-size: 11px; color: #fff; min-height: 200px; border-radius: 6px; margin-bottom: 15px; line-height: 1.5; overflow-x: auto;">
+        
+        <div style="color: #39ff14; border-bottom: 1px dashed #39ff14; padding-bottom: 5px; margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: bold;">
+            <span style="width: 25%;">USER_ID</span>
+            <span style="width: 15%;">START</span>
+            <span style="width: 15%;">LIVE</span>
+            <span style="width: 20%;">KEY_STAT</span>
+            <span style="width: 25%;">SCALPING</span>
         </div>
-        <span style="display: inline-block; width: 8px; height: 15px; background: #39ff14; animation: cmd_blink 0.8s infinite;"></span>
+
+        <div id="cmd-table-rows">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span style="width: 25%;">ID: 0812xxx</span>
+                <span style="width: 15%;">$10.00</span>
+                <span style="width: 15%; color: #39ff14;">$14.20</span>
+                <span style="width: 20%; color: #39ff14;">ACTIVE</span>
+                <span style="width: 25%; color: #39ff14;">● RUNNING</span>
+            </div>
+        </div>
+        
+        <div style="margin-top: 10px;">
+            <span style="color: #39ff14;">root@mmp_v1.0:~# </span><span style="display: inline-block; width: 8px; height: 14px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle;"></span>
+        </div>
     </div>
 
     <div class="btn-toggle-container">
@@ -512,12 +528,7 @@
 
     <div id="ex5" class="extra-content">
         <div class="extra-body">
-            <p style="color: #ffd700; font-weight: bold;">🛡️ KEAMANAN TINGKAT TINGGI:</p>
-            <ul>
-                <li>API Key Tanpa Akses Penarikan (Withdraw Disabled).</li>
-                <li>Dana 100% Tetap di Dompet Binance Anda Sendiri.</li>
-                <li>Enkripsi 256-bit pada setiap instruksi Engine MMP.</li>
-            </ul>
+            <p>Detail teknis enkripsi API Key Jenderal bisa diletakkan di sini.</p>
         </div>
     </div>
 </div>
@@ -527,32 +538,48 @@
 </style>
 
 <script>
-    // DATA UNTUK LIVE MONITOR CMD
-    const cmdLogs = [
-        "> EXEC: Order #BTC/USDT - Profit +1.2%",
-        "> USER ID: 0812xxx - Scalping Active",
-        "> ENGINE: Analysis Market Trend... Stable",
-        "> STATUS: Compounding Lot Auto-Update",
-        "> USER ID: 0852xxx - Target $10 reached",
-        "> SECURITY: API Key verified (No-Withdraw)",
-        "> EXEC: Order #PEPE/USDT - Success",
-        "> MONITOR: System Load 12% - Optimal",
-        "> USER ID: 0877xxx - Connected SG-Server"
+    // DATA UNTUK SIMULASI USER CMD
+    const pioneerUsers = [
+        { id: "0852xxx", start: "10.00", live: 12.45, key: "ACTIVE", scalping: "RUNNING" },
+        { id: "0877xxx", start: "100.00", live: 110.20, key: "ACTIVE", scalping: "WAIT" },
+        { id: "0819xxx", start: "20.00", live: 25.15, key: "ACTIVE", scalping: "RUNNING" },
+        { id: "0811xxx", start: "500.00", live: 504.80, key: "ACTIVE", scalping: "RUNNING" },
+        { id: "0813xxx", start: "10.00", live: 11.05, key: "ACTIVE", scalping: "WAIT" }
     ];
 
-    const cmdContainer = document.getElementById('cmd-monitor');
+    const tableBody = document.getElementById('cmd-table-rows');
 
-    setInterval(function() {
-        const newLog = document.createElement('div');
-        newLog.innerText = cmdLogs[Math.floor(Math.random() * cmdLogs.length)];
-        cmdContainer.appendChild(newLog);
+    function refreshCMDTable() {
+        tableBody.innerHTML = ""; // Bersihkan data lama
+        
+        pioneerUsers.forEach(user => {
+            // Logika Fluktuasi Live Balance
+            user.live = (parseFloat(user.live) + (Math.random() * 0.05)).toFixed(2);
+            
+            // Logika Warna Status Scalping
+            let scalpingColor = user.scalping === "RUNNING" ? "#39ff14" : "#ffffff";
+            let scalpingText = user.scalping === "RUNNING" ? "● RUNNING" : "○ WAIT";
 
-        // Menjaga agar tampilan tetap maksimal 7 baris
-        if (cmdContainer.childNodes.length > 8) {
-            cmdContainer.removeChild(cmdContainer.firstChild);
-        }
-    }, 2500); // Muncul baris baru setiap 2.5 detik
+            const row = document.createElement('div');
+            row.style.display = "flex";
+            row.style.justifyContent = "space-between";
+            row.style.marginBottom = "5px";
+            row.innerHTML = `
+                <span style="width: 25%;">ID: ${user.id}</span>
+                <span style="width: 15%;">$${user.start}</span>
+                <span style="width: 15%; color: #39ff14;">$${user.live}</span>
+                <span style="width: 20%; color: #39ff14;">${user.key}</span>
+                <span style="width: 25%; color: ${scalpingColor};">${scalpingText}</span>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Update angka setiap 3 detik
+    setInterval(refreshCMDTable, 3000);
+    refreshCMDTable(); // Jalankan pertama kali
 </script>
+    
     <div class="room">
         <h2 class="room-title">📜 PRINSIP BURUH ELITE</h2>
         <div class="quote-box">
