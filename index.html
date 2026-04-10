@@ -520,21 +520,16 @@
             </div>
 
         <div style="display: flex; position: relative; width: 100%; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.6));">
-            
-            <div style="background: #000; border-radius: 8px 0 0 8px; border: 1px solid #111; flex-grow: 1; overflow: hidden;">
-                
-                <div style="background: #000; padding: 15px 20px 10px 20px; color: #39ff14; border-bottom: 1px dashed #222; display: flex; justify-content: space-between; font-weight: bold; font-size: 13px; font-family: 'Consolas', monospace; position: sticky; top: 0; z-index: 10;">
-                    <div style="display: flex; justify-content: space-between; width: 100%; min-width: 500px;">
+            <div style="background: #000; padding: 20px; border-radius: 8px 0 0 8px; border: 1px solid #111; flex-grow: 1; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                <div style="min-width: 500px;">
+                    <div style="color: #39ff14; border-bottom: 1px dashed #222; padding-bottom: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: bold; font-size: 13px; font-family: 'Consolas', monospace;">
                         <span style="width: 25%;">BINANCE_ID</span>
                         <span style="width: 15%; text-align: center;">START</span>
                         <span style="width: 20%; text-align: center;">GROWTH</span>
                         <span style="width: 20%; text-align: center;">STATUS</span>
                         <span style="width: 20%; text-align: right;">ENGINE</span>
                     </div>
-                </div>
-
-                <div style="max-height: 400px; overflow-y: auto; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 0 20px 20px 20px;">
-                    <div id="cmd-ledger-rows" style="min-width: 500px; font-family: 'Consolas', monospace; font-size: 13px; font-weight: bold;">
+                    <div id="cmd-ledger-rows" style="font-family: 'Consolas', monospace; font-size: 13px; font-weight: bold;">
                         </div>
                 </div>
             </div>
@@ -550,18 +545,21 @@
 </div>
 
 <style>
-    /* CUSTOM SCROLLBAR BIAR ALA CMD (TIPIS) */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #000; }
-    ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: #bf00ff; }
-
+    /* CSS RESPONSIF KOIN 2 KOLOM */
     #coin-theater { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
     @media only screen and (max-width: 600px) {
         #coin-theater { grid-template-columns: repeat(2, 1fr) !important; }
     }
+
     .live-feed-master-card:hover { border-color: #ffd700 !important; box-shadow: 0 0 25px rgba(255, 215, 0, 0.15); }
-    .coin-box { background: #111; border: 1px solid #222; padding: 15px; text-align: center; border-radius: 6px; transition: 0.3s; }
+    
+    /* KOTAK KOIN INDIVIDUAL */
+    .coin-box {
+        background: #111; border: 1px solid #222; padding: 15px; 
+        text-align: center; border-radius: 6px; transition: 0.3s;
+    }
+    .coin-box:hover { background: #151515; border-color: #444; transform: translateY(-3px); }
+
     .cmd-status-led { display: inline-block; width: 10px; height: 10px; background: #39ff14; border-radius: 50%; box-shadow: 0 0 10px #39ff14; animation: cmd_led_pulse 2s infinite; vertical-align: middle; margin-left: 8px;}
     @keyframes cmd_led_pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     .cmd-cursor { display: inline-block; width: 8px; height: 14px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle; }
@@ -569,22 +567,35 @@
 </style>
 
 <script>
-    // Contoh Data (Bisa Jenderal tambah sampai 100+)
+    const dailyPairs = [
+        { coin: "PEPE/USDT", pnl: +1.35 }, { coin: "SHIB/USDT", pnl: -0.20 },
+        { coin: "DOGE/USDT", pnl: +2.20 }, { coin: "BONK/USDT", pnl: +0.87 },
+        { coin: "FLOKI/USDT", pnl: +0.43 }, { coin: "WIF/USDT", pnl: -0.24 },
+        { coin: "LUNC/USDT", pnl: +1.75 }, { coin: "BOME/USDT", pnl: +0.87 },
+        { coin: "MEME/USDT", pnl: +1.16 }, { coin: "RATS/USDT", pnl: +2.38 }
+    ];
+
     const ledgerUsers = [
         { id: "828951739 [★]", start: 10, growth: 16.39, stat: "RUNNING" },
         { id: "104738291", start: 100, growth: 112.49, stat: "WAIT" },
         { id: "572910384 [★]", start: 20, growth: 29.35, stat: "RUNNING" },
-        { id: "562910394 [★]", start: 20, growth: 29.35, stat: "RUNNING" },
-        { id: "573910374 [★]", start: 20, growth: 29.35, stat: "RUNNING" },
         { id: "938271045 [★]", start: 500, growth: 508.93, stat: "RUNNING" },
-        { id: "112233445", start: 10, growth: 10.00, stat: "PENDING" },
-        // Simulasi Tambahan User
-        { id: "223344556", start: 15, growth: 18.20, stat: "RUNNING" },
-        { id: "667788990", start: 50, growth: 50.00, stat: "WAIT" }
+        { id: "112233445", start: 10, growth: 10.00, stat: "PENDING" }
     ];
 
     function runMasterProcess() {
-        // Logic Theater tetap (sama seperti sebelumnya)
+        const theaterGrid = document.getElementById('coin-theater');
+        if(theaterGrid) {
+            theaterGrid.innerHTML = "";
+            dailyPairs.forEach(p => {
+                let pnl = (parseFloat(p.pnl) + (Math.random() * 0.04 - 0.02)).toFixed(2);
+                let col = pnl >= 0 ? "#39ff14" : "#ff0033";
+                const box = document.createElement('div');
+                box.className = "coin-box";
+                box.innerHTML = `<div style="font-size:11px; color:#aaa; font-weight:bold; margin-bottom:5px;">${p.coin}</div><div style="color:${col}; font-weight:bold; font-size:16px;">${pnl >= 0 ? '+' : ''}${pnl}%</div>`;
+                theaterGrid.appendChild(box);
+            });
+        }
         const tableBody = document.getElementById('cmd-ledger-rows');
         if(tableBody) {
             tableBody.innerHTML = "";
@@ -592,6 +603,7 @@
             ledgerUsers.forEach(u => {
                 let active = u.stat === "RUNNING";
                 let rowColor = active ? "#39ff14" : "#ffffff";
+                let engineText = active ? "RUNNING" : "WAIT";
                 const row = document.createElement('div');
                 row.style.cssText = `display:flex; justify-content:space-between; color:${rowColor}; padding: 12px 0; border-bottom: 1px solid #111;`;
                 row.innerHTML = `
@@ -599,12 +611,13 @@
                     <span style="width:15%; text-align:center;">$${u.start}</span>
                     <span style="width:20%; text-align:center;">$${u.growth.toFixed(2)}</span>
                     <span style="width:20%; text-align:center;">${active ? '● ACTIVE' : '○ WAIT'}</span>
-                    <span style="width:20%; text-align:right;">${active ? 'RUNNING' : 'WAIT'}</span>
+                    <span style="width:20%; text-align:right;">${engineText}</span>
                 `;
                 tableBody.appendChild(row);
             });
         }
     }
+    setInterval(runMasterProcess, 3000);
     runMasterProcess();
 </script>
     <div class="room">
