@@ -377,7 +377,7 @@
         </div>
     </div>
     
-    <div id="unit-pnp-v33" style="margin: 25px 0px; width: 100%; box-sizing: border-box;">
+   <div id="unit-pnp-v33" style="margin: 25px 0px; width: 100%; box-sizing: border-box;">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto+Condensed:wght@400;700&display=swap');
 
@@ -416,7 +416,6 @@
             text-align: left; 
         }
 
-        /* GARIS KUNING BERDIRI: NEMPEL DI KIRI */
         .input-section-v33::before {
             content: ""; position: absolute; left: 5px;
             top: 5px; bottom: 85px; 
@@ -442,8 +441,8 @@
             font-weight: 900; border: none; border-radius: 8px; cursor: pointer; 
             text-transform: uppercase; font-size: 16px; font-family: 'Oswald', sans-serif;
         }
+        .pnp-v33-btn:hover { background: #fff; }
 
-        /* DROPDOWN STYLE */
         .info-toggle-btn {
             width: 100%; background: #1a1a1a; border: 1px dashed #444; color: #888;
             padding: 12px; margin-top: 20px; cursor: pointer; border-radius: 8px;
@@ -456,14 +455,15 @@
         }
     </style>
 
-    <div class="pnp-v33-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px;">
-        <span class="pnp-v33-title">
-            <i class="fas fa-key"></i> KONEKSI ENGINE BINANCE
-        </span>
-        <button onclick="pnpV33Toggle('hint')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">
-            PETUNJUK <i class="fas fa-chevron-down"></i>
-        </button>
-    </div>
+    <div class="pnp-v33-card">
+        <div class="pnp-v33-header">
+            <span class="pnp-v33-title">
+                <i class="fas fa-key"></i> KONEKSI ENGINE BINANCE
+            </span>
+            <button onclick="pnpV33Toggle('hint')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">
+                PETUNJUK <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
 
         <div id="hint" class="info-content">
             <i class="fas fa-info-circle" style="color:#ffd700;"></i> SINKRONISASI: Masukkan API & Secret Key dengan izin Trade aktif.
