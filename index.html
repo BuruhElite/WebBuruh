@@ -526,11 +526,12 @@ Jika anda tertarik anda bisa mengunakan Engine MMP. V.1.0 kami dan bergabung den
             [ EKSEKUSI ENGINE MMP V1.0 REAL TIME ]
         </p>
 
-        <div id="coin-theater" style="margin-bottom: 20px; min-height: 50px; display: grid; gap: 10px;">
+        <div id="coin-theater" style="margin-bottom: 20px; min-height: 50px; display: grid; gap: 8px;">
         </div>
 
         <div style="display: flex; position: relative; width: 100%; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.6)); margin-bottom: 30px;">
             <div style="background: #000; border-radius: 8px 0 0 8px; border: 1px solid #111; flex-grow: 1; overflow: hidden; display: flex; flex-direction: column;">
+                
                 <div style="background: #000; padding: 15px 20px 10px 20px; color: #39ff14; border-bottom: 1px dashed #222; font-weight: bold; font-size: 13px; font-family: 'Consolas', monospace;">
                     <div style="display: flex; justify-content: space-between; width: 100%; min-width: 500px;">
                         <span style="width: 25%;">BINANCE_ID</span>
@@ -540,7 +541,8 @@ Jika anda tertarik anda bisa mengunakan Engine MMP. V.1.0 kami dan bergabung den
                         <span style="width: 20%; text-align: right;">ENGINE</span>
                     </div>
                 </div>
-                <div style="max-height: 280px !important; overflow-y: auto !important; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 0 20px;">
+
+                <div style="height: 240px !important; overflow-y: auto !important; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 0 20px;">
                     <div id="cmd-ledger-rows" style="min-width: 500px; font-family: 'Consolas', monospace; font-size: 13px; font-weight: bold; color: #39ff14;">
                     </div>
                 </div>
@@ -556,10 +558,16 @@ Jika anda tertarik anda bisa mengunakan Engine MMP. V.1.0 kami dan bergabung den
 </div>
 
 <style>
-    #coin-theater { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
+    /* DESKTOP: BEBAS */
+    #coin-theater { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); }
+
+    /* ANDROID OPTIMIZATION: 3 KOLOM KOIN */
     @media only screen and (max-width: 600px) {
-        #coin-theater { grid-template-columns: repeat(2, 1fr) !important; }
+        #coin-theater { grid-template-columns: repeat(3, 1fr) !important; gap: 5px !important; }
+        .coin-box { padding: 8px !important; } /* Kotak lebih ramping di HP */
+        .coin-box div:last-child { font-size: 13px !important; } /* Angka persen lebih pas */
     }
+
     .live-feed-master-card:hover { border-color: #ffd700 !important; box-shadow: 0 0 25px rgba(255, 215, 0, 0.15); }
     .coin-box {
         background: #111; border: 1px solid #222; padding: 15px; 
@@ -574,11 +582,11 @@ Jika anda tertarik anda bisa mengunakan Engine MMP. V.1.0 kami dan bergabung den
 
 <script>
     const dailyPairs = [
-        { coin: "PEPE/USDT", pnl: +1.35 }, { coin: "SHIB/USDT", pnl: -0.20 },
-        { coin: "DOGE/USDT", pnl: +2.20 }, { coin: "BONK/USDT", pnl: +0.87 },
-        { coin: "FLOKI/USDT", pnl: +0.43 }, { coin: "WIF/USDT", pnl: -0.24 },
-        { coin: "LUNC/USDT", pnl: +1.75 }, { coin: "BOME/USDT", pnl: +0.87 },
-        { coin: "MEME/USDT", pnl: +1.16 }, { coin: "RATS/USDT", pnl: +2.38 }
+        { coin: "PEPE", pnl: +1.35 }, { coin: "SHIB", pnl: -0.20 },
+        { coin: "DOGE", pnl: +2.20 }, { coin: "BONK", pnl: +0.87 },
+        { coin: "FLOKI", pnl: +0.43 }, { coin: "WIF", pnl: -0.24 },
+        { coin: "LUNC", pnl: +1.75 }, { coin: "BOME", pnl: +0.87 },
+        { coin: "MEME", pnl: +1.16 }, { coin: "RATS", pnl: +2.38 }
     ];
 
     const ledgerUsers = [
@@ -602,7 +610,7 @@ Jika anda tertarik anda bisa mengunakan Engine MMP. V.1.0 kami dan bergabung den
                 let col = pnl >= 0 ? "#39ff14" : "#ff0033";
                 const box = document.createElement('div');
                 box.className = "coin-box";
-                box.innerHTML = `<div style="font-size:11px; color:#aaa; font-weight:bold; margin-bottom:5px;">${p.coin}</div><div style="color:${col}; font-weight:bold; font-size:16px;">${pnl >= 0 ? '+' : ''}${pnl}%</div>`;
+                box.innerHTML = `<div style="font-size:10px; color:#aaa; font-weight:bold; margin-bottom:2px;">${p.coin}</div><div style="color:${col}; font-weight:bold; font-size:14px;">${pnl >= 0 ? '+' : ''}${pnl}%</div>`;
                 theaterGrid.appendChild(box);
             });
         }
@@ -613,7 +621,6 @@ Jika anda tertarik anda bisa mengunakan Engine MMP. V.1.0 kami dan bergabung den
             ledgerUsers.forEach(u => {
                 let active = u.stat === "RUNNING";
                 let rowColor = active ? "#39ff14" : "#ffffff";
-                let engineText = active ? "RUNNING" : "WAIT";
                 const row = document.createElement('div');
                 row.style.cssText = `display:flex; justify-content:space-between; color:${rowColor}; padding: 12px 0; border-bottom: 1px solid #111;`;
                 row.innerHTML = `
@@ -621,7 +628,7 @@ Jika anda tertarik anda bisa mengunakan Engine MMP. V.1.0 kami dan bergabung den
                     <span style="width:15%; text-align:center;">$${u.start}</span>
                     <span style="width:20%; text-align:center;">$${u.growth.toFixed(2)}</span>
                     <span style="width:20%; text-align:center;">${active ? '● ACTIVE' : '○ WAIT'}</span>
-                    <span style="width:20%; text-align:right;">${engineText}</span>
+                    <span style="width:20%; text-align:right;">${active ? 'RUNNING' : 'WAIT'}</span>
                 `;
                 tableBody.appendChild(row);
             });
