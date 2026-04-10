@@ -508,7 +508,7 @@
               
   <div class="room" style="margin-bottom: 30px;">
     
-    <div class="live-feed-main-container" style="background: #111; border: 1.5px solid #333; padding: 25px; border-radius: 12px; transition: 0.3s; position: relative;">
+    <div class="live-feed-outer-box" style="background: #111; border: 1.5px solid #333; padding: 25px; border-radius: 12px; transition: 0.3s; position: relative;">
         
         <h2 class="room-title" style="margin-bottom: 5px; color: #fff; font-family: 'Oswald', sans-serif;">🛰️ LIVE FEED <span class="cmd-status-led"></span></h2>
         <p style="color: #ffd700; font-family: 'Consolas', monospace; font-weight: bold; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px;">
@@ -544,7 +544,8 @@
 </div>
 
 <style>
-    .live-feed-main-container:hover { border-color: #ffd700 !important; box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
+    /* HOVER BINGKAI LUAR SAJA */
+    .live-feed-outer-box:hover { border-color: #ffd700 !important; box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
     .cmd-status-led { display: inline-block; width: 10px; height: 10px; background: #39ff14; border-radius: 50%; box-shadow: 0 0 10px #39ff14; animation: cmd_led_pulse 2s infinite; vertical-align: middle; margin-left: 8px;}
     @keyframes cmd_led_pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     .cmd-cursor { display: inline-block; width: 8px; height: 14px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle; }
@@ -552,6 +553,7 @@
 </style>
 
 <script>
+    // DATA TETAP SAMA: HIJAU UNTUK ACTIVE, PUTIH UNTUK WAIT
     const dailyPairs = [
         { coin: "PEPE/USDT", pnl: +1.35 }, { coin: "SHIB/USDT", pnl: -0.20 },
         { coin: "DOGE/USDT", pnl: +2.20 }, { coin: "BONK/USDT", pnl: +0.87 },
@@ -569,7 +571,6 @@
     ];
 
     function runMasterProcess() {
-        // UPDATE MARKET KOIN (HIJAU/MERAH)
         const theaterGrid = document.getElementById('coin-theater');
         if(theaterGrid) {
             theaterGrid.innerHTML = "";
@@ -582,14 +583,13 @@
                 theaterGrid.appendChild(box);
             });
         }
-        // UPDATE TABEL CMD (HIJAU=ACTIVE, PUTIH=WAIT/PENDING)
         const tableBody = document.getElementById('cmd-ledger-rows');
         if(tableBody) {
             tableBody.innerHTML = "";
             document.getElementById('user-total').innerText = ledgerUsers.length;
             ledgerUsers.forEach(u => {
                 let active = u.stat === "RUNNING";
-                let rowColor = active ? "#39ff14" : "#ffffff"; // HIJAU JIKA RUNNING, PUTIH JIKA TIDAK
+                let rowColor = active ? "#39ff14" : "#ffffff";
                 let engineText = active ? "RUNNING" : "WAIT";
                 const row = document.createElement('div');
                 row.style.cssText = `display:flex; justify-content:space-between; color:${rowColor}; padding: 12px 0; border-bottom: 1px solid #1a1a1a;`;
@@ -597,7 +597,7 @@
                     <span style="width:25%;">${u.id}</span>
                     <span style="width:15%; text-align:center;">$${u.start.toFixed(0)}</span>
                     <span style="width:20%; text-align:center;">$${u.growth.toFixed(2)}</span>
-                    <span style="width:20%; text-align:center;">${active ? '● ACTIVE' : (u.stat === 'WAIT' ? '○ WAIT' : '○ PENDING')}</span>
+                    <span style="width:20%; text-align:center;">${active ? '● ACTIVE' : '○ WAIT'}</span>
                     <span style="width:20%; text-align:right;">${engineText}</span>
                 `;
                 tableBody.appendChild(row);
