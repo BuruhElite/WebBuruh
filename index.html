@@ -449,30 +449,46 @@
     }
 </script>
     
-<div class="room">
-    <h2 class="room-title">🔌 KONEKSI ENGINE BINANCE</h2>
-    <p style="font-size: 11px; margin-bottom: 12px;">Hubungkan API Key Binance Anda ke Engine MMP V1.0.</p>
+<div class="pnp-v33-card">
+        <div class="pnp-v33-header">
+            <span class="pnp-v33-title">
+                <i class="fa-solid fa-key" style="color: #ffd700; font-size: 19px;"></i> KONEKSI ENGINE BINANCE
+            </span>
+            <button onclick="pnpV33Toggle('hint')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer; font-family:'Oswald',sans-serif; text-transform:uppercase;">
+                PETUNJUK <i id="v33-icon" class="fas fa-chevron-down"></i>
+            </button>
+        </div>
 
-    <div style="background: #000; border: 1px solid #333; padding: 20px; border-radius: 6px; box-sizing: border-box; line-height: 1.5; margin-bottom: 20px;">
+        <div id="hint" style="display:none; background:#222; padding:10px; border-radius:5px; margin-bottom:15px; font-size:12px; color:#ffd700; border: 1px solid #444;">
+            <i class="fas fa-info-circle"></i> SINKRONISASI: Masukkan API & Secret Key dengan izin Trade aktif.
+        </div>
+
+        <div class="input-section-v33">
+            <label class="pnp-v33-label">IDENTITAS USER (ID NUMBER)</label>
+            <input type="text" class="v33-input" style="width:40%" placeholder="ID: 0001">
+
+            <label class="pnp-v33-label">BINANCE API KEY</label>
+            <input type="text" class="v33-input" placeholder="Masukkan API Key Binance Jenderal...">
+
+            <label class="pnp-v33-label">BINANCE SECRET KEY</label>
+            <input type="password" class="v33-input" placeholder="Masukkan Secret Key Binance Jenderal...">
+
+            <button class="pnp-v33-btn">AKTIFKAN SCALPING 24H</button>
+        </div>
+
+        <div class="info-toggle-btn" onclick="pnpV33Toggle('info-box')">
+            PANDUAN KEAMANAN & SETUP FUTURES <i class="fas fa-chevron-down"></i>
+        </div>
         
-        <div style="margin-bottom: 15px;">
-            <label style="display: block; color: #ffd700; font-family: 'Consolas', monospace; font-size: 11px; margin-bottom: 5px;">API_KEY_STRING:</label>
-            <input type="text" placeholder="Masukkan API Key..." 
-                style="width: 100%; background: #111; border: 1px solid #444; padding: 10px; color: #39ff14; font-family: 'Consolas', monospace; font-size: 12px; border-radius: 4px; box-sizing: border-box; outline: none;">
-        </div>
-
-        <div style="margin-bottom: 20px;">
-            <label style="display: block; color: #ffd700; font-family: 'Consolas', monospace; font-size: 11px; margin-bottom: 5px;">SECRET_KEY_STRING:</label>
-            <input type="password" placeholder="Masukkan Secret Key..." 
-                style="width: 100%; background: #111; border: 1px solid #444; padding: 10px; color: #39ff14; font-family: 'Consolas', monospace; font-size: 12px; border-radius: 4px; box-sizing: border-box; outline: none;">
-        </div>
-
-        <button style="width: 100%; background: #39ff14; color: #000; border: none; padding: 12px; font-weight: bold; font-family: 'Consolas', monospace; border-radius: 4px; cursor: pointer; text-transform: uppercase;">
-            ⚡ INITIATE CONNECTION
-        </button>
-
-        <div style="margin-top: 12px; color: #444; font-size: 9px; text-align: center; font-family: 'Consolas', monospace;">
-            <span style="color: #ff0033;">[!]</span> SECURITY: Pastikan Fitur Withdraw Disable Aktif di API Management.
+        <div id="info-box" class="info-content">
+            <strong style="color:#ffd700;"><i class="fas fa-shield-alt"></i> JAMINAN KEAMANAN MODAL:</strong><br>
+            Sistem hanya menggunakan koneksi API untuk eksekusi trade. Dana Anda tetap berada di wallet Binance. **Dilarang keras** mengaktifkan izin "Enable Withdrawals" pada pengaturan API Key Anda.
+            <br><br>
+            <strong style="color:#ffd700;"><i class="fas fa-check-square"></i> CARA CENTANG FUTURES DI BINANCE:</strong><br>
+            1. Buka akun Binance > API Management.<br>
+            2. Klik 'Edit Restrictions' pada Key yang dibuat.<br>
+            3. Centang kotak **'Enable Futures'**.<br>
+            4. Jika tidak bisa dicentang, pastikan Anda sudah membuka akun Futures di menu Wallet Binance terlebih dahulu.
         </div>
     </div>
 </div>
@@ -481,7 +497,7 @@
     <h2 class="room-title">🛰️ LIVE FEED <span class="signal-icon"></span></h2>
     <p style="font-size: 11px; margin-bottom: 12px;">Transparansi aktivitas eksekusi Engine MMP V1.0 secara real-time.</p>
 
-    <div style="background: #000; border: 1px solid #333; padding: 12px; font-family: 'Consolas', monospace; color: #fff; border-radius: 6px;">
+    <div style="background: #000; border: 1px solid #333 !important; padding: 20px; border-radius: 6px; box-sizing: border-box; line-height: 1.5; margin-bottom: 20px;">
         
         <div id="container-theater" style="border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 15px; display: none;">
             <div style="color: #ffd700; margin-bottom: 10px; font-weight: bold; font-size: 12px;">
