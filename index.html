@@ -492,71 +492,67 @@
         x.style.display = (x.style.display === "none" || x.style.display === "") ? "block" : "none";
     }
 </script>
-    <div id="unit-live-pioneer" class="room" style="margin-top: 30px; border-top: 1px solid #333; padding-top: 20px;">
-    <h2 class="room-title" style="color: #ffd700; font-family: 'Oswald', sans-serif;">🔴 LIVE FEED: AKTIVITAS BURUH MMP</h2>
-    <p style="font-size: 13px; color: #aaa; margin-bottom: 15px;">
-        Pantau performa real-time 10 akun Pioneer yang terhubung ke Engine V1.0.
-    </p>
-    
-    <div style="overflow-x: auto;">
-        <table class="tabel-compounding" style="width:100%; border-collapse: collapse; font-family: sans-serif; font-size: 13px;">
-            <thead>
-                <tr style="background: #ffd700; color: #000; text-transform: uppercase;">
-                    <th style="padding: 12px; border: none;">USER ID</th>
-                    <th style="padding: 12px; border: none;">MODAL</th>
-                    <th style="padding: 12px; border: none;">LIVE BALANCE</th>
-                    <th style="padding: 12px; border: none;">ENGINE STATUS</th>
-                </tr>
-            </thead>
-            <tbody id="pioneer-feed" style="text-align: center; color: #fff;">
-                <tr style="background: rgba(255,255,255,0.03);">
-                    <td style="padding: 15px; border: none;">ID: 0001 (PIONEER)</td>
-                    <td style="padding: 15px; border: none;">$10.00</td>
-                    <td class="live-balance" data-base="14.25" style="padding: 15px; border: none; font-weight: bold; font-family: monospace; font-size: 16px;">$14.25</td>
-                    <td style="padding: 15px; border: none;"><span style="color:#39ff14;">● ACTIVE</span></td>
-                </tr>
-                <tr style="background: rgba(255,255,255,0.05);">
-                    <td style="padding: 15px; border: none;">ID: 0005 (PIONEER)</td>
-                    <td style="padding: 15px; border: none;">$100.00</td>
-                    <td class="live-balance" data-base="112.80" style="padding: 15px; border: none; font-weight: bold; font-family: monospace; font-size: 16px;">$112.80</td>
-                    <td style="padding: 15px; border: none;"><span style="color:#39ff14;">● ACTIVE</span></td>
-                </tr>
-            </tbody>
-        </table>
+            
+    <div class="room">
+    <h2 class="room-title">🛡️ JAMINAN KEAMANAN MODAL</h2>
+    <p>Dana tetap di Binance Anda. Engine MMP mengeksekusi via API Key (Withdraw Disabled).</p>
+
+    <div style="background: #000; border: 1px solid #333; padding: 15px; font-family: 'Consolas', monospace; font-size: 12px; color: #39ff14; height: 160px; overflow: hidden; position: relative; border-radius: 6px; margin-bottom: 15px; line-height: 1.5;">
+        <div id="cmd-monitor">
+            <div>[SYSTEM]: Engine MMP V1.0 Connected...</div>
+            <div>[SECURITY]: API Firewall Active...</div>
+            <div>[MONITOR]: Scanning for 10 active Pioneers...</div>
+        </div>
+        <span style="display: inline-block; width: 8px; height: 15px; background: #39ff14; animation: cmd_blink 0.8s infinite;"></span>
     </div>
-    
-    <div style="text-align: right; margin-top: 10px;">
-        <small style="color: #444; font-style: italic;">*Data simulasi performa algoritma Pioneer MMP V1.0</small>
+
+    <div class="btn-toggle-container">
+        <button class="btn-toggle" onclick="toggleExtra(this, 'ex5')"><i class="arrow-icon"></i></button>
+    </div>
+
+    <div id="ex5" class="extra-content">
+        <div class="extra-body">
+            <p style="color: #ffd700; font-weight: bold;">🛡️ KEAMANAN TINGKAT TINGGI:</p>
+            <ul>
+                <li>API Key Tanpa Akses Penarikan (Withdraw Disabled).</li>
+                <li>Dana 100% Tetap di Dompet Binance Anda Sendiri.</li>
+                <li>Enkripsi 256-bit pada setiap instruksi Engine MMP.</li>
+            </ul>
+        </div>
     </div>
 </div>
 
-<script>
-    setInterval(function() {
-        const balances = document.querySelectorAll('.live-balance');
-        balances.forEach(el => {
-            let currentVal = parseFloat(el.innerText.replace('$', ''));
-            let fluctuation = (Math.random() * 0.1) - 0.02; 
-            let newVal = (currentVal + fluctuation).toFixed(2);
-            el.innerText = '$' + newVal;
-            if(fluctuation > 0) {
-                el.style.color = '#39ff14';
-                setTimeout(() => { el.style.color = '#fff'; }, 800);
-            }
-        });
-    }, 4000);
-</script>
-        
-    <div class="room">
-        <h2 class="room-title">🛡️ JAMINAN KEAMANAN MODAL</h2>
-        <p>Dana Anda tetap di Binance Anda sendiri. Kami hanya membantu eksekusi melalui API Key (Withdraw Disabled). Anda memegang kendali penuh atas saldo Anda.</p>
-        <div class="btn-toggle-container">
-            <button class="btn-toggle" onclick="toggleExtra(this, 'ex5')"><i class="arrow-icon"></i></button>
-        </div>
-        <div id="ex5" class="extra-content">
-            <div class="extra-body">Penjelasan teknis tentang API Key dan proteksi saldo Jenderal bisa ditulis di sini.</div>
-        </div>
-    </div>
+<style>
+    @keyframes cmd_blink { 50% { opacity: 0; } }
+</style>
 
+<script>
+    // DATA UNTUK LIVE MONITOR CMD
+    const cmdLogs = [
+        "> EXEC: Order #BTC/USDT - Profit +1.2%",
+        "> USER ID: 0812xxx - Scalping Active",
+        "> ENGINE: Analysis Market Trend... Stable",
+        "> STATUS: Compounding Lot Auto-Update",
+        "> USER ID: 0852xxx - Target $10 reached",
+        "> SECURITY: API Key verified (No-Withdraw)",
+        "> EXEC: Order #PEPE/USDT - Success",
+        "> MONITOR: System Load 12% - Optimal",
+        "> USER ID: 0877xxx - Connected SG-Server"
+    ];
+
+    const cmdContainer = document.getElementById('cmd-monitor');
+
+    setInterval(function() {
+        const newLog = document.createElement('div');
+        newLog.innerText = cmdLogs[Math.floor(Math.random() * cmdLogs.length)];
+        cmdContainer.appendChild(newLog);
+
+        // Menjaga agar tampilan tetap maksimal 7 baris
+        if (cmdContainer.childNodes.length > 8) {
+            cmdContainer.removeChild(cmdContainer.firstChild);
+        }
+    }, 2500); // Muncul baris baru setiap 2.5 detik
+</script>
     <div class="room">
         <h2 class="room-title">📜 PRINSIP BURUH ELITE</h2>
         <div class="quote-box">
