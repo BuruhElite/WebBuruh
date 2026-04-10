@@ -495,20 +495,20 @@
             
   <div class="room">
     <h2 class="room-title">🛡️ JAMINAN KEAMANAN MODAL</h2>
-    <p style="font-size: 11px;">Monitor transparansi aktivitas Engine MMP V1.0 (Geser tabel jika di HP).</p>
+    <p style="font-size: 11px; margin-bottom: 15px;">Monitor transparansi aktivitas Engine MMP V1.0 secara real-time.</p>
 
-    <div style="background: #000; border: 1px solid #333; padding: 10px; font-family: 'Consolas', monospace; color: #fff; border-radius: 6px; overflow: hidden;">
+    <div style="background: #000; border: 1px solid #333; padding: 12px; font-family: 'Consolas', monospace; color: #fff; border-radius: 6px; line-height: 1.5;">
         
-        <div style="border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 15px; overflow-x: auto;">
-            <div style="color: #ffd700; margin-bottom: 10px; font-weight: bold; font-size: 12px; white-space: nowrap;">
+        <div style="border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 15px;">
+            <div style="color: #ffd700; margin-bottom: 10px; font-weight: bold; font-size: 12px;">
                 📺 LIVE MARKET EXECUTION: 10 PAIR HARI INI
             </div>
-            <div id="coin-theater" style="display: grid; grid-template-columns: repeat(5, 120px); gap: 8px;">
+            <div id="coin-theater" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 8px;">
                 </div>
         </div>
 
-        <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
-            <div style="min-width: 550px;"> <div style="color: #39ff14; border-bottom: 1px dashed #39ff14; padding-bottom: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: bold; font-size: 11px;">
+        <div style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;">
+            <div style="min-width: 520px;"> <div style="color: #39ff14; border-bottom: 1px dashed #39ff14; padding-bottom: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: bold; font-size: 11px;">
                     <span style="width: 25%; text-align: left;">BINANCE_ID</span>
                     <span style="width: 15%; text-align: center;">START</span>
                     <span style="width: 20%; text-align: center;">GROWTH_BAL</span>
@@ -521,17 +521,91 @@
             </div>
         </div>
         
-        <div style="margin-top: 15px; border-top: 1px dashed #333; padding-top: 10px; color: #555; display: flex; flex-direction: column; gap: 5px; font-size: 10px;">
-            <div style="display: flex; justify-content: space-between;">
-                <span><span style="color: #39ff14;">root@mmp_v1.0:~# </span><span id="user-total">0</span> Users</span>
-                <span>Trades: <span id="total-trades" style="color: #ffd700;">64</span></span>
+        <div style="margin-top: 15px; border-top: 1px dashed #333; padding-top: 10px; color: #555; font-size: 10px; display: flex; justify-content: space-between; flex-wrap: wrap;">
+            <div>
+                <span style="color: #39ff14;">root@mmp_v1.0:~# </span><span id="user-total">0</span> Users
             </div>
-            <div style="text-align: right;">
-                Status: <span style="color: #39ff14;">OPTIMAL</span> <span style="display: inline-block; width: 7px; height: 12px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle;"></span>
+            <div>
+                Executed: <span id="total-trades" style="color: #ffd700; font-weight: bold;">64</span> | Status: <span style="color: #39ff14;">OPTIMAL</span> 
+                <span style="display: inline-block; width: 7px; height: 12px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle;"></span>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    @keyframes cmd_blink { 50% { opacity: 0; } }
+    #cmd-ledger-rows::-webkit-scrollbar { width: 4px; }
+    #cmd-ledger-rows::-webkit-scrollbar-thumb { background: #333; }
+</style>
+
+<script>
+    // DATA MARKET & USER
+    const dailyPairs = [
+        { coin: "PEPE/USDT", pnl: +1.45 }, { coin: "SHIB/USDT", pnl: -0.22 },
+        { coin: "DOGE/USDT", pnl: +2.10 }, { coin: "BONK/USDT", pnl: +0.88 },
+        { coin: "FLOKI/USDT", pnl: +0.45 }, { coin: "WIF/USDT", pnl: -0.15 },
+        { coin: "LUNC/USDT", pnl: +1.77 }, { coin: "BOME/USDT", pnl: +0.92 },
+        { coin: "MEME/USDT", pnl: +1.11 }, { coin: "RATS/USDT", pnl: +2.34 }
+    ];
+
+    let currentTrades = 64; 
+    
+    const ledgerUsers = [
+        { id: "828951739 [★]", start: 10.00, growth: 16.39, stat: "RUNNING" },
+        { id: "104738291", start: 100.00, growth: 112.49, stat: "WAIT/CONFIRM" },
+        { id: "572910384 [★]", start: 20.00, growth: 29.35, stat: "RUNNING" },
+        { id: "938271045 [★]", start: 500.00, growth: 508.93, stat: "RUNNING" },
+        { id: "112233445", start: 10.00, growth: 10.00, stat: "PENDING_ADMIN" },
+        { id: "667788990 [★]", start: 50.00, growth: 58.12, stat: "RUNNING" }
+    ];
+
+    function runMasterEngine() {
+        // Update Theater Koin
+        const theater = document.getElementById('coin-theater');
+        if(theater) {
+            theater.innerHTML = "";
+            dailyPairs.forEach(p => {
+                let pnl = (parseFloat(p.pnl) + (Math.random() * 0.1 - 0.05)).toFixed(2);
+                let col = pnl >= 0 ? "#39ff14" : "#ff0033";
+                const box = document.createElement('div');
+                box.style.cssText = "background:#111; padding: 8px; border:1px solid #222; text-align:center; border-radius:4px;";
+                box.innerHTML = `<div style="font-size:10px; color:#aaa;">${p.coin}</div><div style="color:${col}; font-weight:bold; font-size:12px;">${pnl >= 0 ? '+' : ''}${pnl}%</div>`;
+                theater.appendChild(box);
+            });
+        }
+
+        // Update Ledger User
+        const tableBody = document.getElementById('cmd-ledger-rows');
+        if(tableBody) {
+            tableBody.innerHTML = "";
+            document.getElementById('user-total').innerText = ledgerUsers.length;
+            
+            // Counter Trade
+            currentTrades += Math.floor(Math.random() * 2);
+            document.getElementById('total-trades').innerText = currentTrades;
+
+            ledgerUsers.forEach(u => {
+                let active = u.stat === "RUNNING";
+                let isVIP = u.id.includes("[★]");
+                let color = active ? "#39ff14" : "#ffffff";
+                const row = document.createElement('div');
+                row.style.cssText = `display:flex; justify-content:space-between; margin-bottom:10px; color:${color};`;
+                row.innerHTML = `
+                    <span style="width:25%; text-align:left; ${isVIP ? 'color:#ffd700;' : ''}">${u.id}</span>
+                    <span style="width:15%; text-align:center;">$${u.start.toFixed(2)}</span>
+                    <span style="width:20%; text-align:center;">$${u.growth}</span>
+                    <span style="width:20%; text-align:center;">${active ? '● ACTIVE' : '○ ' + u.stat}</span>
+                    <span style="width:20%; text-align:right;">${active ? 'RUNNING' : '○ PENDING'}</span>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+    }
+
+    setInterval(runMasterEngine, 3000);
+    runMasterEngine();
+</script>
     
     <div class="room">
         <h2 class="room-title">📜 PRINSIP BURUH ELITE</h2>
