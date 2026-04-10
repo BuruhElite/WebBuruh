@@ -514,31 +514,27 @@
             [ EKSEKUSI ENGINE MMP V1.0 REAL TIME ]
         </p>
 
-        <div id="coin-theater" style="margin-bottom: 20px; min-height: 50px;">
-    </div>
-
-<div style="display: flex; position: relative; width: 100%; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.6)); margin-bottom: 30px;">
-    
-    <div style="background: #000; border-radius: 8px 0 0 8px; border: 1px solid #111; flex-grow: 1; overflow: hidden; display: flex; flex-direction: column;">
-        
-        <div style="background: #000; padding: 15px 20px 10px 20px; color: #39ff14; border-bottom: 1px dashed #222; font-weight: bold; font-size: 13px; font-family: 'Consolas', monospace;">
-            <div style="display: flex; justify-content: space-between; width: 100%; min-width: 500px;">
-                <span style="width: 25%;">BINANCE_ID</span>
-                <span style="width: 15%; text-align: center;">START</span>
-                <span style="width: 20%; text-align: center;">GROWTH</span>
-                <span style="width: 20%; text-align: center;">STATUS</span>
-                <span style="width: 20%; text-align: right;">ENGINE</span>
-            </div>
+        <div id="coin-theater" style="margin-bottom: 20px; min-height: 50px; display: grid; gap: 10px;">
         </div>
 
-        <div style="max-height: 280px !important; overflow-y: auto !important; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 0 20px;">
-            <div id="cmd-ledger-rows" style="min-width: 500px; font-family: 'Consolas', monospace; font-size: 13px; font-weight: bold; color: #39ff14;">
+        <div style="display: flex; position: relative; width: 100%; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.6)); margin-bottom: 30px;">
+            <div style="background: #000; border-radius: 8px 0 0 8px; border: 1px solid #111; flex-grow: 1; overflow: hidden; display: flex; flex-direction: column;">
+                <div style="background: #000; padding: 15px 20px 10px 20px; color: #39ff14; border-bottom: 1px dashed #222; font-weight: bold; font-size: 13px; font-family: 'Consolas', monospace;">
+                    <div style="display: flex; justify-content: space-between; width: 100%; min-width: 500px;">
+                        <span style="width: 25%;">BINANCE_ID</span>
+                        <span style="width: 15%; text-align: center;">START</span>
+                        <span style="width: 20%; text-align: center;">GROWTH</span>
+                        <span style="width: 20%; text-align: center;">STATUS</span>
+                        <span style="width: 20%; text-align: right;">ENGINE</span>
+                    </div>
                 </div>
+                <div style="max-height: 280px !important; overflow-y: auto !important; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 0 20px;">
+                    <div id="cmd-ledger-rows" style="min-width: 500px; font-family: 'Consolas', monospace; font-size: 13px; font-weight: bold; color: #39ff14;">
+                    </div>
+                </div>
+            </div>
+            <div style="width: 6px; background: #bf00ff; box-shadow: 0 0 20px #bf00ff; border-radius: 0 8px 8px 0;"></div>
         </div>
-    </div>
-
-    <div style="width: 6px; background: #bf00ff; box-shadow: 0 0 20px #bf00ff; border-radius: 0 8px 8px 0;"></div>
-</div>
         
         <div style="margin-top: 20px; padding: 0 5px; display: flex; justify-content: space-between; font-size: 12px; font-family: 'Consolas', monospace; color: #555;">
             <div>root@mmp_v1.0:~# <span id="user-total" style="color:#fff;">0</span> Users Connected</div>
@@ -548,21 +544,16 @@
 </div>
 
 <style>
-    /* CSS RESPONSIF KOIN 2 KOLOM */
     #coin-theater { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
     @media only screen and (max-width: 600px) {
         #coin-theater { grid-template-columns: repeat(2, 1fr) !important; }
     }
-
     .live-feed-master-card:hover { border-color: #ffd700 !important; box-shadow: 0 0 25px rgba(255, 215, 0, 0.15); }
-    
-    /* KOTAK KOIN INDIVIDUAL */
     .coin-box {
         background: #111; border: 1px solid #222; padding: 15px; 
         text-align: center; border-radius: 6px; transition: 0.3s;
     }
     .coin-box:hover { background: #151515; border-color: #444; transform: translateY(-3px); }
-
     .cmd-status-led { display: inline-block; width: 10px; height: 10px; background: #39ff14; border-radius: 50%; box-shadow: 0 0 10px #39ff14; animation: cmd_led_pulse 2s infinite; vertical-align: middle; margin-left: 8px;}
     @keyframes cmd_led_pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     .cmd-cursor { display: inline-block; width: 8px; height: 14px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle; }
@@ -585,8 +576,8 @@
         { id: "372910357 [★]", start: 20, growth: 29.35, stat: "RUNNING" },
         { id: "772920304 [★]", start: 20, growth: 29.35, stat: "RUNNING" },
         { id: "572010396 [★]", start: 20, growth: 29.35, stat: "RUNNING" },
-        { id: "412233445", start: 10, growth: 10.00, stat: "PENDING" }
-        { id: "612423145", start: 10, growth: 10.00, stat: "PENDING" }
+        { id: "412233445", start: 10, growth: 10.00, stat: "PENDING" },
+        { id: "612423145", start: 10, growth: 10.00, stat: "PENDING" },
         { id: "451233475", start: 10, growth: 10.00, stat: "PENDING" }
     ];
 
