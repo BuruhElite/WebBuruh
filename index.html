@@ -506,22 +506,48 @@
     </script>
 </div>
               
-  <div class="room" style="margin-bottom: 25px;">
-    <h2 class="room-title" style="margin-bottom: 5px;">🛰️ LIVE FEED <span class="cmd-status-led"></span></h2>
+  <div id="unit-live-feed" style="margin-top: 50px; width: 100%; box-sizing: border-box;">
+    <style>
+        /* BOX UTAMA: POLOS SAAT DIAM, KUNING SAAT DISENTUH */
+        .live-feed-card { 
+            background: #111; border-radius: 12px; padding: 25px; 
+            border: 1.5px solid #333; /* Warna standar redup */
+            transition: all 0.3s ease;
+            position: relative; overflow: hidden; width: 100%; box-sizing: border-box;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+        
+        /* EFEK HOVER: GARIS KUNING LUAR MENYALA */
+        .live-feed-card:hover {
+            border-color: #ffd700 !important;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+
+        /* PILAR NEON UNGU DI KANAN TABEL */
+        .neon-pillar-right {
+            position: relative;
+            padding-right: 15px;
+            border-right: 4px solid #bf00ff !important;
+            box-shadow: 5px 0 10px rgba(191, 0, 255, 0.3);
+        }
+
+        .cmd-status-led { display: inline-block; width: 10px; height: 10px; background: #39ff14; border-radius: 50%; box-shadow: 0 0 10px #39ff14; animation: cmd_led_pulse 2s infinite; vertical-align: middle; margin-left: 8px;}
+        @keyframes cmd_led_pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .cmd-cursor { display: inline-block; width: 8px; height: 14px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle; }
+        @keyframes cmd_blink { 50% { opacity: 0; } }
+    </style>
+
+    <h2 class="room-title" style="margin-bottom: 5px; color: #fff; font-family: 'Oswald', sans-serif;">🛰️ LIVE FEED <span class="cmd-status-led"></span></h2>
     <p style="color: #ffd700; font-family: 'Consolas', monospace; font-weight: bold; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px;">
         [ EKSEKUSI ENGINE MMP V1.0 REAL TIME ]
     </p>
 
-    <div style="background: #000; border: 1.5px solid #ffd700 !important; padding: 15px; border-radius: 8px; box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);">
-        
-        <div id="container-theater" style="border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px;">
-            <div id="coin-theater" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px;">
-                </div>
-        </div>
+    <div class="live-feed-card">
+        <div id="coin-theater" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-bottom: 30px; border-bottom: 1px solid #222; padding-bottom: 20px;">
+            </div>
 
-        <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
-            <div style="min-width: 580px; position: relative; padding-right: 15px; border-right: 4px solid #bf00ff !important; box-shadow: 4px 0 10px rgba(191, 0, 255, 0.2);">
-                
+        <div style="overflow-x: auto;">
+            <div class="neon-pillar-right" style="min-width: 580px;">
                 <div style="color: #ffd700; border-bottom: 1px dashed #333; padding-bottom: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: bold; font-size: 13px; font-family: 'Consolas', monospace;">
                     <span style="width: 25%;">BINANCE_ID</span>
                     <span style="width: 15%; text-align: center;">START</span>
@@ -535,29 +561,15 @@
             </div>
         </div>
         
-        <div style="margin-top: 15px; border-top: 1px solid #333; padding-top: 10px; display: flex; justify-content: space-between; font-size: 12px; font-family: 'Consolas', monospace; color: #888;">
+        <div style="margin-top: 25px; border-top: 1px solid #222; padding-top: 15px; display: flex; justify-content: space-between; font-size: 12px; font-family: 'Consolas', monospace; color: #666;">
             <div>root@mmp_v1.0:~# <span id="user-total" style="color:#fff;">0</span> Users Connected</div>
             <div>Executed: <span id="total-trades" style="color: #ffd700;">64</span> | Status: <span style="color: #39ff14;">OPTIMAL <span class="cmd-cursor"></span></span></div>
         </div>
     </div>
 </div>
 
-<style>
-    .cmd-status-led { display: inline-block; width: 10px; height: 10px; background: #39ff14; border-radius: 50%; box-shadow: 0 0 10px #39ff14; animation: cmd_led_pulse 2s infinite; vertical-align: middle; margin-left: 8px;}
-    @keyframes cmd_led_pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-    .cmd-cursor { display: inline-block; width: 8px; height: 14px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle; }
-    @keyframes cmd_blink { 50% { opacity: 0; } }
-</style>
-
 <script>
-    const dailyPairs = [
-        { coin: "PEPE/USDT", pnl: +1.41 }, { coin: "SHIB/USDT", pnl: -0.20 },
-        { coin: "DOGE/USDT", pnl: +2.10 }, { coin: "BONK/USDT", pnl: +0.92 },
-        { coin: "FLOKI/USDT", pnl: +0.46 }, { coin: "WIF/USDT", pnl: -0.19 },
-        { coin: "LUNC/USDT", pnl: +1.75 }, { coin: "BOME/USDT", pnl: +0.92 },
-        { coin: "MEME/USDT", pnl: +1.09 }, { coin: "RATS/USDT", pnl: +2.36 }
-    ];
-
+    // Script penggerak data tetap sama (Hijau untuk Running, Putih untuk Wait)
     const ledgerUsers = [
         { id: "828951739 [★]", start: 10.00, growth: 16.39, stat: "RUNNING" },
         { id: "104738291", start: 100.00, growth: 112.49, stat: "WAIT" },
@@ -567,35 +579,19 @@
     ];
 
     function runMasterProcess() {
-        const theaterGrid = document.getElementById('coin-theater');
-        if(theaterGrid) {
-            theaterGrid.innerHTML = "";
-            dailyPairs.forEach(p => {
-                let pnl = (parseFloat(p.pnl) + (Math.random() * 0.1 - 0.05)).toFixed(2);
-                let col = pnl >= 0 ? "#39ff14" : "#ff0033";
-                const box = document.createElement('div');
-                box.style.cssText = "background:#1a1a1a; padding: 10px; border:1px solid #333; text-align:center; border-radius:4px;";
-                box.innerHTML = `<div style="font-size:11px; color:#fff; font-weight:bold;">${p.coin}</div><div style="color:${col}; font-weight:bold; font-size:13px;">${pnl >= 0 ? '+' : ''}${pnl}%</div>`;
-                theaterGrid.appendChild(box);
-            });
-        }
         const tableBody = document.getElementById('cmd-ledger-rows');
         if(tableBody) {
             tableBody.innerHTML = "";
             document.getElementById('user-total').innerText = ledgerUsers.length;
             ledgerUsers.forEach(u => {
                 let active = u.stat === "RUNNING";
-                let isWait = u.stat === "WAIT" || u.stat === "PENDING";
-                let isVIP = u.id.includes("[★]");
-                
-                // WARNA BARIS: HIJAU UNTUK RUNNING, PUTIH UNTUK WAIT/PENDING
                 let rowColor = active ? "#39ff14" : "#ffffff";
-                let engineText = active ? "RUNNING" : (isWait ? "WAIT" : "-");
+                let engineText = active ? "RUNNING" : (u.stat === "WAIT" || u.stat === "PENDING" ? "WAIT" : "-");
 
                 const row = document.createElement('div');
-                row.style.cssText = `display:flex; justify-content:space-between; color:${rowColor}; padding: 10px 0; border-bottom: 1px solid #111;`;
+                row.style.cssText = `display:flex; justify-content:space-between; color:${rowColor}; padding: 12px 0; border-bottom: 1px solid #1a1a1a;`;
                 row.innerHTML = `
-                    <span style="width:25%; ${isVIP && active ? 'color:#ffd700;' : ''}">${u.id}</span>
+                    <span style="width:25%; ${u.id.includes("[★]") && active ? 'color:#ffd700;' : ''}">${u.id}</span>
                     <span style="width:15%; text-align:center;">$${u.start.toFixed(0)}</span>
                     <span style="width:20%; text-align:center;">$${u.growth.toFixed(2)}</span>
                     <span style="width:20%; text-align:center;">${active ? '● ACTIVE' : (u.stat === 'WAIT' ? '○ WAIT' : '○ PENDING')}</span>
@@ -605,8 +601,8 @@
             });
         }
     }
-    setInterval(runMasterProcess, 3000);
     runMasterProcess();
+    // (Script theater koin bisa ditambahkan di sini jika diperlukan)
 </script>
 
     <div class="room">
