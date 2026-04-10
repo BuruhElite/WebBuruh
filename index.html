@@ -381,17 +381,18 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto+Condensed:wght@400;700&display=swap');
 
-        /* BOX UTAMA: GARIS KUNING AKAN MENYALA SAAT HOVER/FOCUS */
+        /* BOX UTAMA: GARIS KUNING AKAN MENYALA SAAT DISENTUH */
         .pnp-v33-card { 
             background: #111; border-radius: 12px; padding: 25px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
-            border: 1.5px solid #333; /* Warna standar saat tidak disentuh */
+            border: 1.5px solid #333; /* Warna standar abu gelap */
             transition: all 0.3s ease;
             position: relative; overflow: hidden; width: 100%; box-sizing: border-box;
             font-family: 'Roboto Condensed', sans-serif;
+            margin-bottom: 50px; /* Agar tidak nempel Live Feed */
         }
         
-        /* EFEK SAAT DISENTUH: GARIS KUNING TIMBUL */
+        /* EFEK HOVER: GARIS KUNING TIMBUL SELURUH KOTAK */
         .pnp-v33-card:hover, .pnp-v33-card:focus-within {
             border-color: #ffd700 !important;
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
@@ -409,14 +410,14 @@
             display: flex; align-items: center; gap: 12px;
         }
 
-        /* PEMBUNGKUS INPUT: JANGKAR UNTUK GARIS KUNING */
+        /* INPUT SECTION: TEMPAT GARIS KUNING VERTIKAL */
         .input-section-v33 { 
             position: relative; 
-            padding-left: 20px; /* Ruang untuk garis kuning */
+            padding-left: 20px; /* Jarak pas agar nempel input */
             text-align: left; 
         }
 
-        /* GARIS KUNING BERDIRI: PRESISI DI SAMPING INPUT */
+        /* GARIS KUNING VERTIKAL: PRESISI NEMPEL DI KIRI INPUT */
         .input-section-v33::before {
             content: ""; position: absolute; left: 5px;
             top: 5px; bottom: 85px; 
@@ -435,24 +436,21 @@
             font-family: 'Roboto Condensed', sans-serif; transition: 0.3s;
         }
 
-        /* EFEK SAAT KLIK INPUT: GARIS INPUT IKUT KUNING */
-        .v33-input:focus {
-            border-color: #ffd700; outline: none; background: #050505;
-        }
+        .v33-input:focus { border-color: #ffd700; outline: none; }
 
         .pnp-v33-btn { 
             width: 100%; padding: 20px; background: #ffd700; color: #000; 
             font-weight: 900; border: none; border-radius: 8px; cursor: pointer; 
             text-transform: uppercase; font-size: 16px; font-family: 'Oswald', sans-serif;
-            transition: 0.3s;
         }
-        .pnp-v33-btn:hover { background: #fff; }
 
+        /* TOMBOL DROPDOWN BAWAH */
         .info-toggle-btn {
             width: 100%; background: #1a1a1a; border: 1px dashed #444; color: #888;
             padding: 12px; margin-top: 20px; cursor: pointer; border-radius: 8px;
             font-size: 12px; display: flex; justify-content: center; align-items: center; gap: 10px;
         }
+        
         .info-content {
             display: none; background: #0a0a0a; border: 1px solid #222; 
             padding: 20px; border-radius: 8px; margin-top: 5px; color: #ccc; font-size: 13px; line-height: 1.6;
@@ -492,13 +490,13 @@
         
         <div id="info-box" class="info-content">
             <strong style="color:#ffd700;"><i class="fas fa-shield-alt"></i> JAMINAN KEAMANAN MODAL:</strong><br>
-            Sistem hanya menggunakan koneksi API untuk eksekusi trade. Dana Anda tetap berada di wallet Binance. **Dilarang keras** mengaktifkan izin "Enable Withdrawals" pada pengaturan API Key Anda.
+            Sistem hanya menggunakan koneksi API untuk eksekusi trade. Dana Anda tetap berada di wallet Binance.
             <br><br>
             <strong style="color:#ffd700;"><i class="fas fa-check-square"></i> CARA CENTANG FUTURES DI BINANCE:</strong><br>
             1. Buka akun Binance > API Management.<br>
             2. Klik 'Edit Restrictions' pada Key yang dibuat.<br>
             3. Centang kotak **'Enable Futures'**.<br>
-            4. Jika tidak bisa dicentang, pastikan Anda sudah membuka akun Futures di menu Wallet Binance terlebih dahulu.
+            4. Pastikan Akun Futures sudah aktif di Binance.
         </div>
     </div>
 </div>
