@@ -493,32 +493,25 @@
     }
 </script>
             
-    <div class="room">
+   <div class="room">
     <h2 class="room-title">🛡️ JAMINAN KEAMANAN MODAL</h2>
     <p>Dana tetap di Binance Anda. Engine MMP mengeksekusi via API Key (Withdraw Disabled).</p>
 
-    <div style="background: #000; border: 1px solid #333; padding: 15px; font-family: 'Consolas', monospace; font-size: 11px; color: #fff; min-height: 200px; border-radius: 6px; margin-bottom: 15px; line-height: 1.5; overflow-x: auto;">
+    <div style="background: #000; border: 1px solid #333; padding: 15px; font-family: 'Consolas', monospace; font-size: 11px; color: #fff; min-height: 180px; border-radius: 6px; margin-bottom: 15px; line-height: 1.5; overflow-x: auto;">
         
-        <div style="color: #39ff14; border-bottom: 1px dashed #39ff14; padding-bottom: 5px; margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: bold;">
-            <span style="width: 25%;">USER_ID</span>
+        <div style="color: #39ff14; border-bottom: 1px dashed #39ff14; padding-bottom: 5px; margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: bold; text-align: center;">
+            <span style="width: 25%; text-align: left;">BINANCE_ID</span>
             <span style="width: 15%;">START</span>
             <span style="width: 15%;">LIVE</span>
             <span style="width: 20%;">KEY_STAT</span>
-            <span style="width: 25%;">SCALPING</span>
+            <span style="width: 25%; text-align: right;">SCALPING</span>
         </div>
 
         <div id="cmd-table-rows">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                <span style="width: 25%;">ID: 0812xxx</span>
-                <span style="width: 15%;">$10.00</span>
-                <span style="width: 15%; color: #39ff14;">$14.20</span>
-                <span style="width: 20%; color: #39ff14;">ACTIVE</span>
-                <span style="width: 25%; color: #39ff14;">● RUNNING</span>
             </div>
-        </div>
         
-        <div style="margin-top: 10px;">
-            <span style="color: #39ff14;">root@mmp_v1.0:~# </span><span style="display: inline-block; width: 8px; height: 14px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle;"></span>
+        <div style="margin-top: 15px; border-top: 1px dashed #333; padding-top: 5px; color: #555; font-size: 10px;">
+            <span style="color: #39ff14;">root@mmp_v1.0:~# </span>Engine Status: <span style="color: #39ff14;">OPTIMAL</span> <span style="display: inline-block; width: 8px; height: 13px; background: #39ff14; animation: cmd_blink 0.8s infinite; vertical-align: middle;"></span>
         </div>
     </div>
 
@@ -538,46 +531,64 @@
 </style>
 
 <script>
-    // DATA UNTUK SIMULASI USER CMD
+    // DATA SIMULASI USER CMD (ANGKA SAJA, ACAK)
     const pioneerUsers = [
-        { id: "0852xxx", start: "10.00", live: 12.45, key: "ACTIVE", scalping: "RUNNING" },
-        { id: "0877xxx", start: "100.00", live: 110.20, key: "ACTIVE", scalping: "WAIT" },
-        { id: "0819xxx", start: "20.00", live: 25.15, key: "ACTIVE", scalping: "RUNNING" },
-        { id: "0811xxx", start: "500.00", live: 504.80, key: "ACTIVE", scalping: "RUNNING" },
-        { id: "0813xxx", start: "10.00", live: 11.05, key: "ACTIVE", scalping: "WAIT" }
+        { binance_id: "828951739", start: "10.00", live: 14.70, key: "ACTIVE", scalping: "RUNNING" },
+        { binance_id: "104738291", start: "100.00", live: 112.49, key: "ACTIVE", scalping: "WAIT_ADMIN" }, // Contoh Putih (Menunggu)
+        { binance_id: "572910384", start: "20.00", live: 27.54, key: "ACTIVE", scalping: "RUNNING" },
+        { binance_id: "938271045", start: "500.00", live: 506.88, key: "ACTIVE", scalping: "RUNNING" },
+        { binance_id: "610493827", start: "10.00", live: 13.49, key: "ACTIVE", scalping: "WAIT_SIGNAL" } // Contoh Putih (Menunggu)
     ];
 
     const tableBody = document.getElementById('cmd-table-rows');
 
     function refreshCMDTable() {
+        if(!tableBody) return; // Jaga-jaga jika ID tidak ditemukan
         tableBody.innerHTML = ""; // Bersihkan data lama
         
         pioneerUsers.forEach(user => {
-            // Logika Fluktuasi Live Balance
-            user.live = (parseFloat(user.live) + (Math.random() * 0.05)).toFixed(2);
+            // Logika Fluktuasi Live Balance (Simulasi bergerak)
+            // Hanya user dengan status RUNNING yang saldonya bergerak dinamis
+            if(user.scalping === "RUNNING") {
+                user.live = (parseFloat(user.live) + (Math.random() * 0.08) - 0.02).toFixed(2);
+            }
             
-            // Logika Warna Status Scalping
-            let scalpingColor = user.scalping === "RUNNING" ? "#39ff14" : "#ffffff";
-            let scalpingText = user.scalping === "RUNNING" ? "● RUNNING" : "○ WAIT";
+            // LOGIKA WARNA SESUAI PESANAN
+            let mainColor = "#39ff14"; // Default Hijau (Aktif)
+            let scalpingText = "";
+            let keyStatusText = user.key;
+
+            if(user.scalping === "RUNNING") {
+                scalpingText = "● RUNNING";
+            } else {
+                // WARNA PUTIH UNTUK USER TIDAK AKTIF / TUNGGU ANTRIAN
+                mainColor = "#ffffff"; 
+                keyStatusText = "PENDING"; // Ubah teks status key biar lebih jelas
+                scalpingText = "○ WAIT/CONFIRM";
+            }
 
             const row = document.createElement('div');
             row.style.display = "flex";
             row.style.justifyContent = "space-between";
-            row.style.marginBottom = "5px";
+            row.style.marginBottom = "6px";
+            row.style.textAlign = "center";
+            row.style.color = mainColor; // Terapkan warna ke seluruh baris
+
+            // Pastikan perataan teks (text-align) sinkron dengan header
             row.innerHTML = `
-                <span style="width: 25%;">ID: ${user.id}</span>
+                <span style="width: 25%; text-align: left;">${user.binance_id}</span>
                 <span style="width: 15%;">$${user.start}</span>
-                <span style="width: 15%; color: #39ff14;">$${user.live}</span>
-                <span style="width: 20%; color: #39ff14;">${user.key}</span>
-                <span style="width: 25%; color: ${scalpingColor};">${scalpingText}</span>
+                <span style="width: 15%;">$${user.live}</span>
+                <span style="width: 20%;">${keyStatusText}</span>
+                <span style="width: 25%; text-align: right;">${scalpingText}</span>
             `;
             tableBody.appendChild(row);
         });
     }
 
-    // Update angka setiap 3 detik
+    // Update angka setiap 3 detik agar dinamis
     setInterval(refreshCMDTable, 3000);
-    refreshCMDTable(); // Jalankan pertama kali
+    refreshCMDTable(); // Jalankan pertama kali saat page load
 </script>
     
     <div class="room">
