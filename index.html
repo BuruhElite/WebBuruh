@@ -378,23 +378,30 @@
     </div>
     
     <div id="unit-pnp-v33" style="margin: 25px 0px; width: 100%; box-sizing: border-box;">
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto+Condensed:wght@400;700&display=swap');
 
+        /* BOX UTAMA: GARIS KUNING AKAN MENYALA SAAT HOVER/FOCUS */
         .pnp-v33-card { 
-            background: #111; border-radius: 12px; padding: 30px 25px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333; 
+            background: #111; border-radius: 12px; padding: 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            border: 1.5px solid #333; /* Warna standar saat tidak disentuh */
+            transition: all 0.3s ease;
             position: relative; overflow: hidden; width: 100%; box-sizing: border-box;
             font-family: 'Roboto Condensed', sans-serif;
         }
         
-        .pnp-v33-header { 
-            display: flex; justify-content: space-between; align-items: center; 
-            margin-bottom: 35px; border-bottom: 1px solid #222; padding-bottom: 15px;
+        /* EFEK SAAT DISENTUH: GARIS KUNING TIMBUL */
+        .pnp-v33-card:hover, .pnp-v33-card:focus-within {
+            border-color: #ffd700 !important;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
         }
 
-        /* JUDUL: DIKECILKAN KE 21PX AGAR LEBIH RAPI & PROPORSIONAL */
+        .pnp-v33-header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px;
+        }
+
         .pnp-v33-title {
             color: #ffd700; font-family: 'Oswald', sans-serif !important;
             font-weight: 700 !important; font-size: 21px !important; 
@@ -402,14 +409,19 @@
             display: flex; align-items: center; gap: 12px;
         }
 
-        .input-section-v33 { position: relative; padding-left: 20px; text-align: left; }
+        /* PEMBUNGKUS INPUT: JANGKAR UNTUK GARIS KUNING */
+        .input-section-v33 { 
+            position: relative; 
+            padding-left: 20px; /* Ruang untuk garis kuning */
+            text-align: left; 
+        }
 
-        /* GARIS KUNING: DIPERPANJANG & DISEJAJARKAN DENGAN TEKS IDENTITAS */
+        /* GARIS KUNING BERDIRI: PRESISI DI SAMPING INPUT */
         .input-section-v33::before {
-            content: ""; position: absolute; left: 0;
-            top: 5px;       /* NAIK SEDIKIT AGAR SEJAJAR TULISAN IDENTITAS */
-            bottom: 80px;   /* BERHENTI SEBELUM TOMBOL */
+            content: ""; position: absolute; left: 5px;
+            top: 5px; bottom: 85px; 
             width: 3px; background: #ffd700; border-radius: 10px;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
         }
 
         .pnp-v33-label {
@@ -420,18 +432,25 @@
         .v33-input { 
             background: #000; border: 1px solid #333; color: #fff; border-radius: 8px; 
             margin-bottom: 20px; padding: 15px; font-size: 15px; width: 100%; box-sizing: border-box;
-            font-family: 'Roboto Condensed', sans-serif;
+            font-family: 'Roboto Condensed', sans-serif; transition: 0.3s;
+        }
+
+        /* EFEK SAAT KLIK INPUT: GARIS INPUT IKUT KUNING */
+        .v33-input:focus {
+            border-color: #ffd700; outline: none; background: #050505;
         }
 
         .pnp-v33-btn { 
             width: 100%; padding: 20px; background: #ffd700; color: #000; 
             font-weight: 900; border: none; border-radius: 8px; cursor: pointer; 
             text-transform: uppercase; font-size: 16px; font-family: 'Oswald', sans-serif;
+            transition: 0.3s;
         }
+        .pnp-v33-btn:hover { background: #fff; }
 
         .info-toggle-btn {
             width: 100%; background: #1a1a1a; border: 1px dashed #444; color: #888;
-            padding: 10px; margin-top: 15px; cursor: pointer; border-radius: 8px;
+            padding: 12px; margin-top: 20px; cursor: pointer; border-radius: 8px;
             font-size: 12px; display: flex; justify-content: center; align-items: center; gap: 10px;
         }
         .info-content {
@@ -440,25 +459,17 @@
         }
     </style>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-<script>
-    function pnpV33Toggle(id) {
-        var x = document.getElementById(id);
-        x.style.display = (x.style.display === "none" || x.style.display === "") ? "block" : "none";
-    }
-</script>
-        
-<div class="pnp-v3-card" style="margin-bottom: 50px; border: 1.5px solid #ffd700 !important; border-radius: 8px; overflow: hidden; box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);">
-    <div class="pnp-v3-header" style="background: #111; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222;">
-        <span class="pnp-v3-title" style="color: #ffd700; font-weight: bold; font-family: 'Consolas', monospace;">
-            <i class="fa-solid fa-key" style="color: #ffd700; font-size: 19px;"></i> KONEKSI ENGINE BINANCE
-        </span>
-        <button onclick="pnpV33Toggle('hint')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">
-            PETUNJUK <i id="v33-icon" class="fas fa-chevron-down"></i>
-        </button>
-    </div>
-        <div id="hint" style="display:none; background:#222; padding:10px; border-radius:5px; margin-bottom:15px; font-size:12px; color:#ffd700; border: 1px solid #444;">
+    <div class="pnp-v33-card">
+        <div class="pnp-v33-header">
+            <span class="pnp-v33-title">
+                <i class="fa-solid fa-key"></i> KONEKSI ENGINE BINANCE
+            </span>
+            <button onclick="pnpV33Toggle('hint')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">
+                PETUNJUK <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+
+        <div id="hint" style="display:none; background:#222; padding:15px; border-radius:8px; margin-bottom:20px; font-size:12px; color:#ffd700; border: 1px solid #444;">
             <i class="fas fa-info-circle"></i> SINKRONISASI: Masukkan API & Secret Key dengan izin Trade aktif.
         </div>
 
