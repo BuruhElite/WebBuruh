@@ -561,15 +561,21 @@
     </div>
 
     <script>
-        function pnpV33Toggle(id) {
-            var element = document.getElementById(id);
-            if (element.style.display === "block") {
-                element.style.display = "none";
-            } else {
-                element.style.display = "block";
-            }
-        }
-    </script>
+function pnpV33Toggle(id) {
+    var element = document.getElementById(id);
+    
+    // Logika Pintar: Cek apakah box sedang tertutup atau terbuka
+    if (element.style.maxHeight === "0px" || element.style.maxHeight === "") {
+        element.style.maxHeight = "1000px"; // Membuka pintu gerbang
+        element.style.opacity = "1";
+        element.style.paddingTop = "15px";
+    } else {
+        element.style.maxHeight = "0px";    // Menutup pintu gerbang
+        element.style.opacity = "0";
+        element.style.paddingTop = "0px";
+    }
+}
+</script>
 </div>
               
   <div class="room" style="margin-bottom: 30px; width: 100%; box-sizing: border-box;">
