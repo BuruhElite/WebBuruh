@@ -469,41 +469,53 @@
     
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 25px;">
         <span style="color: #ffd700; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 21px; text-transform: uppercase;">🔑 KONEKSI ENGINE X BINANCE</span>
-        <button onclick="pnpV33Toggle('hint-box')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">PETUNJUK</button>
+        <button onclick="pnpV33Toggle('hint-area')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">PETUNJUK</button>
     </div>
 
-    <div id="hint-box" style="max-height: 0; overflow: hidden; transition: 0.5s; opacity: 0;">
+    <div id="hint-area" style="max-height: 0; overflow: hidden; transition: 0.5s; opacity: 0;">
         <div style="padding: 10px; background: rgba(255,215,0,0.1); border-radius: 5px; color: #ffd700; font-size: 10px; margin-bottom: 15px; border: 1px solid rgba(255,215,0,0.2);">
             SINKRONISASI: Aktifkan izin Trade Future di API Binance Jenderal.
         </div>
     </div>
 
-    <div style="display: flex; gap: 20px; align-items: stretch; flex-wrap: wrap;">
+    <style>
+        .v33-grid-main { display: flex; gap: 20px; align-items: stretch; flex-wrap: wrap; }
+        .v33-input-col { flex: 1; min-width: 250px; border-left: 3px solid #ffd700; padding-left: 25px; display: flex; flex-direction: column; gap: 15px; }
+        .v33-action-col { width: 220px; display: flex; flex-direction: column; justify-content: space-between; }
         
-        <div style="flex: 1; min-width: 250px; border-left: 3px solid #ffd700; padding-left: 25px;">
-            <div style="margin-bottom: 15px;">
+        /* Proteksi Tampilan HP agar tidak Berantakan */
+        @media (max-width: 768px) {
+            .v33-action-col { width: 100%; order: -1; margin-bottom: 20px; gap: 15px; }
+            .v33-hide-hp { display: none; }
+            .v33-input-col { padding-left: 15px; }
+        }
+        @keyframes v33Coin { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+    </style>
+
+    <div class="v33-grid-main">
+        <div class="v33-input-col">
+            <div>
                 <label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">ID NUMBER</label>
                 <input type="text" style="width: 100%; height: 45px; background: #000; border: 1px solid #333; color: #fff; padding: 0 15px; border-radius: 6px; box-sizing: border-box;" placeholder="ID: 0001">
             </div>
-            <div style="margin-bottom: 15px;">
+            <div>
                 <label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">BINANCE API KEY</label>
                 <input type="text" style="width: 100%; height: 45px; background: #000; border: 1px solid #333; color: #fff; padding: 0 15px; border-radius: 6px; box-sizing: border-box;" placeholder="Masukkan API Key...">
             </div>
-            <div style="margin-bottom: 20px;">
+            <div>
                 <label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">BINANCE SECRET KEY</label>
                 <input type="password" style="width: 100%; height: 45px; background: #000; border: 1px solid #333; color: #fff; padding: 0 15px; border-radius: 6px; box-sizing: border-box;" placeholder="Masukkan Secret Key...">
             </div>
             <button style="width: 100%; height: 60px; background: #ffd700; color: #000; border: none; border-radius: 8px; font-weight: 900; font-family: 'Oswald'; font-size: 16px; cursor: pointer; text-transform: uppercase;">AKTIFKAN ENGINE MPP</button>
         </div>
 
-        <div style="width: 200px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div style="padding-top: 19px;"> 
+        <div class="v33-action-col">
+            <div class="v33-hide-hp" style="padding-top: 19px;"> 
                 <a href="https://www.bmwweb.biz/activity/referral-entry/CPA?ref=CPA_0056AAM8CZ" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 45px; background: #ffd700; color: #000; border-radius: 6px; font-weight: bold; font-size: 11px; text-decoration: none; box-sizing: border-box; text-align: center;">DAFTAR BINANCE DISINI</a>
             </div>
 
-            <div style="text-align: center; margin: 15px 0;">
-                <div style="color: #ffd700; font-family: 'Oswald', sans-serif; font-size: 75px; font-weight: bold; line-height: 1; animation: coinSpin 4s linear infinite;">3$</div>
-                <style>@keyframes coinSpin { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }</style>
+            <div style="text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 15px 0;">
+                <div style="color: #ffd700; font-family: 'Oswald', sans-serif; font-size: 75px; font-weight: bold; line-height: 1; animation: v33Coin 4s linear infinite;">3$</div>
                 <div style="color: #fff; font-size: 12px; font-weight: bold; margin-top: 5px;">ID: 828951739</div>
                 <div style="color: #ffd700; font-size: 11px; font-weight: bold; font-style: italic;">BuruhEliet</div>
             </div>
@@ -512,28 +524,27 @@
         </div>
     </div>
 
-    <div onclick="pnpV33Toggle('info-box')" style="width: 100%; background: #007bff; color: #fff; padding: 12px; text-align: center; border-radius: 6px; font-weight: bold; margin-top: 25px; cursor: pointer;">🛡️ PANDUAN KEAMANAN & SETUP FUTURES</div>
+    <div onclick="pnpV33Toggle('guide-box')" style="width: 100%; background: #007bff; color: #fff; padding: 12px; text-align: center; border-radius: 6px; font-weight: bold; margin-top: 25px; cursor: pointer;">🛡️ PANDUAN KEAMANAN & SETUP FUTURES</div>
     
-    <div id="info-box" style="max-height: 0; overflow: hidden; transition: 0.5s; opacity: 0;">
-        <div style="padding: 20px; border-left: 4px solid #007bff; background: rgba(0,123,255,0.05); margin-top: 10px; text-align: left;">
-            <h4 style="color: #007bff; margin-top: 0; font-size: 14px; letter-spacing: 1px;">🛡️ PROTOKOL KEAMANAN</h4>
-            <p style="color: #ccc; font-size: 11px; line-height: 1.8; margin: 0;">
-                [ STEP 1 ] Aktifkan Mode Futures & Sideway. Withdraw wajib OFF.<br>
-                [ STEP 2 ] Gunakan Whitelist IP Server yang kami kirimkan.<br>
-                [ STEP 3 ] Sewa Server $3/bulan. Saldo tetap di akun Jenderal.<br>
-                [ STEP 4 ] Berhenti kapan saja. Re-join Fee 10% profit.
-            </p>
+    <div id="guide-box" style="max-height: 0; overflow: hidden; transition: 0.5s; opacity: 0;">
+        <div style="padding: 20px; border-left: 4px solid #007bff; background: rgba(0,123,255,0.05); margin-top: 10px; text-align: left; font-size: 11px; line-height: 1.8; color: #ccc;">
+            [ STEP 1 ] Aktifkan Mode Futures & Sideway. Withdraw OFF.<br>
+            [ STEP 2 ] Gunakan Whitelist IP Server kami.<br>
+            [ STEP 3 ] Sewa Server $3/bulan. Saldo aman di akun Jenderal.<br>
+            [ STEP 4 ] Berhenti kapan saja. Re-join Fee 10% profit.
         </div>
     </div>
 </div>
 
 <script>
-function pnpV33Toggle(id) {
-    var el = document.getElementById(id);
-    if (!el.style.maxHeight || el.style.maxHeight === "0px") {
-        el.style.maxHeight = "1000px"; el.style.opacity = "1";
-    } else {
-        el.style.maxHeight = "0px"; el.style.opacity = "0";
+if (typeof pnpV33Toggle !== 'function') {
+    function pnpV33Toggle(id) {
+        var el = document.getElementById(id);
+        if (!el.style.maxHeight || el.style.maxHeight === "0px") {
+            el.style.maxHeight = "1000px"; el.style.opacity = "1";
+        } else {
+            el.style.maxHeight = "0px"; el.style.opacity = "0";
+        }
     }
 }
 </script>
