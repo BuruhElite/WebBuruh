@@ -504,9 +504,27 @@
             display: none; background: #0a0a0a; border: 1px solid #222; 
             padding: 20px; border-radius: 8px; margin-top: 5px; color: #ccc; font-size: 13px; line-height: 1.6;
         }
-    </style>
+    <style>
+    /* SEGEL WARNA: Mencegah tombol jadi putih saat disentuh/hover */
+    .info-toggle-btn {
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .info-toggle-btn:hover, .info-toggle-btn:active {
+        background: #e6c200 !important; /* Kuning agak gelap sedikit biar elegan */
+        color: #000 !important;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    }
+    /* Memastikan info-content punya dasar transisi */
+    .info-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out, opacity 0.3s ease;
+        opacity: 0;
+    }
+</style>
 
-    <div class="pnp-v33-card">
+<div class="pnp-v33-card">
     <div class="pnp-v33-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px;">
         <span class="pnp-v33-title">🔑 KONEKSI ENGINE X BINANCE</span>
         <button onclick="pnpV33Toggle('hint')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">
@@ -514,75 +532,66 @@
         </button>
     </div>
 
-        <div id="hint" class="info-content">
-            <i class="fas fa-info-circle" style="color:#ffd700;"></i> SINKRONISASI: Masukkan API & Secret Key dengan izin Trade Future Aktif.
-        </div>
-
-        <div class="input-section-v33">
-            <label class="pnp-v33-label">ID NUMBER</label>
-            <input type="text" class="v33-input" style="width:40%" placeholder="ID: 0001">
-
-            <label class="pnp-v33-label">BINANCE API KEY</label>
-            <input type="text" class="v33-input" placeholder="Masukkan API Key Binance Jenderal...">
-
-            <label class="pnp-v33-label">BINANCE SECRET KEY</label>
-            <input type="password" class="v33-input" placeholder="Masukkan Secret Key Binance Jenderal...">
-
-            <button class="pnp-v33-btn">AKTIFKAN ENGINE MPP</button>
-        </div>
-
-        <div class="info-toggle-btn" onclick="pnpV33Toggle('info-box')">
-            PANDUAN KEAMANAN & SETUP FUTURES <i class="fas fa-chevron-down"></i>
-        </div>
-        
-<div id="info-box" class="info-content" style="max-height: 0px; overflow: hidden; transition: 0.5s ease-out;">
-    <div class="extra-body" style="padding: 20px; background: rgba(0,0,0,0.3); border-left: 4px solid #ff3131; text-align: left;">
-        <h4 style="color: #ff3131; margin-top: 0; letter-spacing: 1px;">🛡️ PROTOKOL KEAMANAN & OTO-EKSEKUSI</h4>
-        
-        <p style="color: #ccc; font-size: 12px; line-height: 1.8; margin: 0;">
-            <b style="color: #ffd700;">[ STEP 1: KONFIGURASI API BINANCE ]</b><br>
-            • Wajib aktifkan <b>Mode Futures</b> dan <b>Mode Sideway</b>.<br>
-            • <b>PENTING:</b> Pastikan <u>Mode Withdraw NON-AKTIF</u>. Saldo Anda aman!<br><br>
-
-            <b style="color: #ffd700;">[ STEP 2: SINKRONISASI SERVER ]</b><br>
-            • Konfirmasi setelah aktivasi, kami kirimkan <b>Whitelist IP Server</b>.<br>
-            • IP tersebut wajib dipasang di Binance agar mesin bisa eksekusi.<br><br>
-
-            <b style="color: #ffd700;">[ STEP 3: MANAJEMEN MODAL & BIAYA ]</b><br>
-            • Saldo 100% di akun Jenderal. Sewa Server <b>$3 di awal</b> (Berlaku 1 bulan).<br>
-            • Seluruh hasil profit menjadi hak Jenderal sepenuhnya.<br><br>
-
-            <b style="color: #ffd700;">[ STEP 4: TERMINASI & RE-ENTRY ]</b><br>
-            • Berhenti kapan saja: Cukup pindahkan saldo Futures ke Spot.<br>
-            • <b>RE-JOIN:</b> Dikenakan <b>Charge Success Fee 10%</b> dari profit sebelumnya.
+    <div id="hint" class="info-content" style="background: rgba(255, 215, 0, 0.1); padding: 0 15px; border-radius: 6px; margin-bottom: 10px;">
+        <p style="color: #ffd700; font-size: 11px; margin: 10px 0;">
+            <i class="fas fa-info-circle"></i> SINKRONISASI: Masukkan API & Secret Key dengan izin Trade Future Aktif.
         </p>
     </div>
-</div>
+
+    <div class="input-section-v33">
+        <label class="pnp-v33-label">ID NUMBER</label>
+        <input type="text" class="v33-input" style="width:40%" placeholder="ID: 0001">
+
+        <label class="pnp-v33-label">BINANCE API KEY</label>
+        <input type="text" class="v33-input" placeholder="Masukkan API Key Binance Jenderal...">
+
+        <label class="pnp-v33-label">BINANCE SECRET KEY</label>
+        <input type="password" class="v33-input" placeholder="Masukkan Secret Key Binance Jenderal...">
+
+        <button class="pnp-v33-btn">AKTIFKAN ENGINE MPP</button>
     </div>
 
-   <script>
+    <div class="info-toggle-btn" onclick="pnpV33Toggle('info-box')" style="background:#ffd700; color:#000; padding:10px; text-align:center; border-radius:6px; font-weight:bold; margin-top:20px;">
+        PANDUAN KEAMANAN & SETUP FUTURES <i class="fas fa-chevron-down"></i>
+    </div>
+        
+    <div id="info-box" class="info-content">
+        <div class="extra-body" style="padding: 20px; background: rgba(0,0,0,0.3); border-left: 4px solid #ff3131; text-align: left; margin-top:10px;">
+            <h4 style="color: #ff3131; margin-top: 0; letter-spacing: 1px;">🛡️ PROTOKOL KEAMANAN & OTO-EKSEKUSI</h4>
+            <p style="color: #ccc; font-size: 12px; line-height: 1.8; margin: 0;">
+                <b style="color: #ffd700;">[ STEP 1: KONFIGURASI API BINANCE ]</b><br>
+                • Wajib aktifkan <b>Mode Futures</b> dan <b>Mode Sideway</b>.<br>
+                • <b>PENTING:</b> Pastikan <u>Mode Withdraw NON-AKTIF</u>. Saldo Anda aman!<br><br>
+
+                <b style="color: #ffd700;">[ STEP 2: SINKRONISASI SERVER ]</b><br>
+                • Konfirmasi setelah aktivasi, kami kirimkan <b>Whitelist IP Server</b>.<br>
+                • IP tersebut wajib dipasang di Binance agar mesin bisa eksekusi.<br><br>
+
+                <b style="color: #ffd700;">[ STEP 3: MANAJEMEN MODAL & BIAYA ]</b><br>
+                • Saldo 100% di akun Jenderal. Sewa Server <b>$3 di awal</b> (Berlaku 1 bulan).<br>
+                • Seluruh hasil profit menjadi hak Jenderal sepenuhnya.<br><br>
+
+                <b style="color: #ffd700;">[ STEP 4: TERMINASI & RE-ENTRY ]</b><br>
+                • Berhenti kapan saja: Cukup pindahkan saldo Futures ke Spot.<br>
+                • <b>RE-JOIN:</b> Dikenakan <b>Charge Success Fee 10%</b> dari profit sebelumnya.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
 function pnpV33Toggle(id) {
     var element = document.getElementById(id);
-    
-    // Membaca kondisi asli box (buka atau tutup)
-    var currentHeight = window.getComputedStyle(element).getPropertyValue('max-height');
-    
-    if (currentHeight === "0px" || element.style.maxHeight === "0px") {
-        // AKSI MEMBUKA
+    // Logika Anti-Mogok: Cek status buka/tutup
+    if (!element.style.maxHeight || element.style.maxHeight === "0px") {
         element.style.maxHeight = "1000px";
-        element.style.paddingTop = "10px";
         element.style.opacity = "1";
+        element.style.marginTop = "10px";
     } else {
-        // AKSI MENUTUP
         element.style.maxHeight = "0px";
-        element.style.paddingTop = "0px";
         element.style.opacity = "0";
+        element.style.marginTop = "0px";
     }
-}
-
-// Untuk memastikan tombol Buruh Projek juga tetap jalan
-function toggleExtra(btn, id) {
-    pnpV33Toggle(id);
 }
 </script>
 </div>
