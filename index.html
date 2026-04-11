@@ -349,32 +349,52 @@
     <h2 class="room-title">🛠️ BURUH PROJEK</h2>
         <p>Kalkulasi estimasi penggunaan modal dan lot tempur di sistem MMP V.1.0.</p>
         <div style="overflow-x: auto;">
-    <table class="tabel-compounding">
-            <tr>
-                <th>MODAL</th>
-                <th>LOT (x20)</th>
-                <th>PANGKAT</th>
-                <th>ESTIMASI CUAN</th>
-            </tr>
-            <tr>
-                <td>$20</td>
-                <td>$4</td>
-                <td>PRAJURIT</td>
-                <td>Konsisten</td>
-            </tr>
-            <tr>
-                <td>$100</td>
-                <td>$20</td>
-                <td>JENDERAL</td>
-                <td>Agresif</td>
-            </tr>
-            <tr>
-                <td>$500+</td>
-                <td>Custom</td>
-                <td>ELITE BOSS</td>
-                <td>Maksimal</td>
-            </tr>
-        </table>
+    <table class="tabel-compounding" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 11px;">
+    <thead>
+        <tr style="background: #ffd700; color: #000;">
+            <th style="padding: 10px; border: 1px solid #333;">MODAL</th>
+            <th style="padding: 10px; border: 1px solid #333;">LOT</th>
+            <th style="padding: 10px; border: 1px solid #333;">LEV</th>
+            <th style="padding: 10px; border: 1px solid #333;">SL%</th>
+            <th style="padding: 10px; border: 1px solid #333;">TP%</th>
+            <th style="padding: 10px; border: 1px solid #333;">TARGET 1 BLN</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="color: #ffd700; font-weight: bold; padding: 10px; border: 1px solid #333;">$20</td>
+            <td style="border: 1px solid #333;">$4</td>
+            <td style="border: 1px solid #333;">20x</td>
+            <td style="color: #ff3131; border: 1px solid #333;">2%</td>
+            <td style="color: #39ff14; border: 1px solid #333;">10%</td>
+            <td style="background: rgba(57, 255, 20, 0.05); border: 1px solid #333;">$60 - $100</td>
+        </tr>
+        <tr>
+            <td style="color: #ffd700; font-weight: bold; padding: 10px; border: 1px solid #333;">$50</td>
+            <td style="border: 1px solid #333;">$10</td>
+            <td style="border: 1px solid #333;">20x</td>
+            <td style="color: #ff3131; border: 1px solid #333;">2%</td>
+            <td style="color: #39ff14; border: 1px solid #333;">10%</td>
+            <td style="background: rgba(57, 255, 20, 0.05); border: 1px solid #333;">$150 - $250</td>
+        </tr>
+        <tr>
+            <td style="color: #ffd700; font-weight: bold; padding: 10px; border: 1px solid #333;">$100</td>
+            <td style="border: 1px solid #333;">$20</td>
+            <td style="border: 1px solid #333;">20x</td>
+            <td style="color: #ff3131; border: 1px solid #333;">1.5%</td>
+            <td style="color: #39ff14; border: 1px solid #333;">10%</td>
+            <td style="background: rgba(57, 255, 20, 0.05); border: 1px solid #333;">$300 - $500</td>
+        </tr>
+        <tr>
+            <td style="color: #ffd700; font-weight: bold; padding: 10px; border: 1px solid #333;">$500+</td>
+            <td style="border: 1px solid #333;">Custom</td>
+            <td style="border: 1px solid #333;">20x</td>
+            <td style="color: #ff3131; border: 1px solid #333;">1%</td>
+            <td style="color: #39ff14; border: 1px solid #333;">10%</td>
+            <td style="background: rgba(57, 255, 20, 0.1); border: 1px solid #333; font-weight: bold; color: #39ff14;">MAXIMAL</td>
+        </tr>
+    </tbody>
+</table>
 </div>
         <div class="btn-toggle-container">
             <button class="btn-toggle" onclick="toggleExtra(this, 'ex3')"><i class="arrow-icon"></i></button>
