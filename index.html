@@ -469,6 +469,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto+Condensed:wght@400;700&display=swap');
 
+        /* 1. ATURAN GLOBAL JENDERAL (DI BAGIAN ATAS) */
         .pnp-v33-card { 
             background: #0d0d0d; border-radius: 12px; padding: 25px; 
             border: 1.5px solid #222; 
@@ -477,15 +478,14 @@
             color: #fff; text-align: left;
         }
 
-        /* KUNCI GARIS KUNING KEPARAT */
+        /* 2. KUNCI GARIS KUNING - SEUSAI PERINTAH JENDERAL */
         .v33-border-kuning { 
-            border-left: 4px solid #ffd700 !important; 
+            border-left: 4px solid #ffd700 !important; /* GARIS KUNING NYALA */
             padding-left: 25px; 
             margin-bottom: 20px;
-            display: block !important;
         }
 
-        /* TOMBOL BIRU SIMETRIS */
+        /* 3. TOMBOL BIRU SIMETRIS */
         .btn-blue-tactical {
             width: 100%; background: #007bff; color: #fff;
             padding: 14px; margin-top: 25px; cursor: pointer; border-radius: 8px;
@@ -494,9 +494,10 @@
             text-transform: uppercase;
         }
 
+        /* 4. RESPONSIF ANDROID */
         @media (max-width: 768px) {
             .v33-flex-box { flex-direction: column !important; }
-            .v33-col-right { width: 100% !important; margin-top: 20px; order: -1; } /* Koin ke atas di HP */
+            .v33-col-right { width: 100% !important; margin-top: 20px; order: -1; }
             .v33-border-kuning { border-left: none !important; border-top: 4px solid #ffd700 !important; padding-left: 0; padding-top: 20px; }
             .v33-mobile-center { text-align: center !important; }
         }
@@ -509,13 +510,8 @@
             <button onclick="pnpV33Toggle('hint-area')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">PETUNJUK</button>
         </div>
 
-        <div id="hint-area" style="max-height: 0; overflow: hidden; transition: 0.5s; opacity: 0;">
-            <div style="padding: 10px; background: rgba(255,215,0,0.1); border-radius: 5px; color: #ffd700; font-size: 10px; margin-bottom: 15px; border: 1px solid rgba(255,215,0,0.2);">
-                SINKRONISASI: Aktifkan izin Trade Future di API Binance Jenderal.
-            </div>
-        </div>
-
         <div class="v33-flex-box" style="display: flex; gap: 20px; align-items: stretch;">
+            
             <div class="v33-border-kuning" style="flex: 1;">
                 <div style="margin-bottom: 15px;">
                     <label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">ID NUMBER</label>
@@ -536,13 +532,11 @@
                 <div style="padding-top: 19px;"> 
                     <a href="https://www.bmwweb.biz/activity/referral-entry/CPA?ref=CPA_0056AAM8CZ" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 45px; background: #ffd700; color: #000; border-radius: 6px; font-weight: bold; font-size: 11px; text-decoration: none; box-sizing: border-box; text-align: center; text-transform: uppercase;">DAFTAR BINANCE DISINI</a>
                 </div>
-
                 <div class="v33-mobile-center" style="text-align: center; margin: 15px 0;">
                     <div style="color: #ffd700; font-family: 'Oswald'; font-size: 70px; font-weight: bold; line-height: 1; animation: spin33 4s linear infinite;">3$</div>
                     <div style="color: #fff; font-size: 11px; font-weight: bold; margin-top: 5px;">ID: 828951739</div>
                     <div style="color: #ffd700; font-size: 11px; font-weight: bold; font-style: italic;">BuruhEliet</div>
                 </div>
-
                 <a href="https://wa.me/628123456789" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 60px; background: #25d366; color: #fff; border-radius: 8px; font-weight: 900; font-size: 14px; text-decoration: none; font-family: 'Oswald'; text-transform: uppercase;">KONFIRMASI SEWA</a>
             </div>
         </div>
