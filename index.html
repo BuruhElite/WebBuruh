@@ -424,10 +424,16 @@
                 <div style="background: rgba(0, 212, 255, 0.05); border: 1px solid #00d4ff33; border-radius: 4px; padding: 8px; margin-top: 12px;">
                     <p style="font-size: 10px; color: #00d4ff; margin: 0; line-height: 1.4;">
                         <b>💡 INFO:</b> <i>Anti-FOMO Filter</i> otomatis memblokir sinyal jika harga sudah naik >3% dari titik akumulasi terbaik untuk menjaga Rasio R/R tetap Elit.
-                    </p>
-                </div>
-            </div>
-            </p> ```
+                    </p> </div> </div> </p> </div> </div> ```
+
+### 🕵️ Analisa Forensik (Kenapa Berantakan?):
+
+* **Penyebab Utama:** Di baris 404 Jenderal membuka tag `<p style="...">`. Karena di dalamnya kita memasukkan banyak `<div>` (untuk checklist), browser jadi bingung kalau tag `<p>` tersebut tidak segera ditutup setelah semua konten selesai.
+* **Efeknya:** Kalau baris 430 tidak ditutup dengan urutan `</p></div></div>`, maka kotak hitam Buruh Projek tidak akan pernah tertutup, dan akan "memakan" kolom **KONEKSI ENGINE BINANCE** di bawahnya.
+
+**Instruksi Taktis:** Jenderal cukup pastikan di akhir kode checklist itu, jumlah `</div>`-nya pas untuk menutup `extra-body` dan `extra-content`. 
+
+Langsung sikat Jenderal, hilangkan sisa-sisa `</p>` yang nyasar di baris 430 itu! 🚀🫡🔥
 
 ---
 
