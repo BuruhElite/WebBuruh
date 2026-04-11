@@ -465,85 +465,58 @@
         }
     </style>
 
-    <div class="pnp-v33-card" style="background: #0d0d0d; border-radius: 12px; padding: 25px; border: 1.5px solid #222; position: relative; width: 100%; box-sizing: border-box; font-family: 'Roboto Condensed', sans-serif; margin-bottom: 50px; text-align: left; color: #fff;">
+    <div style="background: #0d0d0d; border-radius: 12px; padding: 25px; border: 1.5px solid #222; width: 100%; box-sizing: border-box; font-family: 'Roboto Condensed', sans-serif; color: #fff; margin-bottom: 50px;">
     
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 15px;">
-        <span style="color: #ffd700; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 21px; text-transform: uppercase;">🔑 KONEKSI ENGINE X BINANCE</span>
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 25px;">
+        <span style="color: #ffd700; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 21px;">🔑 KONEKSI ENGINE X BINANCE</span>
         <button onclick="pnpV33Toggle('hint')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer;">PETUNJUK</button>
     </div>
 
-    <style>
-        .v33-main-grid { display: grid; grid-template-columns: 1fr 220px; gap: 20px; }
-        .v33-left-col { border-left: 3px solid #ffd700; padding-left: 20px; display: grid; gap: 15px; }
-        .v33-right-col { display: grid; grid-template-rows: auto 1fr auto; gap: 10px; text-align: center; }
+    <div id="hint" style="max-height: 0; overflow: hidden; transition: 0.5s; opacity: 0;">
+        <div style="padding: 10px; background: rgba(255,215,0,0.1); border-radius: 5px; color: #ffd700; font-size: 10px; margin-bottom: 15px;">SINKRONISASI: Aktifkan Trade Future di Binance.</div>
+    </div>
+
+    <div style="display: flex; gap: 20px; align-items: stretch; flex-wrap: wrap;">
         
-        .v33-row-align { display: grid; grid-template-rows: auto 45px; align-items: end; }
-        .v33-input-elit { height: 45px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; padding: 0 12px; width: 100%; box-sizing: border-box; font-size: 14px; }
-        .v33-btn-elit { display: flex; align-items: center; justify-content: center; width: 100%; border-radius: 8px; font-weight: 900; text-transform: uppercase; font-family: 'Oswald'; text-decoration: none; transition: 0.3s; cursor: pointer; border: none; }
-
-        @media (max-width: 768px) {
-            .v33-main-grid { grid-template-columns: 1fr; }
-            .v33-right-col { order: -1; margin-bottom: 20px; }
-            .v33-row-align { grid-template-rows: auto auto; }
-        }
-
-        @keyframes coinRotate { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
-        @keyframes blinkGold { 0%, 100% { opacity: 1; text-shadow: 0 0 10px #fff; } 50% { opacity: 0.4; } }
-    </style>
-
-    <div class="v33-main-grid">
-        <div class="v33-left-col">
-            <div id="hint" style="max-height: 0; overflow: hidden; transition: 0.5s; opacity: 0;">
-                <div style="padding: 10px; background: rgba(255,215,0,0.1); border-radius: 5px; color: #ffd700; font-size: 10px;">SINKRONISASI: Aktifkan Trade Future di Binance.</div>
+        <div style="flex: 1; min-width: 250px; border-left: 3px solid #ffd700; padding-left: 20px;">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">ID NUMBER</label>
+                <input type="text" style="width: 100%; height: 45px; background: #000; border: 1px solid #333; color: #fff; padding: 0 12px; border-radius: 6px; box-sizing: border-box;" placeholder="ID: 0001">
             </div>
-
-            <div class="v33-row-align">
-                <label style="color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">ID NUMBER</label>
-                <input type="text" class="v33-input-elit" placeholder="ID: 0001">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">BINANCE API KEY</label>
+                <input type="text" style="width: 100%; height: 45px; background: #000; border: 1px solid #333; color: #fff; padding: 0 12px; border-radius: 6px; box-sizing: border-box;" placeholder="Masukkan API Key...">
             </div>
-
-            <div>
-                <label style="color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px; display: block;">BINANCE API KEY</label>
-                <input type="text" class="v33-input-elit" placeholder="Masukkan API Key...">
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">BINANCE SECRET KEY</label>
+                <input type="password" style="width: 100%; height: 45px; background: #000; border: 1px solid #333; color: #fff; padding: 0 12px; border-radius: 6px; box-sizing: border-box;" placeholder="Masukkan Secret Key...">
             </div>
-
-            <div>
-                <label style="color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px; display: block;">BINANCE SECRET KEY</label>
-                <input type="password" class="v33-input-elit" placeholder="Masukkan Secret Key...">
-            </div>
-
-            <button class="v33-btn-elit" style="background: #ffd700; color: #000; height: 60px; font-size: 16px;">AKTIFKAN ENGINE MPP</button>
+            <button style="width: 100%; height: 60px; background: #ffd700; color: #000; border: none; border-radius: 8px; font-weight: 900; font-family: 'Oswald'; font-size: 16px; cursor: pointer;">AKTIFKAN ENGINE MPP</button>
         </div>
 
-        <div class="v33-right-col">
-            <div class="v33-row-align">
-                <div></div> <a href="https://www.bmwweb.biz/activity/referral-entry/CPA?ref=CPA_0056AAM8CZ" target="_blank" class="v33-btn-elit" style="background: #ffd700; color: #000; height: 45px; font-size: 11px; border-radius: 6px;">Daftar BINANCE disini</a>
+        <div style="width: 200px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="padding-top: 19px;"> 
+                <a href="https://www.bmwweb.biz/activity/referral-entry/CPA?ref=CPA_0056AAM8CZ" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 45px; background: #ffd700; color: #000; border-radius: 6px; font-weight: bold; font-size: 11px; text-decoration: none; box-sizing: border-box;">Daftar BINANCE disini</a>
             </div>
 
-            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                <div style="color: #ffd700; font-family: 'Oswald', sans-serif; font-size: 80px; font-weight: bold; line-height: 1; animation: coinRotate 4s linear infinite;">3$</div>
-                <div style="text-align: center; margin-top: 5px;">
-                    <div style="color: #fff; font-size: 12px; font-weight: bold;">ID: 828951739</div>
-                    <div style="color: #ffd700; font-size: 11px; font-weight: bold; animation: blinkGold 2s infinite;">BuruhEliet</div>
-                </div>
+            <div style="text-align: center; margin: 15px 0;">
+                <div style="color: #ffd700; font-family: 'Oswald', sans-serif; font-size: 70px; font-weight: bold; line-height: 1; animation: spin33 4s linear infinite;">3$</div>
+                <style>@keyframes spin33 { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }</style>
+                <div style="color: #fff; font-size: 12px; font-weight: bold; margin-top: 5px;">ID: 828951739</div>
+                <div style="color: #ffd700; font-size: 11px; font-weight: bold;">BuruhEliet</div>
             </div>
 
-            <a href="https://wa.me/628123456789" target="_blank" class="v33-btn-elit" style="background: #25d366; color: #fff; height: 60px; font-size: 14px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">KONFIRMASI SEWA</a>
+            <a href="https://wa.me/628123456789" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 60px; background: #25d366; color: #fff; border-radius: 8px; font-weight: 900; font-size: 14px; text-decoration: none; font-family: 'Oswald'; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">KONFIRMASI SEWA</a>
         </div>
     </div>
 
-    <div onclick="pnpV33Toggle('info-box')" style="width: 100%; background: #007bff; color: #fff; padding: 12px; text-align: center; border-radius: 6px; font-weight: bold; margin-top: 25px; cursor: pointer;">
-        🛡️ PANDUAN KEAMANAN & SETUP FUTURES <i class="fas fa-chevron-down"></i>
-    </div>
-        
+    <div onclick="pnpV33Toggle('info-box')" style="width: 100%; background: #007bff; color: #fff; padding: 12px; text-align: center; border-radius: 6px; font-weight: bold; margin-top: 25px; cursor: pointer;">🛡️ PANDUAN KEAMANAN & SETUP FUTURES</div>
     <div id="info-box" style="max-height: 0; overflow: hidden; transition: 0.5s; opacity: 0;">
-        <div style="padding: 20px; border-left: 4px solid #007bff; text-align: left; margin-top: 10px; background: rgba(0, 123, 255, 0.05);">
-            <h4 style="color: #007bff; margin-top: 0;">🛡️ PROTOKOL KEAMANAN</h4>
+        <div style="padding: 20px; border-left: 4px solid #007bff; background: rgba(0,123,255,0.05); margin-top: 10px;">
             <p style="color: #ccc; font-size: 11px; line-height: 1.8; margin: 0;">
-                [ STEP 1 ] Aktifkan Mode Futures & Sideway. Withdraw OFF.<br>
-                [ STEP 2 ] Masukkan Whitelist IP Server kami.<br>
-                [ STEP 3 ] Sewa Server $3/Bulan. Saldo tetap di Binance pribadi.<br>
-                [ STEP 4 ] Berhenti kapan saja. Re-join Fee 10% profit.
+                • Aktifkan Mode Futures & Sideway.<br>
+                • Masukkan Whitelist IP Server.<br>
+                • Sewa Server $3/Bulan. Saldo aman di Binance pribadi.
             </p>
         </div>
     </div>
@@ -551,24 +524,11 @@
 
 <script>
 function pnpV33Toggle(id) {
-    var element = document.getElementById(id);
-    if (!element.style.maxHeight || element.style.maxHeight === "0px") {
-        element.style.maxHeight = "1000px";
-        element.style.opacity = "1";
+    var el = document.getElementById(id);
+    if (el.style.maxHeight === "0px" || !el.style.maxHeight) {
+        el.style.maxHeight = "500px"; el.style.opacity = "1";
     } else {
-        element.style.maxHeight = "0px";
-        element.style.opacity = "0";
-    }
-}
-</script>
-function pnpV33Toggle(id) {
-    var element = document.getElementById(id);
-    if (!element.style.maxHeight || element.style.maxHeight === "0px") {
-        element.style.maxHeight = "1000px";
-        element.style.opacity = "1";
-    } else {
-        element.style.maxHeight = "0px";
-        element.style.opacity = "0";
+        el.style.maxHeight = "0px"; el.style.opacity = "0";
     }
 }
 </script>
