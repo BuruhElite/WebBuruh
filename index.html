@@ -535,7 +535,7 @@
             PANDUAN KEAMANAN & SETUP FUTURES <i class="fas fa-chevron-down"></i>
         </div>
         
-<div id="info-box" class="info-content" style="max-height: 0; overflow: hidden; transition: 0.5s ease-out;">
+<div id="info-box" class="info-content" style="max-height: 0px; overflow: hidden; transition: 0.5s ease-out;">
     <div class="extra-body" style="padding: 20px; background: rgba(0,0,0,0.3); border-left: 4px solid #ff3131; text-align: left;">
         <h4 style="color: #ff3131; margin-top: 0; letter-spacing: 1px;">🛡️ PROTOKOL KEAMANAN & OTO-EKSEKUSI</h4>
         
@@ -560,20 +560,29 @@
 </div>
     </div>
 
-    <script>
+   <script>
 function pnpV33Toggle(id) {
     var element = document.getElementById(id);
     
-    // Logika Pintar: Cek apakah box sedang tertutup atau terbuka
-    if (element.style.maxHeight === "0px" || element.style.maxHeight === "") {
-        element.style.maxHeight = "1000px"; // Membuka pintu gerbang
+    // Membaca kondisi asli box (buka atau tutup)
+    var currentHeight = window.getComputedStyle(element).getPropertyValue('max-height');
+    
+    if (currentHeight === "0px" || element.style.maxHeight === "0px") {
+        // AKSI MEMBUKA
+        element.style.maxHeight = "1000px";
+        element.style.paddingTop = "10px";
         element.style.opacity = "1";
-        element.style.paddingTop = "15px";
     } else {
-        element.style.maxHeight = "0px";    // Menutup pintu gerbang
-        element.style.opacity = "0";
+        // AKSI MENUTUP
+        element.style.maxHeight = "0px";
         element.style.paddingTop = "0px";
+        element.style.opacity = "0";
     }
+}
+
+// Untuk memastikan tombol Buruh Projek juga tetap jalan
+function toggleExtra(btn, id) {
+    pnpV33Toggle(id);
 }
 </script>
 </div>
