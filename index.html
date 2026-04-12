@@ -345,96 +345,56 @@
         </button>
     </div>
 
-<div class="room" style="margin-bottom: 45px; position: relative; width: 100%; box-sizing: border-box;">
-    
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 25px;">
-        <span style="color: #ff4d4d; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 1px;">🛠️ PROJEK BURUHELITE</span>
-        <button class="btn-toggle" onclick="toggleExtra(this, 'ex-projek-info')" style="background:#ff4d4d; border:none; color:#fff; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer; font-family:'Oswald';">DETAIL MISI</button>
-    </div>
-
-    <div id="ex-projek-info" class="extra-content" style="max-height: 0; overflow: hidden; transition: 0.5s ease-out;">
-        <div class="extra-body" style="padding: 20px; text-align: left; background: rgba(255,77,77,0.05); border-left: 4px solid #ff4d4d; margin-bottom: 15px;">
-            <p style="color: #ff4d4d; font-family: 'Consolas', monospace; font-size: 11px; text-transform: uppercase; margin: 0 0 10px 0;">🎯 TARGET OPERASIONAL</p>
-            <p style="color: #fff; font-size: 11px; line-height: 1.6; margin: 0;">
-                Kalkulasi Estimasi Penggunaan Modal dan Lot Engine MMP V.1.0. Pastikan manajemen resiko Jenderal sesuai dengan tabel di bawah ini untuk hasil maksimal.
-            </p>
-        </div>
-    </div>
-
-    <style>
-        /* GARIS MERAH MENEMPEL DI BODI TABEL */
-        .v33-col-projek-merah { 
-            width: 100%; 
-            border-left: 4px solid #ff4d4d !important; 
-            padding-left: 20px; 
-            box-sizing: border-box;
-        }
-
-        .table-projek { width: 100%; border-collapse: collapse; background: #000; border: 1px solid #222; font-family: 'Roboto Condensed', sans-serif; }
-        .table-projek th { background: #ff4d4d; color: #000; font-family: 'Oswald'; padding: 12px; font-size: 11px; text-transform: uppercase; border: 1px solid #222; }
-        .table-projek td { padding: 12px; text-align: center; border: 1px solid #222; color: #fff; font-size: 11px; font-weight: bold; }
-        
-        .target-gold { color: #ffd700 !important; }
-        .target-green { color: #39ff14 !important; }
-
-        @media (max-width: 768px) {
-            .v33-col-projek-merah { border-left: none !important; border-top: 4px solid #ff4d4d !important; padding-left: 0; padding-top: 25px; }
-            .table-projek th, .table-projek td { padding: 8px; font-size: 10px; }
-            .room[style*="margin-bottom"] { margin-bottom: 30px !important; }
-        }
-    </style>
-
-    <div class="v33-col-projek-merah">
+</div> <div class="room">
+    <h2 class="room-title">🛠️ PROJEK BuruhElite</h2>
+        <p>Kalkulasi Estimasi Penggunaan Modal dan Lot Engine MMP V.1.0.</p>
         <div style="overflow-x: auto;">
-            <table class="table-projek">
-                <thead>
-                    <tr>
-                        <th>MODAL</th>
-                        <th>LOT</th>
-                        <th>LEV</th>
-                        <th>SL%</th>
-                        <th>TP%</th>
-                        <th>TARGET 1 BLN</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>$20</td>
-                        <td>$4</td>
-                        <td>20x</td>
-                        <td style="color: #ff4d4d;">2%</td>
-                        <td style="color: #39ff14;">10%</td>
-                        <td class="target-gold">$60 - $100</td>
-                    </tr>
-                    <tr>
-                        <td>$50</td>
-                        <td>$10</td>
-                        <td>20x</td>
-                        <td style="color: #ff4d4d;">2%</td>
-                        <td style="color: #39ff14;">10%</td>
-                        <td class="target-gold">$150 - $250</td>
-                    </tr>
-                    <tr>
-                        <td>$100</td>
-                        <td>$20</td>
-                        <td>20x</td>
-                        <td style="color: #ff4d4d;">1.5%</td>
-                        <td style="color: #39ff14;">10%</td>
-                        <td class="target-gold">$300 - $500</td>
-                    </tr>
-                    <tr>
-                        <td>$500+</td>
-                        <td>Custom</td>
-                        <td>20x</td>
-                        <td style="color: #ff4d4d;">1%</td>
-                        <td style="color: #39ff14;">10%</td>
-                        <td class="target-green">MAXIMAL</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+    <table class="tabel-compounding" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 11px;">
+    <thead>
+        <tr style="background: #ffd700; color: #000;">
+            <th style="padding: 10px; border: 1px solid #333;">MODAL</th>
+            <th style="padding: 10px; border: 1px solid #333;">LOT</th>
+            <th style="padding: 10px; border: 1px solid #333;">LEV</th>
+            <th style="padding: 10px; border: 1px solid #333;">SL%</th>
+            <th style="padding: 10px; border: 1px solid #333;">TP%</th>
+            <th style="padding: 10px; border: 1px solid #333;">TARGET 1 BLN</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="color: #ffd700; font-weight: bold; padding: 10px; border: 1px solid #333;">$20</td>
+            <td style="border: 1px solid #333;">$4</td>
+            <td style="border: 1px solid #333;">20x</td>
+            <td style="color: #ff3131; border: 1px solid #333;">2%</td>
+            <td style="color: #39ff14; border: 1px solid #333;">10%</td>
+            <td style="background: rgba(57, 255, 20, 0.05); border: 1px solid #333;">$60 - $100</td>
+        </tr>
+        <tr>
+            <td style="color: #ffd700; font-weight: bold; padding: 10px; border: 1px solid #333;">$50</td>
+            <td style="border: 1px solid #333;">$10</td>
+            <td style="border: 1px solid #333;">20x</td>
+            <td style="color: #ff3131; border: 1px solid #333;">2%</td>
+            <td style="color: #39ff14; border: 1px solid #333;">10%</td>
+            <td style="background: rgba(57, 255, 20, 0.05); border: 1px solid #333;">$150 - $250</td>
+        </tr>
+        <tr>
+            <td style="color: #ffd700; font-weight: bold; padding: 10px; border: 1px solid #333;">$100</td>
+            <td style="border: 1px solid #333;">$20</td>
+            <td style="border: 1px solid #333;">20x</td>
+            <td style="color: #ff3131; border: 1px solid #333;">1.5%</td>
+            <td style="color: #39ff14; border: 1px solid #333;">10%</td>
+            <td style="background: rgba(57, 255, 20, 0.05); border: 1px solid #333;">$300 - $500</td>
+        </tr>
+        <tr>
+            <td style="color: #ffd700; font-weight: bold; padding: 10px; border: 1px solid #333;">$500+</td>
+            <td style="border: 1px solid #333;">Custom</td>
+            <td style="border: 1px solid #333;">20x</td>
+            <td style="color: #ff3131; border: 1px solid #333;">1%</td>
+            <td style="color: #39ff14; border: 1px solid #333;">10%</td>
+            <td style="background: rgba(57, 255, 20, 0.1); border: 1px solid #333; font-weight: bold; color: #39ff14;">MAXIMAL</td>
+        </tr>
+    </tbody>
+</table>
 </div>
         <div class="btn-toggle-container">
             <button class="btn-toggle" onclick="toggleExtra(this, 'ex3')"><i class="arrow-icon"></i></button>
@@ -471,7 +431,7 @@
    <div class="room" style="margin-bottom: 45px; position: relative; width: 100%; box-sizing: border-box;">
     
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 25px;">
-        <span style="color: #ffd700; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 1px;">🔑 KONEKSI ENGINE X BINANCE</span>
+        <span style="color: #ffd700; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 21px; text-transform: uppercase;">🔑 KONEKSI ENGINE X BINANCE</span>
         <button onclick="toggleExtra(this, 'ex-binance-info')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer; font-family:'Oswald';">PETUNJUK</button>
     </div>
 
@@ -491,15 +451,15 @@
         .v33-input { width: 100%; height: 45px; background: #000; border: 1px solid #333; color: #fff; padding: 0 15px; border-radius: 8px; box-sizing: border-box; }
         .v33-btn-big { display: flex; align-items: center; justify-content: center; width: 100%; height: 60px; border-radius: 8px; font-weight: 900; font-family: 'Oswald', sans-serif; text-decoration: none; text-transform: uppercase; font-size: 16px; border: none; cursor: pointer; }
         
-        /* TOMBOL PANEL - BIRU TOP SIGNAL (SOLID) */
-        .v33-btn-blue-top {
-            width: 100%; background: #0044cc; color: #fff; height: 55px;
+        /* TOMBOL BIRU GAGAH */
+        .v33-btn-blue-tactical {
+            width: 100%; background: #007bff; color: #fff; height: 55px; /* Lebih Tebal */
             text-align: center; border-radius: 8px; font-weight: 900; cursor: pointer; 
             font-size: 14px; border: none; display: block; box-sizing: border-box;
             font-family: 'Oswald', sans-serif; letter-spacing: 1px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3); transition: 0.3s;
         }
-        .v33-btn-blue-top:hover { background: #0033aa; transform: translateY(-2px); }
+        .v33-btn-blue-tactical:hover { background: #0056b3; transform: translateY(-2px); }
 
         @media (max-width: 768px) {
             .v33-grid-core { flex-direction: column !important; }
@@ -518,33 +478,33 @@
         </div>
 
         <div class="v33-col-right-aksi">
-            <div style="margin-top: 19px;"><a href="https://www.bmwweb.biz/..." target="_blank" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 45px; background: #ffd700; color: #000; border-radius: 6px; font-weight: bold; font-size: 10px; text-decoration: none; text-transform: uppercase;">DAFTAR BINANCE DISINI</a></div>
+            <div style="margin-top: 19px;"><a href="https://www.bmwweb.biz/activity/referral-entry/CPA?ref=CPA_0056AAM8CZ" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 45px; background: #ffd700; color: #000; border-radius: 6px; font-weight: bold; font-size: 10px; text-decoration: none; text-transform: uppercase;">DAFTAR BINANCE DISINI</a></div>
             <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                 <div style="color: #ffd700; font-family: 'Oswald'; font-size: 70px; font-weight: bold; line-height: 1; animation: v33Spin 4s linear infinite;">3$</div>
                 <div style="color: #fff; font-size: 11px; font-weight: bold; margin-top: 5px;">ID: 828951739</div>
                 <div style="color: #ffd700; font-size: 11px; font-weight: bold; font-style: italic;">BuruhEliet</div>
             </div>
-            <a href="https://wa.me/..." target="_blank" class="v33-btn-big" style="background: #25d366; color: #fff;">KONFIRMASI SEWA</a>
+            <a href="https://wa.me/628123456789" target="_blank" class="v33-btn-big" style="background: #25d366; color: #fff;">KONFIRMASI SEWA</a>
         </div>
     </div>
 
     <div style="margin-top: 25px; border-top: 1px solid #222; padding-top: 20px;">
-        <button class="v33-btn-blue-top" onclick="toggleExtra(this, 'ex-security-v33')">🛡️ PANDUAN KEAMANAN & PROTOKOL ENGINE MPP V1.0</button>
+        <button class="v33-btn-blue-tactical" onclick="toggleExtra(this, 'ex-security-v33')">🛡️ PANDUAN KEAMANAN & PROTOKOL ENGINE MPP V1.0</button>
         
         <div id="ex-security-v33" class="extra-content" style="max-height: 0; overflow: hidden; transition: 0.5s ease-out;">
-            <div class="extra-body" style="padding: 25px; border-left: 5px solid #00ccff; background: rgba(0, 68, 204, 0.05); margin-top: 15px; text-align: left;">
-                <h4 style="color: #00ccff; margin-top: 0; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">🛡️ 10 PROTOKOL PERTAHANAN & OPERASIONAL</h4>
+            <div class="extra-body" style="padding: 25px; border-left: 5px solid #007bff; background: rgba(0,123,255,0.05); margin-top: 15px; text-align: left;">
+                <h4 style="color: #007bff; margin-top: 0; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">🛡️ 10 PROTOKOL PERTAHANAN & OPERASIONAL</h4>
                 <div style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 15px;">
-                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 01 ] API RESTRICTION:</b> Wajib mengaktifkan izin "Enable Futures". Dilarang keras mencentang "Enable Withdrawals".</p>
-                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 02 ] IP WHITELISTING:</b> Hanya terima koneksi dari IP Server BuruhElite yang sudah terdaftar secara resmi.</p>
-                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 03 ] ASSET SEGREGATION:</b> Saldo tetap berada di dompet Futures Jenderal sendiri. Engine hanya mengirim instruksi eksekusi.</p>
-                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 04 ] SERVER MAINTENANCE:</b> Donasi $3 USDT untuk operasional VPS Singapore (Low Latency) demi akurasi harga.</p>
-                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 05 ] ANTI-LIQUIDATION:</b> Sistem menggunakan Smart Stop-Loss dinamis yang menyesuaikan volatilitas pasar (ATR Based).</p>
-                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 06 ] PROFIT SHARING:</b> Pembagian hasil dilakukan di akhir periode sewa (Success Fee 10-20%) secara transparan.</p>
-                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 07 ] MULTI-PAIR SCANNER:</b> Engine mendeteksi koin volume tinggi untuk scalping cepat secara otomatis 24 jam.</p>
-                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 08 ] DUAL-MODE ENGINE:</b> Mendukung strategi Scalping dan Swing yang berganti otomatis sesuai kondisi market terkini.</p>
-                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 09 ] EMERGENCY SHUTDOWN:</b> Jenderal berhak memutuskan koneksi API kapan saja melalui dashboard Binance secara sepihak.</p>
-                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 10 ] 24/7 MONITORING:</b> Sistem diawasi secara real-time untuk memastikan keamanan koneksi API tetap terjaga.</p>
+                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #007bff;">[ 01 ] API RESTRICTION:</b> Wajib mengaktifkan izin "Enable Futures". Dilarang keras mencentang "Enable Withdrawals" demi keamanan saldo Jenderal.</p>
+                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #007bff;">[ 02 ] IP WHITELISTING:</b> Hanya terima koneksi dari IP Server BuruhElite yang sudah terdaftar. Ini mencegah akses luar yang tidak sah.</p>
+                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #007bff;">[ 03 ] ASSET SEGREGATION:</b> Saldo tetap berada di dompet Futures Jenderal sendiri. Engine hanya mengirim instruksi Buy/Sell via API.</p>
+                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #007bff;">[ 04 ] SERVER MAINTENANCE:</b> Donasi $3 USDT digunakan untuk penyewaan VPS Singapore (Low Latency) agar eksekusi harga presisi 99.9%.</p>
+                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #007bff;">[ 05 ] ANTI-LIQUIDATION:</b> Sistem menggunakan Smart Stop-Loss yang dinamis sesuai volatilitas pasar (ATR Based).</p>
+                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #007bff;">[ 06 ] PROFIT SHARING:</b> Pembagian hasil dilakukan di akhir periode sewa (Success Fee 10-20%) sebagai bentuk kerjasama mutualisme.</p>
+                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #007bff;">[ 07 ] MULTI-PAIR SCANNER:</b> Engine secara otomatis mendeteksi koin "micin" potensial dengan volume tinggi untuk scalping cepat.</p>
+                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #007bff;">[ 08 ] DUAL-MODE ENGINE:</b> Mendukung strategi Scalping (Cepat) dan Swing (Tren) yang berganti otomatis sesuai kondisi market.</p>
+                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #007bff;">[ 09 ] EMERGENCY SHUTDOWN:</b> Jenderal berhak memutuskan koneksi API kapan saja melalui dashboard Binance jika ingin berhenti sepihak.</p>
+                    <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #007bff;">[ 10 ] 24/7 MONITORING:</b> Sistem diawasi secara real-time oleh Jenderal Sekdes untuk memastikan tidak ada anomali pada API Connection.</p>
                 </div>
             </div>
         </div>
