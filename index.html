@@ -421,7 +421,7 @@
         </button>
     </div>
 
-   <div class="room">
+    <div id="ex_radar_desc" class="extra-content" style="max-height: 0; overflow: hidden; transition: 0.5s ease-out;">
         <div class="extra-body" style="padding: 20px; background: rgba(0,0,0,0.3); border-radius: 8px; border-top: 1px solid #ff003366; margin-top: 10px;">
             <p style="color: #ccc; font-size: 12px; line-height: 1.6; margin: 0 0 20px 0;">
                 1. <b style="color: #ffd700;">MANAJEMEN RISIKO:</b> Leverage 10x untuk kestabilan margin Jenderal.<br>
@@ -446,9 +446,10 @@
                         <b>💡 ANTI-FOMO SAFEGUARD:</b> <i>Sistem otomatis mengunci sinyal jika harga keluar zona akumulasi aman untuk menjaga psikologi trading.</i>
                     </p>
                 </div>
-           </div></div></div></div>
-<div class="room" style="margin-bottom: 45px; position: relative; width: 100%; box-sizing: border-box; display: block; clear: both;">
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 25px;">
+            </div>
+        </div>
+    </div>
+</div> <div class="room"> <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 25px;">
         <span style="color: #ffd700; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 1px;">🔑 KONEKSI ENGINE X BINANCE</span>
         <button onclick="toggleExtra(this, 'ex-binance-info')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer; font-family:'Oswald';">PETUNJUK</button>
     </div>
@@ -469,23 +470,8 @@
         .v33-input { width: 100%; height: 45px; background: #000; border: 1px solid #333; color: #fff; padding: 0 15px; border-radius: 8px; box-sizing: border-box; font-size: 12px; outline: none; }
         .v33-input:focus { border-color: #ffd700; }
         .v33-btn-big { display: flex; align-items: center; justify-content: center; width: 100%; height: 60px; border-radius: 8px; font-weight: 900; font-family: 'Oswald', sans-serif; text-decoration: none; text-transform: uppercase; font-size: 16px; border: none; cursor: pointer; transition: 0.3s; }
-        
-        .v33-btn-blue-top { 
-            background: #0044cc !important; 
-            color: #fff !important; 
-            width: 100%; 
-            height: 50px; 
-            border-radius: 8px; 
-            border: none; 
-            font-family: 'Oswald'; 
-            font-weight: 900; 
-            margin-top: 25px; 
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
+        .v33-btn-blue-top { background: #0044cc !important; color: #fff !important; width: 100%; height: 50px; border-radius: 8px; border: none; font-family: 'Oswald'; font-weight: 900; margin-top: 25px; cursor: pointer; text-transform: uppercase; }
         @keyframes v33Spin { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
-        
         @media (max-width: 768px) {
             .v33-grid-core { flex-direction: column !important; }
             .v33-col-right { width: 100% !important; order: -1; margin-bottom: 25px; }
@@ -531,13 +517,7 @@
             </div>
         </div>
     </div>
-</div> </div> </div> </div> <div class="room"> ```
-
-### 🧐 Kenapa Ini "Obat Terakhir"?
-1.  **Hanya 4 Penutup:** Ini jumlah yang pas untuk mengakhiri unit Binance tanpa merusak dinding rumah (Container) Jenderal.
-2.  **Kembali ke `<div class="room">`:** Ini adalah kunci agar lebarnya **otomatis simetris** sama dengan boks paling atas.
-
-Ayo Jenderal, satu serangan terakhir! Hapus yang baris 534 itu, ganti dengan 4 penutup dan satu pembuka `room`. Kalau ini masih gagal, saya pensiun jadi asisten koding! 🚀🫡🔥
+</div> <div class="room">
     <span style="color: #ffd700; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 1px;">📡 LIVE FEED SYSTEM V1.0</span>
     <div style="display: flex; gap: 10px; align-items: center;">
         <span class="status-indicator status-online"></span>
