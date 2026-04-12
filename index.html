@@ -449,9 +449,7 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="room" style="margin-bottom: 45px; position: relative; width: 100%; box-sizing: border-box;">
+</div> <div class="room" style="margin-bottom: 45px; position: relative; width: 100%; box-sizing: border-box; display: inline-block;">
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 15px;">
         <span style="color: #ffd700; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 1px;">🔑 KONEKSI ENGINE X BINANCE</span>
         <button onclick="toggleExtra(this, 'ex-binance-info')" style="background:#ffd700; border:none; color:#000; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer; font-family:'Oswald';">PETUNJUK</button>
@@ -474,6 +472,21 @@
         .v33-input:focus { border-color: #ffd700; }
         .v33-btn-big { display: flex; align-items: center; justify-content: center; width: 100%; height: 60px; border-radius: 8px; font-weight: 900; font-family: 'Oswald', sans-serif; text-decoration: none; text-transform: uppercase; font-size: 16px; border: none; cursor: pointer; transition: 0.3s; }
         
+        /* FIX WARNA BIRU TOMBOL BAWAH */
+        .v33-btn-blue-top { 
+            background: #0044cc !important; 
+            color: #fff !important; 
+            width: 100%; 
+            height: 50px; 
+            border-radius: 8px; 
+            border: none; 
+            font-family: 'Oswald'; 
+            font-weight: 900; 
+            margin-top: 25px; 
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
         @keyframes v33Spin { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
         
         @media (max-width: 768px) {
@@ -492,9 +505,7 @@
         </div>
 
         <div class="v33-col-right-aksi">
-            <div style="margin-top: 0px;">
-                <a href="https://www.binance.com/id/register" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 45px; background: #ffd700; color: #000; border-radius: 6px; font-weight: bold; font-size: 10px; text-decoration: none; text-transform: uppercase;">DAFTAR BINANCE DISINI</a>
-            </div>
+            <a href="https://www.binance.com/id/register" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 45px; background: #ffd700; color: #000; border-radius: 6px; font-weight: bold; font-size: 10px; text-decoration: none; text-transform: uppercase;">DAFTAR BINANCE DISINI</a>
             <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px 0;">
                 <div style="color: #ffd700; font-family: 'Oswald'; font-size: 70px; font-weight: bold; line-height: 1; animation: v33Spin 4s linear infinite;">3$</div>
                 <div style="color: #fff; font-size: 11px; font-weight: bold; margin-top: 5px;">ID: 828951739</div>
@@ -503,27 +514,27 @@
             <a href="https://wa.me/628123456789" target="_blank" class="v33-btn-big" style="background: #25d366; color: #fff;">KONFIRMASI SEWA</a>
         </div>
     </div>
-</div>
 
-    <button class="v33-btn-blue-top" onclick="toggleExtra(this, 'ex-protokol-final')">🛡️ PANDUAN KEAMANAN & PROTOKOL ENGINE MPP V1.0</button>
+    <button class="v33-btn-blue-top" onclick="toggleExtra(this, 'ex-sec-v33')">🛡️ PANDUAN KEAMANAN & PROTOKOL ENGINE MPP V1.0</button>
     
-    <div id="ex-protokol-final" class="extra-content" style="max-height: 0; overflow: hidden; transition: 0.5s ease-out;">
+    <div id="ex-sec-v33" class="extra-content" style="max-height: 0; overflow: hidden; transition: 0.5s ease-out;">
         <div class="extra-body" style="padding: 25px; border-left: 5px solid #00ccff; background: rgba(0, 68, 204, 0.05); margin-top: 15px; text-align: left;">
-            <h4 style="color: #00ccff; margin-top: 0; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">🛡️ 10 PROTOKOL PERTAHANAN & OPERASIONAL</h4>
-            <div style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 15px;">
-                <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 01 ] API RESTRICTION:</b> Wajib mengaktifkan izin "Enable Futures". Dilarang keras mencentang "Enable Withdrawals".</p>
-                <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 02 ] IP WHITELISTING:</b> Hanya terima koneksi dari IP Server BuruhElite yang sudah terdaftar secara resmi.</p>
-                <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 03 ] ASSET SEGREGATION:</b> Saldo tetap berada di dompet Futures Jenderal sendiri.</p>
-                <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 04 ] SERVER MAINTENANCE:</b> Donasi $3 USDT untuk operasional VPS Singapore.</p>
-                <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 05 ] ANTI-LIQUIDATION:</b> Sistem menggunakan Smart Stop-Loss dinamis.</p>
-                <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 06 ] PROFIT SHARING:</b> Sukses fee 10-20% secara transparan.</p>
-                <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 07 ] MULTI-PAIR SCANNER:</b> Engine mendeteksi koin volume tinggi otomatis.</p>
-                <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 08 ] DUAL-MODE ENGINE:</b> Mendukung strategi Scalping dan Swing.</p>
-                <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 09 ] EMERGENCY SHUTDOWN:</b> Jenderal berhak memutuskan koneksi kapan saja.</p>
-                <p style="color: #ccc; font-size: 12px; margin: 0;"><b style="color: #00ccff;">[ 10 ] 24/7 MONITORING:</b> Sistem diawasi secara real-time.</p>
+            <p style="color: #00ccff; font-weight: bold;">🛡️ 10 PROTOKOL PERTAHANAN:</p>
+            <div style="color: #ccc; font-size: 11px; line-height: 1.8; margin-top: 10px;">
+                [ 01 ] API RESTRICTION: No Withdrawals. <br>
+                [ 02 ] IP WHITELISTING: Server BuruhElite Resmi. <br>
+                [ 03 ] ASSET SEGREGATION: Saldo di dompet Jenderal sendiri. <br>
+                [ 04 ] SERVER MAINTENANCE: VPS Singapore Low Latency. <br>
+                [ 05 ] ANTI-LIQUIDATION: Smart Stop-Loss ATR Based. <br>
+                [ 06 ] PROFIT SHARING: Success Fee 10-20%. <br>
+                [ 07 ] MULTI-PAIR SCANNER: Auto-detect koin volume tinggi. <br>
+                [ 08 ] DUAL-MODE ENGINE: Scalping & Swing dinamis. <br>
+                [ 09 ] EMERGENCY SHUTDOWN: Kendali penuh di tangan Jenderal. <br>
+                [ 10 ] 24/7 MONITORING: Pengawasan real-time.
             </div>
         </div>
     </div>
+</div>
 </div> <div class="room" style="margin-bottom: 38px; width: 100%; box-sizing: border-box;">
     <div class="live-feed-master-card" style="background: #1a1a1a; border: 1.5px solid #333; padding: 25px; border-radius: 12px; transition: 0.3s; position: relative; box-shadow: inset 0 0 20px rgba(0,0,0,0.5);">
         
