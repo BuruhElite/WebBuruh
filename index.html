@@ -345,56 +345,96 @@
         </button>
     </div>
 
-</div> <div class="room">
-    <h2 class="room-title">🛠️ PROJEK BuruhElite</h2>
-        <p>Kalkulasi Estimasi Penggunaan Modal dan Lot Engine MMP V.1.0.</p>
+<div class="room" style="margin-bottom: 45px; position: relative; width: 100%; box-sizing: border-box;">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 25px;">
+        <span style="color: #ff4d4d; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 1px;">🛠️ PROJEK BURUHELITE</span>
+        <button class="btn-toggle" onclick="toggleExtra(this, 'ex-projek-info')" style="background:#ff4d4d; border:none; color:#fff; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer; font-family:'Oswald';">DETAIL MISI</button>
+    </div>
+
+    <div id="ex-projek-info" class="extra-content" style="max-height: 0; overflow: hidden; transition: 0.5s ease-out;">
+        <div class="extra-body" style="padding: 20px; text-align: left; background: rgba(255,77,77,0.05); border-left: 4px solid #ff4d4d; margin-bottom: 15px;">
+            <p style="color: #ff4d4d; font-family: 'Consolas', monospace; font-size: 11px; text-transform: uppercase; margin: 0 0 10px 0;">🎯 TARGET OPERASIONAL</p>
+            <p style="color: #fff; font-size: 11px; line-height: 1.6; margin: 0;">
+                Kalkulasi Estimasi Penggunaan Modal dan Lot Engine MMP V.1.0. Pastikan manajemen resiko Jenderal sesuai dengan tabel di bawah ini untuk hasil maksimal.
+            </p>
+        </div>
+    </div>
+
+    <style>
+        /* GARIS MERAH MENEMPEL DI BODI TABEL */
+        .v33-col-projek-merah { 
+            width: 100%; 
+            border-left: 4px solid #ff4d4d !important; 
+            padding-left: 20px; 
+            box-sizing: border-box;
+        }
+
+        .table-projek { width: 100%; border-collapse: collapse; background: #000; border: 1px solid #222; font-family: 'Roboto Condensed', sans-serif; }
+        .table-projek th { background: #ff4d4d; color: #000; font-family: 'Oswald'; padding: 12px; font-size: 11px; text-transform: uppercase; border: 1px solid #222; }
+        .table-projek td { padding: 12px; text-align: center; border: 1px solid #222; color: #fff; font-size: 11px; font-weight: bold; }
+        
+        .target-gold { color: #ffd700 !important; }
+        .target-green { color: #39ff14 !important; }
+
+        @media (max-width: 768px) {
+            .v33-col-projek-merah { border-left: none !important; border-top: 4px solid #ff4d4d !important; padding-left: 0; padding-top: 25px; }
+            .table-projek th, .table-projek td { padding: 8px; font-size: 10px; }
+            .room[style*="margin-bottom"] { margin-bottom: 30px !important; }
+        }
+    </style>
+
+    <div class="v33-col-projek-merah">
         <div style="overflow-x: auto;">
-    <table class="tabel-compounding" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 11px;">
-    <thead>
-        <tr style="background: #ffd700; color: #000;">
-            <th style="padding: 10px; border: 1px solid #333;">MODAL</th>
-            <th style="padding: 10px; border: 1px solid #333;">LOT</th>
-            <th style="padding: 10px; border: 1px solid #333;">LEV</th>
-            <th style="padding: 10px; border: 1px solid #333;">SL%</th>
-            <th style="padding: 10px; border: 1px solid #333;">TP%</th>
-            <th style="padding: 10px; border: 1px solid #333;">TARGET 1 BLN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="color: #ffd700; font-weight: bold; padding: 10px; border: 1px solid #333;">$20</td>
-            <td style="border: 1px solid #333;">$4</td>
-            <td style="border: 1px solid #333;">20x</td>
-            <td style="color: #ff3131; border: 1px solid #333;">2%</td>
-            <td style="color: #39ff14; border: 1px solid #333;">10%</td>
-            <td style="background: rgba(57, 255, 20, 0.05); border: 1px solid #333;">$60 - $100</td>
-        </tr>
-        <tr>
-            <td style="color: #ffd700; font-weight: bold; padding: 10px; border: 1px solid #333;">$50</td>
-            <td style="border: 1px solid #333;">$10</td>
-            <td style="border: 1px solid #333;">20x</td>
-            <td style="color: #ff3131; border: 1px solid #333;">2%</td>
-            <td style="color: #39ff14; border: 1px solid #333;">10%</td>
-            <td style="background: rgba(57, 255, 20, 0.05); border: 1px solid #333;">$150 - $250</td>
-        </tr>
-        <tr>
-            <td style="color: #ffd700; font-weight: bold; padding: 10px; border: 1px solid #333;">$100</td>
-            <td style="border: 1px solid #333;">$20</td>
-            <td style="border: 1px solid #333;">20x</td>
-            <td style="color: #ff3131; border: 1px solid #333;">1.5%</td>
-            <td style="color: #39ff14; border: 1px solid #333;">10%</td>
-            <td style="background: rgba(57, 255, 20, 0.05); border: 1px solid #333;">$300 - $500</td>
-        </tr>
-        <tr>
-            <td style="color: #ffd700; font-weight: bold; padding: 10px; border: 1px solid #333;">$500+</td>
-            <td style="border: 1px solid #333;">Custom</td>
-            <td style="border: 1px solid #333;">20x</td>
-            <td style="color: #ff3131; border: 1px solid #333;">1%</td>
-            <td style="color: #39ff14; border: 1px solid #333;">10%</td>
-            <td style="background: rgba(57, 255, 20, 0.1); border: 1px solid #333; font-weight: bold; color: #39ff14;">MAXIMAL</td>
-        </tr>
-    </tbody>
-</table>
+            <table class="table-projek">
+                <thead>
+                    <tr>
+                        <th>MODAL</th>
+                        <th>LOT</th>
+                        <th>LEV</th>
+                        <th>SL%</th>
+                        <th>TP%</th>
+                        <th>TARGET 1 BLN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>$20</td>
+                        <td>$4</td>
+                        <td>20x</td>
+                        <td style="color: #ff4d4d;">2%</td>
+                        <td style="color: #39ff14;">10%</td>
+                        <td class="target-gold">$60 - $100</td>
+                    </tr>
+                    <tr>
+                        <td>$50</td>
+                        <td>$10</td>
+                        <td>20x</td>
+                        <td style="color: #ff4d4d;">2%</td>
+                        <td style="color: #39ff14;">10%</td>
+                        <td class="target-gold">$150 - $250</td>
+                    </tr>
+                    <tr>
+                        <td>$100</td>
+                        <td>$20</td>
+                        <td>20x</td>
+                        <td style="color: #ff4d4d;">1.5%</td>
+                        <td style="color: #39ff14;">10%</td>
+                        <td class="target-gold">$300 - $500</td>
+                    </tr>
+                    <tr>
+                        <td>$500+</td>
+                        <td>Custom</td>
+                        <td>20x</td>
+                        <td style="color: #ff4d4d;">1%</td>
+                        <td style="color: #39ff14;">10%</td>
+                        <td class="target-green">MAXIMAL</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </div>
         <div class="btn-toggle-container">
             <button class="btn-toggle" onclick="toggleExtra(this, 'ex3')"><i class="arrow-icon"></i></button>
