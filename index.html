@@ -348,25 +348,25 @@
 <div class="room" style="margin-bottom: 45px; position: relative; width: 100%; box-sizing: border-box;">
     
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 25px;">
-        <span style="color: #ff4d4d; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 1px;">🛠️ PROJEK BURUHELITE</span>
+        <span style="color: #ffd700; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 1px;">🛠️ PROJEK BURUHELITE</span>
         <button class="btn-toggle" onclick="toggleExtra(this, 'ex-projek-info')" style="background:#ff4d4d; border:none; color:#fff; padding:8px 15px; border-radius:6px; font-weight:900; font-size:10px; cursor:pointer; font-family:'Oswald';">DETAIL MISI</button>
     </div>
 
     <div id="ex-projek-info" class="extra-content" style="max-height: 0; overflow: hidden; transition: 0.5s ease-out;">
-        <div class="extra-body" style="padding: 20px; text-align: left; background: rgba(255,77,77,0.05); border-left: 4px solid #ff4d4d; margin-bottom: 15px;">
+        <div class="extra-body" style="padding: 20px; text-align: left; background: rgba(255,77,77,0.05); border-right: 4px solid #ff4d4d; margin-bottom: 15px;">
             <p style="color: #ff4d4d; font-family: 'Consolas', monospace; font-size: 11px; text-transform: uppercase; margin: 0 0 10px 0;">🎯 TARGET OPERASIONAL</p>
             <p style="color: #fff; font-size: 11px; line-height: 1.6; margin: 0;">
-                Kalkulasi Estimasi Penggunaan Modal dan Lot Engine MMP V.1.0. Pastikan manajemen resiko Jenderal sesuai dengan tabel di bawah ini untuk hasil maksimal.
+                Kalkulasi Estimasi Penggunaan Modal dan Lot Engine MMP V.1.0. Pastikan manajemen resiko Jenderal sesuai dengan tabel di bawah ini.
             </p>
         </div>
     </div>
 
     <style>
-        /* GARIS MERAH MENEMPEL DI BODI TABEL */
-        .v33-col-projek-merah { 
+        /* GARIS MERAH DI SEBELAH KANAN (KOREKSI JENDERAL) */
+        .v33-col-projek-merah-right { 
             width: 100%; 
-            border-left: 4px solid #ff4d4d !important; 
-            padding-left: 20px; 
+            border-right: 4px solid #ff4d4d !important; 
+            padding-right: 20px; 
             box-sizing: border-box;
         }
 
@@ -378,13 +378,12 @@
         .target-green { color: #39ff14 !important; }
 
         @media (max-width: 768px) {
-            .v33-col-projek-merah { border-left: none !important; border-top: 4px solid #ff4d4d !important; padding-left: 0; padding-top: 25px; }
+            .v33-col-projek-merah-right { border-right: none !important; border-top: 4px solid #ff4d4d !important; padding-right: 0; padding-top: 25px; }
             .table-projek th, .table-projek td { padding: 8px; font-size: 10px; }
-            .room[style*="margin-bottom"] { margin-bottom: 30px !important; }
         }
     </style>
 
-    <div class="v33-col-projek-merah">
+    <div class="v33-col-projek-merah-right">
         <div style="overflow-x: auto;">
             <table class="table-projek">
                 <thead>
@@ -434,7 +433,6 @@
             </table>
         </div>
     </div>
-</div>
 </div>
         <div class="btn-toggle-container">
             <button class="btn-toggle" onclick="toggleExtra(this, 'ex3')"><i class="arrow-icon"></i></button>
