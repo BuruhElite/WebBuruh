@@ -542,7 +542,9 @@
 
         <div id="coin-theater" style="margin-bottom: 20px; min-height: 50px; display: grid; gap: 8px;">
         </div>
-
+            <p style="color: #FFFF00; font-family: 'Consolas', monospace; font-weight: bold; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; margin-top: 10px;">
+                [ DAFTAR USER & ENGINE STATUS REAL TIME ]
+            </p>
         <div style="display: flex; position: relative; width: 100%; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.6)); margin-bottom: 30px;">
             <div style="background: #000; border-radius: 8px 0 0 8px; border: 1px solid #111; flex-grow: 1; overflow: hidden; display: flex; flex-direction: column;">
                 
@@ -631,20 +633,7 @@
         const tableBody = document.getElementById('cmd-ledger-rows');
         if(tableBody) {
             tableBody.innerHTML = "";
-            // 1. BERSIHKAN DIVIDER LAMA
-        const oldDivider = document.getElementById("pembatas-kuning");
-        if (oldDivider) { oldDivider.remove(); }
-
-        // 2. BIKIN DIVIDER BARU
-        const divider = document.createElement("div");
-        divider.id = "pembatas-kuning";
-        divider.style.cssText = "color: #FFFF00; font-weight: bold; padding: 10px 5px; margin-bottom: 5px; font-size: 13px; font-family: 'Consolas', monospace; letter-spacing: 1px; width: 100%;";
-        divider.innerHTML = "[ DAFTAR USER & ENGINE STATUS REAL TIME ]";
-        
-        // 3. TARUH DI LUAR BOX (DI ATAS CONTAINER TABEL)
-        // Kita naik dua tingkat (ke parent dari container tabel)
-        const tableContainer = tableBody.closest('.live-feed-table-container') || tableBody.parentNode;
-        tableContainer.parentNode.insertBefore(divider, tableContainer);
+                   tableContainer.parentNode.insertBefore(divider, tableContainer);
             document.getElementById('user-total').innerText = ledgerUsers.length;
             ledgerUsers.forEach(u => {
                 let active = u.stat === "RUNNING";
