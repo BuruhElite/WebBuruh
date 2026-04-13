@@ -631,6 +631,10 @@
         const tableBody = document.getElementById('cmd-ledger-rows');
         if(tableBody) {
             tableBody.innerHTML = "";
+            const divider = document.createElement("div");
+        divider.style.cssText = "color: #FFFF00; font-weight: bold; padding: 15px 5px 10px 5px; border-bottom: 1px solid #333; margin-bottom: 10px; font-size: 13px; font-family: 'Consolas', monospace; letter-spacing: 1px;";
+        divider.innerHTML = "[ DAFTAR USER & ENGINE STATUS REAL TIME ]";
+        tableBody.appendChild(divider);
             document.getElementById('user-total').innerText = ledgerUsers.length;
             ledgerUsers.forEach(u => {
                 let active = u.stat === "RUNNING";
