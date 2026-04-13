@@ -651,42 +651,43 @@
     setInterval(runMasterProcess, 3000);
     runMasterProcess();
 </script>
-    <div class="room">
-        <h2 class="room-title">🌐 EKOSISTEM MASA DEPAN</h2>
-        <div class="quote-box">
-            "Pasar tidak bisa ditebak, tapi risiko bisa dikelola. KALAH kita sudah biasa jadi bila MENANG harusnya itu Luar Biasa."
+    <div class="room" style="border: 2px solid #ff3131; box-shadow: 0 0 15px rgba(255, 49, 49, 0.2);">
+    <h2 class="room-title" style="color: #ff3131 !important; font-size: 18px;">🌐 EKOSISTEM MASA DEPAN</h2>
+    <div class="quote-box" style="color: #ff4d4d; font-size: 15px; font-weight: bold; border-left: 4px solid #ff3131; background: rgba(255, 49, 49, 0.05); padding: 15px; border-radius: 4px;">
+        "Pasar tidak bisa ditebak, tapi risiko bisa dikelola. KALAH kita sudah biasa jadi bila MENANG harusnya itu Luar Biasa."
+    </div>
+
+    <div class="btn-toggle-container">
+        <button class="btn-toggle" onclick="toggleExtra(this, 'ex6')" style="background: #ff3131;"><i class="arrow-icon"></i></button>
+    </div>
+
+    <div id="ex6" class="extra-content">
+        <div class="extra-body" style="color: #4da6ff; font-size: 15px; line-height: 1.8; text-align: justify; letter-spacing: 0.3px; padding: 20px; border: 1px solid rgba(77, 166, 255, 0.3); border-radius: 8px; background: rgba(0, 0, 0, 0.2);">
+            Kami tidak memaksa anda untuk ikut projek ini, karna kami juga bermain disini, Kami akui projek ini masih dalah tahap pengembangan tapi kami tetap akan bekerja keras untuk memaximalkan potensi yang telah ada, karna Sama seperti anda kami juga tidak ingin kalah disini, anda Kalah sama kami pun kalah, kami menang sudah pasti anda juga menang, jadi tetaplah bersama kami.
         </div>
-        <div class="btn-toggle-container">
-            <button class="btn-toggle" onclick="toggleExtra(this, 'ex6')"><i class="arrow-icon"></i></button>
-        </div>
-        <div id="ex6" class="extra-content">
-            <div class="extra-body">Kami tidak memaksa anda untuk ikut projek ini, karna kami juga bermain disini, Kami akui projek ini masih dalah tahap pengembangan tapi kami tetap akan bekerja keras untuk memaximalkan potensi yang telah ada, karna Sama seperti anda kami juga tidak ingin kalah disini, anda Kalah sama kami pun kalah, kami menang sudah pasti anda juga menang, jadi tetaplah bersama kami</div>
-        </div>
-    </div> 
+    </div>
+</div>
     <div class="room" style="margin: 30px auto; width: 100%; box-sizing: border-box; clear: both;">
-    <h2 class="room-title" style="color: #ffd700 !important; font-family: 'Oswald'; text-transform: uppercase;">💬 RUANG DISKUSI & TESTIMONI</h2>
+    <h2 class="room-title" style="color: #00d4ff !important; font-family: 'Oswald'; text-transform: uppercase;">💬 RUANG DISKUSI & TESTIMONI</h2>
     
-    <div style="background: #1a1a1a; border: 2px solid #ffd700; padding: 25px; border-radius: 12px; min-height: 300px;">
+    <div style="background: #1a1a1a; border: 2px solid #00d4ff; padding: 25px; border-radius: 12px; min-height: 300px; box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);">
         
-        <p style="color: #ccc; font-size: 14px; margin-bottom: 20px; font-style: italic;">
+        <p style="color: #ccc; font-size: 14px; margin-bottom: 20px; font-style: italic; border: 1px solid #007bff; padding: 10px; border-radius: 6px;">
             "Tinggalkan pesan atau saran Jenderal di bawah ini. Diskusi terbuka untuk semua member Ekosistem."
         </p>
 
         <div id="disqus_thread"></div>
 
         <script>
-            /**
-            * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-            * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-            
+            // ... (Kode script Disqus Jenderal tetap sama, jangan diubah) ...
             var disqus_config = function () {
-                this.page.url = "https://buruhelite.top";  // GANTI DENGAN DOMAIN BARU JENDERAL BESOK
-                this.page.identifier = "buruhelite_main_room"; // ID unik untuk halaman ini
+                this.page.url = "https://buruhelite.top"; 
+                this.page.identifier = "buruhelite_main_room";
             };
             
-            (function() { // DON'T EDIT BELOW THIS LINE
+            (function() {
             var d = document, s = d.createElement('script');
-            s.src = 'https://buruhelite.disqus.com/embed.js'; // GANTI 'buruhelite' dengan nama shortname Jenderal nanti
+            s.src = 'https://buruhelite.disqus.com/embed.js'; 
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
             })();
@@ -695,7 +696,7 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </div>
-</div>>
+</div>
 </div>
 
 <footer>
