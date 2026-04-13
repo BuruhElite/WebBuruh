@@ -631,18 +631,20 @@
         const tableBody = document.getElementById('cmd-ledger-rows');
         if(tableBody) {
             tableBody.innerHTML = "";
-            // 1. CARI DAN HAPUS DIVIDER LAMA BIAR GAK NUMPUK
+            // 1. BERSIHKAN DIVIDER LAMA
         const oldDivider = document.getElementById("pembatas-kuning");
         if (oldDivider) { oldDivider.remove(); }
 
         // 2. BIKIN DIVIDER BARU
         const divider = document.createElement("div");
-        divider.id = "pembatas-kuning"; // Kasih ID biar gampang dicari
-        divider.style.cssText = "color: #FFFF00; font-weight: bold; padding: 15px 5px 10px 5px; border-bottom: 1px solid #333; margin-bottom: 10px; font-size: 13px; font-family: 'Consolas', monospace; letter-spacing: 1px; width: 100%;";
+        divider.id = "pembatas-kuning";
+        divider.style.cssText = "color: #FFFF00; font-weight: bold; padding: 10px 5px; margin-bottom: 5px; font-size: 13px; font-family: 'Consolas', monospace; letter-spacing: 1px; width: 100%;";
         divider.innerHTML = "[ DAFTAR USER & ENGINE STATUS REAL TIME ]";
         
-        // 3. TARUH DI ATAS HEADER
-        tableBody.parentNode.insertBefore(divider, tableBody);
+        // 3. TARUH DI LUAR BOX (DI ATAS CONTAINER TABEL)
+        // Kita naik dua tingkat (ke parent dari container tabel)
+        const tableContainer = tableBody.closest('.live-feed-table-container') || tableBody.parentNode;
+        tableContainer.parentNode.insertBefore(divider, tableContainer);
             document.getElementById('user-total').innerText = ledgerUsers.length;
             ledgerUsers.forEach(u => {
                 let active = u.stat === "RUNNING";
