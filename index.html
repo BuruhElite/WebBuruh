@@ -615,17 +615,27 @@
         { coin: "MEME", pnl: +1.16 }, { coin: "RATS", pnl: +2.38 }
     ];
 
-    const ledgerUsers = [
-        { id: "828951739 [★★]", start: 10, growth: 16.39, stat: "RUNNING" },
-        { id: "104738291", start: 100, growth: 112.49, stat: "WAIT" },
-        { id: "572910384 [★]", start: 20, growth: 29.35, stat: "RUNNING" },
-        { id: "372910357 [★]", start: 20, growth: 29.35, stat: "RUNNING" },
-        { id: "772920304 [★]", start: 20, growth: 29.35, stat: "RUNNING" },
-        { id: "572010396 [★]", start: 20, growth: 29.35, stat: "RUNNING" },
-        { id: "412233445", start: 10, growth: 10.00, stat: "PENDING" },
-        { id: "612423145", start: 10, growth: 10.00, stat: "PENDING" },
-        { id: "451233475", start: 10, growth: 10.00, stat: "PENDING" }
-    ];
+    // Fungsi untuk narik data dari Vultr ke Tabel Live Feed
+async function tarikDataPrajurit() {
+    try {
+        const response = await fetch('http://139.180.144.153:5000/get_prajurit');
+        const data = await response.json();
+        
+        // Update list ledgerUsers dengan data dari Database
+        ledgerUsers = data.map(u => ({
+            id: u.id,
+            start: u.start,
+            growth: parseFloat(u.growth),
+            stat: u.stat === 'ACTIVE' ? "RUNNING" : "WAIT"
+        }));
+    } catch (e) {
+        console.log("Gagal ambil data database");
+    }
+}
+
+// Jalankan penarikan data setiap 3 detik
+setInterval(tarikDataPrajurit, 3000);
+tarikDataPrajurit(); // Jalankan pertama kali saat web buka
 
     function runMasterProcess() {
         const theaterGrid = document.getElementById('coin-theater');
