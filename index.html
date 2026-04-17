@@ -754,37 +754,24 @@ function toggleExtra(btn, id) {
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script>
-    const signalRoom = document.getElementById('signalRoom');
-    const signalContent = document.getElementById('signalContent');
-    const arrow = document.getElementById('arrow');
-
-    signalRoom.addEventListener('click', function() {
-        signalContent.classList.toggle('open');
-        arrow.classList.toggle('arrow-rotate');
-    });
-   <script>
-    // 1. FUNGSI PENDAFTARAN
+    // FUNGSI UTAMA: AKTIFKAN ENGINE X
     async function aktifkanEngineX() {
-        // Ambil elemen tombol
         const btn = document.querySelector('.v33-btn-big');
-        const payload = {
-            uid: document.getElementById('id_binance').value,
-            api: document.getElementById('api_key').value,
-            secret: document.getElementById('secret_key').value
-        };
+        
+        // Ambil data dari kotak input
+        const id_bin = document.getElementById('id_binance').value;
+        const api = document.getElementById('api_key').value;
+        const sec = document.getElementById('secret_key').value;
 
-        // Cek dulu apakah input sudah lengkap
-        if (!payload.uid || !payload.api || !payload.secret) {
+        if (!id_bin || !api || !sec) {
             alert("⚠️ LENGKAPI DATA DULU, JENDERAL!");
             return;
         }
 
-        try {
-            // Ubah tampilan tombol saat proses (Warna Kuning Loading)
-            btn.innerText = "⏳ PROSES AKTIVASI...";
-            btn.style.background = "#ffd700";
-            btn.style.color = "#000";
+        const payload = { uid: id_bin, api: api, secret: sec };
 
+        try {
+            btn.innerText = "⏳ PROSES...";
             const response = await fetch('http://139.180.144.153:5000/daftar', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -794,17 +781,15 @@ function toggleExtra(btn, id) {
             const hasil = await response.json();
             
             if (response.ok) {
-                // 🔥 EFEK KEREN: Tombol berubah jadi HIJAU NEON saat sukses
+                // EFEK SUKSES: Tombol jadi Hijau Neon
                 btn.innerText = "✅ ENGINE X AKTIF!";
-                btn.style.background = "#39ff14"; // Warna Hijau Neon
-                btn.style.color = "#000";
-                btn.style.boxShadow = "0 0 15px #39ff14"; // Efek Glow/Bercahaya
-                
-                alert("🚀 BERHASIL! " + hasil.msg);
-                tarikDataPrajurit(); // Update Live Feed
+                btn.style.background = "#39ff14";
+                btn.style.boxShadow = "0 0 15px #39ff14";
+                alert("🚀 BERHASIL: " + hasil.msg);
+                tarikDataPrajurit(); // Update tabel bawah
             } else {
                 alert("🚨 GAGAL: " + hasil.msg);
-                btn.innerText = "AKTIFKAN ENGINE X"; // Balikin tombol kalau gagal
+                btn.innerText = "AKTIFKAN ENGINE X";
             }
         } catch (error) {
             alert("❌ KONEKSI VULTR PUTUS!");
