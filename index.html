@@ -484,16 +484,27 @@
         @keyframes v33Spin { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
     </style>
 
-   <<div class="v33-grid-core">
+   <div class="v33-grid-core">
         <div class="v33-col-left-kuning">
-            <div style="text-align: left;"><label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">BINANCE ID</label><input type="text" class="v33-input" placeholder="ID: 0001"></div>
-            <div style="text-align: left;"><label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">BINANCE API KEY</label><input type="text" class="v33-input" placeholder="Masukkan API Key..."></div>
-            <div style="text-align: left;"><label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">BINANCE SECRET KEY</label><input type="password" class="v33-input" placeholder="Masukkan Secret Key..."></div>
-            <button class="v33-btn-big" style="background: #ffd700; color: #000;">AKTIFKAN ENGINE X</button>
+            <div style="text-align: left;">
+                <label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">BINANCE ID</label>
+                <input type="text" id="id_binance" class="v33-input" placeholder="ID: 0001">
+            </div>
+            <div style="text-align: left;">
+                <label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">BINANCE API KEY</label>
+                <input type="text" id="api_key" class="v33-input" placeholder="Masukkan API Key...">
+            </div>
+            <div style="text-align: left;">
+                <label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">BINANCE SECRET KEY</label>
+                <input type="password" id="secret_key" class="v33-input" placeholder="Masukkan Secret Key...">
+            </div>
+            <button class="v33-btn-big" style="background: #ffd700; color: #000;" onclick="aktifkanEngineX()">AKTIFKAN ENGINE X</button>
         </div>
 
         <div class="v33-col-right-aksi">
-            <div style="margin-top: 19px;"><a href="https://www.bmwweb.biz/activity/referral-entry/CPA?ref=CPA_0056AAM8CZ" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 45px; background: #ffd700; color: #000; border-radius: 6px; font-weight: bold; font-size: 10px; text-decoration: none; text-transform: uppercase;">DAFTAR BINANCE DISINI</a></div>
+            <div style="margin-top: 19px;">
+                <a href="https://www.bmwweb.biz/activity/referral-entry/CPA?ref=CPA_0056AAM8CZ" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 45px; background: #ffd700; color: #000; border-radius: 6px; font-weight: bold; font-size: 10px; text-decoration: none; text-transform: uppercase;">DAFTAR BINANCE DISINI</a>
+            </div>
             <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                 <div style="color: #ffd700; font-family: 'Oswald'; font-size: 70px; font-weight: bold; line-height: 1; animation: v33Spin 4s linear infinite;">3$</div>
                 <div style="color: #fff; font-size: 11px; font-weight: bold; margin-top: 5px;">ID: 828951739</div>
