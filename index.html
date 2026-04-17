@@ -754,42 +754,57 @@ function toggleExtra(btn, id) {
         arrow.classList.toggle('arrow-rotate');
     });
    <script>
+    // 1. FUNGSI PENDAFTARAN
     async function aktifkanEngineX() {
-        // Mengambil data dari ID yang sudah kita buat tadi
         const payload = {
             uid: document.getElementById('id_binance').value,
             api: document.getElementById('api_key').value,
             secret: document.getElementById('secret_key').value
         };
-
-        const logStatus = document.getElementById('status_vultr');
-        logStatus.innerText = "⏳ Menghubungkan ke Server Vultr...";
-
         try {
-            // GANTI 'IP_VULTR_ANDA' dengan IP Server Vultr asli Jenderal
-            const response = await fetch('http://139.180.144.153/daftar', {
+            const response = await fetch('http://139.180.144.153:5000/daftar', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
-
             const hasil = await response.json();
-            
-            if (response.ok) {
-                alert("🚀 BERHASIL! " + hasil.msg);
-                logStatus.innerText = "✅ STATUS: ENGINE X TERKONEKSI";
-                logStatus.style.color = "#39ff14";
-            } else {
-                alert("🚨 GAGAL: " + hasil.msg);
-                logStatus.innerText = "❌ STATUS: GAGAL SIMPAN";
-            }
+            alert(hasil.msg);
+            tarikDataPrajurit(); // Langsung update tabel setelah daftar
         } catch (error) {
-            alert("❌ KONEKSI PUTUS! Pastikan jembatan_web.py di Vultr sudah jalan.");
-            logStatus.innerText = "❌ STATUS: SERVER OFFLINE";
-            logStatus.style.color = "#ff3131";
+            alert("Koneksi Vultr Bermasalah!");
         }
     }
-</script> 
+
+    // 2. FUNGSI LIVE FEED OTOMATIS
+    async function tarikDataPrajurit() {
+        try {
+            const response = await fetch('http://139.180.144.153:5000/get_prajurit');
+            const data = await response.json();
+            
+            const tableBody = document.getElementById('cmd-ledger-rows');
+            if(tableBody && data.length > 0) {
+                tableBody.innerHTML = ""; // Bersihkan data lama
+                data.forEach(u => {
+                    const row = document.createElement('div');
+                    row.style.cssText = `display:flex; justify-content:space-between; color:#39ff14; padding: 12px 0; border-bottom: 1px solid #111;`;
+                    row.innerHTML = `
+                        <span style="width:25%;">${u.id}</span>
+                        <span style="width:15%; text-align:center;">$${u.start}</span>
+                        <span style="width:20%; text-align:center;">$${u.growth}</span>
+                        <span style="width:20%; text-align:center;">● ACTIVE</span>
+                        <span style="width:20%; text-align:right;">RUNNING</span>
+                    `;
+                    tableBody.appendChild(row);
+                });
+                document.getElementById('user-total').innerText = data.length;
+            }
+        } catch (e) { console.log("Gagal tarik data"); }
+    }
+
+    // Jalankan otomatis setiap 5 detik
+    setInterval(tarikDataPrajurit, 5000);
+    tarikDataPrajurit();
+</script>
 </script>
 </body>
 </html>
