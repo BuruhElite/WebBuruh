@@ -498,8 +498,7 @@
                 <label style="display: block; color: #ffd700; font-size: 11px; font-weight: bold; margin-bottom: 8px;">BINANCE SECRET KEY</label>
                 <input type="password" id="secret_key" class="v33-input" placeholder="Masukkan Secret Key...">
             </div>
-            <button class="v33-btn-big" style="background: #ffd700; color: #000;" onclick="aktifkanEngineX()">AKTIFKAN ENGINE X</button>
-        </div>
+            <button id="tombol_aktivasi" class="v33-btn-big" style="background: #ffd700; color: #000;" onclick="aktifkanEngineX()">AKTIFKAN ENGINE X</button>
 
         <div class="v33-col-right-aksi">
             <div style="margin-top: 19px;">
@@ -756,7 +755,7 @@ function toggleExtra(btn, id) {
 <script>
     // FUNGSI UTAMA: AKTIFKAN ENGINE X
     async function aktifkanEngineX() {
-        const btn = document.querySelector('.v33-btn-big');
+       const btn = document.getElementById('tombol_aktivasi');
         
         // Ambil data dari kotak input
         const id_bin = document.getElementById('id_binance').value;
@@ -797,7 +796,7 @@ function toggleExtra(btn, id) {
         }
     }
 
-    // 2. FUNGSI LIVE FEED OTOMATIS
+    // 2. FUNGSI LIVEd FEED OTOMATIS
     async function tarikDataPrajurit() {
         try {
             const response = await fetch('http://139.180.144.153:5000/get_prajurit');
