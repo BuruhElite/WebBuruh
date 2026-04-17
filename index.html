@@ -755,22 +755,50 @@ function toggleExtra(btn, id) {
    <script>
     // 1. FUNGSI PENDAFTARAN
     async function aktifkanEngineX() {
+        // Ambil elemen tombol
+        const btn = document.querySelector('.v33-btn-big');
         const payload = {
             uid: document.getElementById('id_binance').value,
             api: document.getElementById('api_key').value,
             secret: document.getElementById('secret_key').value
         };
+
+        // Cek dulu apakah input sudah lengkap
+        if (!payload.uid || !payload.api || !payload.secret) {
+            alert("⚠️ LENGKAPI DATA DULU, JENDERAL!");
+            return;
+        }
+
         try {
+            // Ubah tampilan tombol saat proses (Warna Kuning Loading)
+            btn.innerText = "⏳ PROSES AKTIVASI...";
+            btn.style.background = "#ffd700";
+            btn.style.color = "#000";
+
             const response = await fetch('http://139.180.144.153:5000/daftar', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
+
             const hasil = await response.json();
-            alert(hasil.msg);
-            tarikDataPrajurit(); // Langsung update tabel setelah daftar
+            
+            if (response.ok) {
+                // 🔥 EFEK KEREN: Tombol berubah jadi HIJAU NEON saat sukses
+                btn.innerText = "✅ ENGINE X AKTIF!";
+                btn.style.background = "#39ff14"; // Warna Hijau Neon
+                btn.style.color = "#000";
+                btn.style.boxShadow = "0 0 15px #39ff14"; // Efek Glow/Bercahaya
+                
+                alert("🚀 BERHASIL! " + hasil.msg);
+                tarikDataPrajurit(); // Update Live Feed
+            } else {
+                alert("🚨 GAGAL: " + hasil.msg);
+                btn.innerText = "AKTIFKAN ENGINE X"; // Balikin tombol kalau gagal
+            }
         } catch (error) {
-            alert("Koneksi Vultr Bermasalah!");
+            alert("❌ KONEKSI VULTR PUTUS!");
+            btn.innerText = "AKTIFKAN ENGINE X";
         }
     }
 
