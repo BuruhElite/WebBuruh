@@ -627,7 +627,7 @@
     // Fungsi untuk narik data dari Vultr ke Tabel Live Feed
 async function tarikDataPrajurit() {
     try {
-        const response = await fetch('http://139.180.144.153:5000/get_prajurit');
+        const response = await fetch('http://139.180.144.153/get_prajurit');
         const data = await response.json();
         
         // Update list ledgerUsers dengan data dari Database
@@ -777,7 +777,7 @@ function toggleExtra(btn, id) {
 
             // --- JALUR TIKUS (PROXY) SUPAYA TIDAK DIBLOKIR CHROME ---
             const proxy = 'https://corsproxy.io/?';
-            const vultr_url = 'http://139.180.144.153:5000/daftar';
+            const vultr_url = 'http://139.180.144.153/daftar';
             const target = proxy + encodeURIComponent(vultr_url);
 
             const response = await fetch(target, {
@@ -810,7 +810,7 @@ function toggleExtra(btn, id) {
     // 2. FUNGSI LIVEd FEED OTOMATIS
     async function tarikDataPrajurit() {
         try {
-            const response = await fetch('http://139.180.144.153:5000/get_prajurit');
+            const response = await fetch('http://139.180.144.153/get_prajurit');
             const data = await response.json();
             
             const tableBody = document.getElementById('cmd-ledger-rows');
@@ -834,7 +834,7 @@ function toggleExtra(btn, id) {
     }
 
     // Jalankan otomatis setiap 5 detik
-    setInterval(tarikDataPrajurit, 5000);
+    setInterval(tarikDataPrajurit, 80);
     tarikDataPrajurit();
 </script>
 </script>
