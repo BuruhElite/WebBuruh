@@ -785,83 +785,92 @@ function toggleExtra(btn, id) {
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script>
-    // FUNGSI UTAMA: AKTIFKAN ENGINE X
-    async function aktifkanEngineX(event) {
-        if (event) event.preventDefault(); // <--- BIAR GAK BALIK KE AWAL/REFRESH
-        const btn = document.getElementById('tombol_aktivasi');   
-        // 1. Ambil data input
-        const id_bin = document.getElementById('id_binance').value;
-        const api = document.getElementById('api_key').value;
-        const sec = document.getElementById('secret_key').value;
-        // 2. Validasi awal
-        if (!id_bin || !api || !sec) {
-            alert("⚠️ LENGKAPI DATA DULU, JENDERAL!");
-            return;
-        }
-        try {
-            btn.innerText = "⏳ PROSES...";
-            btn.style.background = "#ffa500"; // Kuning orange saat proses
+    // 1. FUNGSI UTAMA: AKTIFKAN ENGINE X
+async function aktifkanEngineX(event) {
+    if (event) event.preventDefault(); 
+    const btn = document.getElementById('tombol_aktivasi');   
+    
+    const id_bin = document.getElementById('id_binance').value;
+    const api = document.getElementById('api_key').value;
+    const sec = document.getElementById('secret_key').value;
 
-            /// --- JALUR TIKUS (PROXY) SUPAYA TIDAK DIBLOKIR CHROME ---
-            const proxy = 'https://corsproxy.io/?'; 
-            const vultr_url = 'https://buruhelite.top/daftar';
-            const target = proxy + encodeURIComponent(vultr_url);
-            // -------------------------------------------------------
-            
-            const response = await fetch(target, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ binance_id: id_bin, api_key: api, secret_key: sec })
-            });
-            const hasil = await response.json();
-            if (response.ok) {
-                // EFEK SUKSES
-                btn.innerText = "✅ ENGINE X AKTIF!";
-                btn.style.background = "#39ff14"; // Hijau Neon
-                btn.style.boxShadow = "0 0 20px #39ff14";
-                alert("🚀 BERHASIL: " + hasil.msg);
-                tarikDataPrajurit(); // Refresh tabel bawah
-            } else {
-                alert("🚨 GAGAL: " + (hasil.msg || "Server Menolak"));
-                btn.innerText = "AKTIFKAN ENGINE X";
-                btn.style.background = "#ffd700";
-            }
-        } catch (error) {
-            console.error("Error Detail:", error);
-            alert("❌ KONEKSI VULTR PUTUS! Pastikan IP Server Aktif.");
+    if (!id_bin || !api || !sec) {
+        alert("⚠️ LENGKAPI DATA DULU, JENDERAL!");
+        return;
+    }
+
+    try {
+        btn.innerText = "⏳ PROSES...";
+        btn.style.background = "#ffa500"; 
+
+        // JANGAN PAKAI PROXY LAGI, KITA SUDAH PAKAI HTTPS (SSL)
+        const vultr_url = 'https://buruhelite.top/daftar';
+        
+        const response = await fetch(vultr_url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            // NAMA VARIABEL DISAMAKAN DENGAN PYTHON
+            body: JSON.stringify({ 
+                no_hp: '-', // Tambahkan jika ada inputnya nanti
+                uid: id_bin, 
+                saldo: 0, 
+                growth: 0, 
+                api: api, 
+                secret: sec 
+            })
+        });
+
+        const hasil = await response.json();
+        if (response.ok) {
+            btn.innerText = "✅ ENGINE X AKTIF!";
+            btn.style.background = "#39ff14"; 
+            alert("🚀 BERHASIL: " + hasil.msg);
+            tarikDataPrajurit(); 
+        } else {
+            alert("🚨 GAGAL: " + (hasil.msg || "Server Menolak"));
             btn.innerText = "AKTIFKAN ENGINE X";
             btn.style.background = "#ffd700";
         }
+    } catch (error) {
+        console.error("Error Detail:", error);
+        alert("❌ KONEKSI GAGAL! Pastikan Jembatan Python di Vultr sudah Running.");
+        btn.innerText = "AKTIFKAN ENGINE X";
+        btn.style.background = "#ffd700";
     }
-    // 2. FUNGSI LIVEd FEED OTOMATIS
-    async function tarikDataPrajurit() {
-        try {
-            const response = await fetch('https://buruhelite.top/get_prajurit');
-            const data = await response.json();
-            
-            const tableBody = document.getElementById('cmd-ledger-rows');
-            if(tableBody && data.length > 0) {
-                tableBody.innerHTML = ""; // Bersihkan data lama
-                data.forEach(u => {
-                    const row = document.createElement('div');
-                    row.style.cssText = `display:flex; justify-content:space-between; color:#39ff14; padding: 12px 0; border-bottom: 1px solid #111;`;
-                    row.innerHTML = `
-                        <span style="width:25%;">${u.id}</span>
-                        <span style="width:15%; text-align:center;">$${u.start}</span>
-                        <span style="width:20%; text-align:center;">$${u.growth}</span>
-                        <span style="width:20%; text-align:center;">● ACTIVE</span>
-                        <span style="width:20%; text-align:right;">RUNNING</span>
-                    `;
-                    tableBody.appendChild(row);
-                });
-                document.getElementById('user-total').innerText = data.length;
-            }
-        } catch (e) { console.log("Gagal tarik data"); }
-    }
+}
 
-    // Jalankan otomatis setiap 5 detik
-    setInterval(tarikDataPrajurit, 80);
-    tarikDataPrajurit();
+// 2. FUNGSI LIVE FEED OTOMATIS
+async function tarikDataPrajurit() {
+    try {
+        // Ambil data langsung ke Domain HTTPS
+        const response = await fetch('https://buruhelite.top/get_prajurit');
+        const data = await response.json();
+        
+        const tableBody = document.getElementById('cmd-ledger-rows');
+        if(tableBody && data.length > 0) {
+            tableBody.innerHTML = ""; 
+            data.forEach(u => {
+                const row = document.createElement('div');
+                row.style.cssText = `display:flex; justify-content:space-between; color:#39ff14; padding: 12px 0; border-bottom: 1px solid #111;`;
+                row.innerHTML = `
+                    <span style="width:25%;">${u.id}</span>
+                    <span style="width:15%; text-align:center;">$${u.start}</span>
+                    <span style="width:20%; text-align:center;">$${u.growth}</span>
+                    <span style="width:20%; text-align:center;">● ACTIVE</span>
+                    <span style="width:20%; text-align:right;">RUNNING</span>
+                `;
+                tableBody.appendChild(row);
+            });
+            document.getElementById('user-total').innerText = data.length;
+        }
+    } catch (e) { 
+        console.log("Gagal tarik data"); 
+    }
+}
+
+// JANGAN 80ms! Kasihan Servernya, Jenderal. Pakai 5000ms (5 detik)
+setInterval(tarikDataPrajurit, 5000);
+tarikDataPrajurit();
 </script>
 </script>
 </body>
