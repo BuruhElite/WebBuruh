@@ -778,8 +778,8 @@ function toggleExtra(btn, id) {
             // --- JALUR TIKUS (PROXY) SUPAYA TIDAK DIBLOKIR CHROME ---
             const proxy = 'https://139.180.144.153/?';
             const vultr_url = 'https://139.180.144.153/daftar';
-            const target = proxy + encodeURIComponent(vultr_url);
-
+            // Ganti baris target yang lama dengan ini:
+            const target = 'https://corsproxy.io/?' + encodeURIComponent('http://139.180.144.153/daftar');
             const response = await fetch(target, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
