@@ -559,25 +559,25 @@
             [ EKSEKUSI ENGINE MMP V1.0 REAL TIME ]
         </p>
 
-       <div style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 20px;">
+      <div style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 20px; width: 100%;">
 
-    <div id="coin-theater" style="flex: 75%; display: grid; gap: 8px; grid-template-columns: repeat(3, 1fr);">
+    <div id="coin-theater" style="flex: 80%; display: grid; gap: 10px; grid-template-columns: repeat(4, 1fr) !important;">
         </div>
 
-    <div id="market-session-panel" style="flex: 25%; background: #111; border: 1.5px solid #333; padding: 12px; border-radius: 8px; font-family: 'Consolas', monospace;">
-        <h4 style="color:#ffd700; font-size:11px; border-bottom:1px solid #333; padding-bottom:8px; margin-top:0; text-align:center; text-transform:uppercase;">Market Monitor</h4>
+    <div id="market-session-panel" style="flex: 20%; background: #0c0c0c; border: 1.5px solid #333; padding: 12px; border-radius: 8px; font-family: 'Consolas', monospace; min-width: 180px;">
+        <h4 style="color:#ffd700; font-size:11px; border-bottom:1px solid #333; padding-bottom:8px; margin-top:0; text-align:center; text-transform:uppercase; letter-spacing: 1px;">Market Monitor</h4>
         
-        <div style="padding:8px 0; display:flex; justify-content:space-between; font-size:10px; border-bottom:1px solid #222;">
+        <div style="padding:10px 0; display:flex; justify-content:space-between; font-size:10px; border-bottom:1px solid #1a1a1a;">
             <span style="color:#ffd700;">🌏 ASIA</span> 
             <span id="asia-val" style="color:#555; font-weight:bold;">WAITING</span>
         </div>
         
-        <div style="padding:8px 0; display:flex; justify-content:space-between; font-size:10px; border-bottom:1px solid #222;">
+        <div style="padding:10px 0; display:flex; justify-content:space-between; font-size:10px; border-bottom:1px solid #1a1a1a;">
             <span style="color:#ffd700;">🇪🇺 EUROPE</span> 
             <span id="euro-val" style="color:#555; font-weight:bold;">WAITING</span>
         </div>
         
-        <div style="padding:8px 0; display:flex; justify-content:space-between; font-size:10px;">
+        <div style="padding:10px 0; display:flex; justify-content:space-between; font-size:10px;">
             <span style="color:#ffd700;">🇺🇸 USA</span> 
             <span id="usa-val" style="color:#555; font-weight:bold;">WAITING</span>
         </div>
@@ -628,7 +628,7 @@
     #coin-theater {
         flex: 70%;
         display: grid !important; 
-        grid-template-columns: repeat(3, 1fr) !important; /* Jadi 3 kolom berbaris */
+        grid-template-columns: repeat(3, 1fr) !important; /* Jadi 4 kolom berbaris */
         gap: 15px;
     }
     
